@@ -19,6 +19,7 @@ from trend_detective.models import (
     Verdict,
 )
 from trend_detective.wording import (
+    MINUS_SIGN,
     format_number,
     format_p,
     lowercase_first,
@@ -63,7 +64,11 @@ def _how_much(trend: TrendStats | None) -> str:
         return "No slope was computed."
     slope = with_unit(format_number(trend.sen.slope_per_decade, signed=True), trend.unit)
     change = with_unit(format_number(trend.total_change, signed=True), trend.unit)
-    percent = "" if trend.percent_change is None else f" ({trend.percent_change:+.0f}%)"
+    percent = (
+        ""
+        if trend.percent_change is None
+        else f" ({trend.percent_change:+.0f}%)".replace("-", MINUS_SIGN)
+    )
     text = f"{slope} per decade (Sen's slope); "
     text += f"the fitted line changes by {change} over the whole period{percent}."
     if trend.evidence in ("none", "mixed"):

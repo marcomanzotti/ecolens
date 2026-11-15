@@ -722,7 +722,7 @@
    "headline": "Case closed: precipitation is falling.",
    "what": "Precipitation is falling.",
    "where": "Pantanal, Brazil, 1981–2025.",
-   "how_much": "-0.333 mm/day per decade (Sen's slope); the fitted line changes by -1.29 mm/day over the whole period (-48%).",
+   "how_much": "−0.333 mm/day per decade (Sen's slope); the fitted line changes by −1.29 mm/day over the whole period (−48%).",
    "how_sure": "Both tests agree this is very unlikely to be chance (t-test p < 0.001, Mann-Kendall p < 0.001).",
    "caveats": []
   },
@@ -6482,7 +6482,7 @@
     "significant": true
    },
    "distance_km": 1023.7,
-   "text": "Same variable, same years, opposite direction: +0.338 mm/day per decade at (-23.5, -57.5) against -0.826 mm/day per decade at (-15, -53.75), 1023.7 km apart."
+   "text": "Same variable, same years, opposite direction: +0.338 mm/day per decade at (-23.5, -57.5) against −0.826 mm/day per decade at (-15, -53.75), 1023.7 km apart."
   }
  }
 }

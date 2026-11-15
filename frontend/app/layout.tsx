@@ -9,13 +9,30 @@ import "./globals.css";
 import { ReferenceDataProvider } from "@/components/providers/reference-data";
 import { SiteFooter } from "@/components/site/site-footer";
 
+const SITE_URL = "https://ecolens-earth.vercel.app";
+const TAGLINE = "The tool finds the trends. You investigate them.";
+const DESCRIPTION =
+  "Pick a place on Earth and find out what is changing there, by how much, and whether the change is statistically significant.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "EcoLens",
+    default: `EcoLens — ${TAGLINE}`,
     template: "%s · EcoLens",
   },
-  description:
-    "Pick a place on Earth and find out what is changing there, by how much, and whether the change is statistically significant.",
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "EcoLens",
+    title: `EcoLens — ${TAGLINE}`,
+    description: DESCRIPTION,
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `EcoLens — ${TAGLINE}`,
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {

@@ -105,6 +105,8 @@ export const TIMELAPSE_FRONT_RADIUS = 1.0025;
 export const TIMELAPSE_RING_RADIUS = 1.003;
 /** Fixed playback speed: one year every 0.6 s. */
 export const TIMELAPSE_YEAR_MS = 600;
+/** Years too early for a trend test (record shorter than the minimum) pass faster. */
+export const TIMELAPSE_UNTESTED_YEAR_MS = 180;
 /** Linear crossfade between two real yearly frames (shorter than a year step). */
 export const TIMELAPSE_FADE_MS = 300;
 /** Life of the ring a cell emits in the year its trend becomes significant. */

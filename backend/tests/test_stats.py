@@ -292,6 +292,20 @@ def test_percent_change_relative_to_mean() -> None:
     assert trend.percent_change == pytest.approx(trend.total_change / abs(trend.mean) * 100)
 
 
+def test_percent_change_is_none_on_celsius_scale() -> None:
+    # Arrange: a clear trend far from zero; only the unit differs between the two runs.
+    years, values = year_range(45), noisy_line(45, 0.03, 0.5, seed=42)
+
+    # Act
+    celsius = compute_trend(years, values, "°C")
+    rain = compute_trend(years, values, "mm/day")
+
+    # Assert: the zero of the Celsius scale is arbitrary, so a percentage means nothing.
+    assert celsius is not None and rain is not None
+    assert celsius.percent_change is None
+    assert rain.percent_change is not None
+
+
 def test_percent_change_is_none_when_mean_is_near_zero() -> None:
     values = [v - 10.0 for v in noisy_line(45, 0.03, 1.0, seed=42)]
     shift = float(np.mean(values))

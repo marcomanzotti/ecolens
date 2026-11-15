@@ -78,7 +78,7 @@ function buildStats(trend: Stats): readonly Stat[] {
       value: `${formatSigned(trend.total_change)} ${unit}`,
       note:
         trend.percent_change === null
-          ? "Average too close to zero for a percentage"
+          ? "No percentage: it would not be meaningful for this unit or average"
           : `${formatSigned(trend.percent_change)}% of the average`,
     },
     {

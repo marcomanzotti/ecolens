@@ -82,7 +82,7 @@ def test_how_much_drops_unit_for_dimensionless_variables() -> None:
     how_much = verdict(trend, var=var).how_much
 
     assert "0–1" not in how_much
-    assert "-0.0120 per decade" in how_much
+    assert "−0.0120 per decade" in how_much
 
 
 def test_how_sure_reports_both_p_values_when_strong() -> None:

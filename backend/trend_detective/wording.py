@@ -14,13 +14,17 @@ DIMENSIONLESS_UNITS = frozenset({"0–1", "unitless", "index"})
 P_VALUE_FLOOR = 0.001
 
 
+MINUS_SIGN = "\u2212"  # typographic minus, as the interface writes it
+
+
 def format_number(value: float, *, signed: bool = False) -> str:
     """Three significant figures, fixed notation, optional explicit sign."""
     if value == 0 or not math.isfinite(value):
         return "0" if value == 0 else str(value)
     magnitude = math.floor(math.log10(abs(value)))
     decimals = min(MAX_DECIMALS, max(0, SIGNIFICANT_FIGURES - 1 - magnitude))
-    return f"{value:+.{decimals}f}" if signed else f"{value:.{decimals}f}"
+    text = f"{value:+.{decimals}f}" if signed else f"{value:.{decimals}f}"
+    return text.replace("-", MINUS_SIGN)
 
 
 def with_unit(number: str, unit: str) -> str:

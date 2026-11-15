@@ -689,7 +689,7 @@
    "headline": "Case closed: sunlight reaching the ground is falling.",
    "what": "Sunlight reaching the ground is falling.",
    "where": "Delhi, India, 1981–2025.",
-   "how_much": "-0.606 MJ/m²/day per decade (Sen's slope); the fitted line changes by -2.44 MJ/m²/day over the whole period (-14%).",
+   "how_much": "−0.606 MJ/m²/day per decade (Sen's slope); the fitted line changes by −2.44 MJ/m²/day over the whole period (−14%).",
    "how_sure": "Both tests agree this is very unlikely to be chance (t-test p < 0.001, Mann-Kendall p < 0.001).",
    "caveats": [
     "3 years have no data and were left out (42 years used)."
@@ -4092,7 +4092,7 @@
     "significant": true
    },
    "distance_km": 455.2,
-   "text": "Same variable, same years, opposite direction: +0.759 MJ/m²/day per decade at (31.5, 78.5) against -0.772 MJ/m²/day per decade at (27.5, 79.5), 455.2 km apart."
+   "text": "Same variable, same years, opposite direction: +0.759 MJ/m²/day per decade at (31.5, 78.5) against −0.772 MJ/m²/day per decade at (27.5, 79.5), 455.2 km apart."
   }
  }
 }

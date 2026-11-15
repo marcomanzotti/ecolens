@@ -198,7 +198,7 @@ export function SeriesChart({
               strokeDasharray="4 4"
               label={{
                 value: `Clear from ${crackedYear}`,
-                position: "insideTopRight",
+                position: "top",
                 fill: "var(--brand-neon-yellow)",
                 fontSize: 12,
                 fontWeight: 700,

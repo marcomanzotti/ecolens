@@ -2,6 +2,12 @@
 
 **The tool finds the trends. You investigate them.**
 
+**[Open the live app](https://ecolens-earth.vercel.app)** (no login) ·
+[29-second demo video](submission/video/ecolens-demo.mp4) ·
+[7 slides (PDF)](submission/slides/ecolens-slides.pdf)
+
+[![A case file in EcoLens: verdict, slope per decade and evidence](submission/slides/img/case-verdict.jpg)](https://ecolens-earth.vercel.app)
+
 EcoLens is our answer to the NASA Space Apps Challenge 2026 challenge
 *Be An Earth System Trend Detective!*. Pick any place on Earth, and it questions 31 Earth-system
 variables from [NASA POWER](https://power.larc.nasa.gov/) (1981–2025) and tells you **what** is
@@ -9,7 +15,8 @@ changing, **where**, **by how much**, and **how sure** we can be that the change
 
 ## What it does
 
-- **Open a case**: three guided questions (what, where, when) or a click on the 3D globe.
+- **Open a case**: search 34,216 places (every city above 15,000 inhabitants), type coordinates,
+  or click anywhere on the 3D globe. Choose the whole year or a season, and the years to study.
 - **Verdict and evidence**: the yearly series with its trend line and 95% confidence band, the
   slope per decade, a t-test on the fitted line, the Mann-Kendall test and Sen's slope, then a
   verdict in plain words. "Significant" means both tests agree at α = 0.05.
@@ -20,10 +27,18 @@ changing, **where**, **by how much**, and **how sure** we can be that the change
   (Benjamini-Hochberg).
 - **Where it flips**: the same test on every grid point of a 10° × 10° box, drawn on the globe,
   with the closest pair of cells that change in opposite directions (the "opposite twin").
-- **Witnesses**: where a second product measures the same quantity, both are compared.
+- **Witnesses**: where a second record measures the same quantity, both are compared. For air
+  temperature: NASA GISTEMP v4 everywhere, and NOAA weather stations where one lies within 50 km.
+- **The future**: what 12 CMIP6 climate models project for 2041–2060 compared with 1995–2014,
+  under SSP2-4.5 and SSP5-8.5, with the share of models that agree on the direction. Shown as
+  scenarios, never as a forecast.
+- **The planet**: the home page globe plays a time-lapse from 1981 to 2025 computed from NASA
+  GISTEMP v4, with the same trend test in every 2° cell for every year. A second layer does the
+  same for vegetation (MODIS NDVI, 2001–2025) and a third shows the CMIP6 projections for 2050.
 - **Limitations**: every case ends with what it cannot tell you.
-- **Solved cases**: four saved investigations (Sahel rainfall, Delhi sunlight, Pantanal
-  rainfall, Venice temperature), built with the same engine on live data.
+- **Solved cases and guided tour**: four saved investigations (Sahel rainfall, Delhi sunlight,
+  Pantanal rainfall, Venice temperature), built with the same engine on live data, and a guided
+  tour of about 30 seconds per case.
 
 ## How it is built
 
@@ -32,12 +47,15 @@ backend/   Python 3.12 · FastAPI · numpy/scipy
   trend_detective/   the engine: statistics, emergence, line-up, map, verdict (no web code)
   api/               routes, validation, cache, rate limits, CORS, saved demos
 frontend/  Next.js · React · Tailwind · three.js globe
-scripts/   type generation, demo and fixture builder
+scripts/   type generation, demo builder, and the builders of the static layers
+           (GISTEMP and MODIS time-lapses, CMIP6 projections, place list)
 docs/      API contract and OpenAPI schema
+submission/  demo video, slides and project page text
 ```
 
 The API contract is in [docs/API_CONTRACT.md](docs/API_CONTRACT.md). Every response is
-`{success, data, error}`. The only live data dependency is NASA POWER, which needs no login.
+`{success, data, error}`. The only live data dependency is NASA POWER, which needs no login;
+every other dataset is built once by a script and served as a static file.
 
 ## Run it locally
 

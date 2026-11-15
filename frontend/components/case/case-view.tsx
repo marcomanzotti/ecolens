@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSeenOnce } from "@/hooks/use-in-view";
@@ -49,6 +50,13 @@ export function CaseView() {
   const unreachable =
     useServiceUnreachable() ||
     (caseState.status === "error" && caseState.error.code === "network_error");
+
+  const titleVariable = findVariable(data.variableId)?.name ?? null;
+  const titlePlace = data.location?.label ?? null;
+  useEffect(() => {
+    if (titleVariable === null) return;
+    document.title = `${titleVariable}${titlePlace ? ` around ${titlePlace}` : ""} · EcoLens`;
+  }, [titleVariable, titlePlace]);
 
   if (query.demoId === null && query.location === null) return <NoPlace />;
 

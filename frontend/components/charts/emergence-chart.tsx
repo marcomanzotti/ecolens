@@ -168,11 +168,10 @@ export function EmergenceChart({
               strokeWidth={2}
               label={{
                 value: `Cracked in ${emergedYear}`,
-                position: "insideTopRight",
+                position: "top",
                 fill: "var(--foreground)",
                 fontSize: 13,
                 fontWeight: 700,
-                dx: -6,
               }}
             />
           ) : null}

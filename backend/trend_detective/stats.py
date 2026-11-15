@@ -44,6 +44,8 @@ YEARS_PER_DECADE = 10.0
 CONFIDENCE_LEVEL = 0.95
 # percent_change is null when |mean| is below this fraction of the standard deviation.
 PERCENT_MIN_MEAN_OVER_STD = 0.1
+# Units whose zero is arbitrary: a percentage of the mean has no meaning on them.
+INTERVAL_SCALE_UNITS = frozenset({"°C"})
 # t statistic reported for a perfect fit (zero residual), so that the value stays finite in JSON.
 PERFECT_FIT_T = 1e9
 MIN_PEARSON_PAIRS = 3
@@ -300,8 +302,8 @@ def _direction(sen_per_year: float) -> str:
     return "flat"
 
 
-def _percent_change(total_change: float, mean: float, std: float) -> float | None:
-    if abs(mean) <= PERCENT_MIN_MEAN_OVER_STD * std:
+def _percent_change(total_change: float, mean: float, std: float, unit: str) -> float | None:
+    if unit in INTERVAL_SCALE_UNITS or abs(mean) <= PERCENT_MIN_MEAN_OVER_STD * std:
         return None
     return total_change / abs(mean) * 100.0
 
@@ -341,7 +343,7 @@ def compute_trend(
         significant=significant,
         methods_agree=(ols.p_value < ALPHA) == (mk_p_used < ALPHA),
         total_change=total_change,
-        percent_change=_percent_change(total_change, mean, std),
+        percent_change=_percent_change(total_change, mean, std, unit),
         mean=mean,
         std=std,
         lag1_autocorrelation=lag1,

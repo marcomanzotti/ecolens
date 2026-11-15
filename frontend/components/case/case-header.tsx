@@ -101,7 +101,7 @@ export function CaseHeader({ query, location, variable, catalog, onChange }: Cas
               const preset = catalog.period_presets.find((p) => p.id === event.target.value);
               if (preset) onChange({ period: preset.period });
             }}
-            className="lg:w-56"
+            className="lg:w-64"
           >
             {presetId === "" ? <option value="">{formatPeriod(query.period)}</option> : null}
             {catalog.period_presets.map((preset) => (

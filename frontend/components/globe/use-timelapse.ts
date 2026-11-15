@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { TIMELAPSE_YEAR_MS } from "./constants";
+import { TIMELAPSE_UNTESTED_YEAR_MS, TIMELAPSE_YEAR_MS } from "./constants";
 import { loadTimelapse, type TimelapseData } from "./timelapse-data";
 import { DEFAULT_DATASET, TIMELAPSE_DATASETS, type TimelapseDatasetId } from "./timelapse-datasets";
 import type { TimelapseLayers } from "./timelapse-layer";
@@ -62,6 +62,7 @@ export function useTimelapse(enabled: boolean, autoplay: boolean, reducedMotion:
   const years = load.status === "ready" ? load.data.meta.years : null;
   const first = years ? years[0] : null;
   const last = years ? years[years.length - 1] : null;
+  const firstTested = load.status === "ready" && first !== null ? first + load.data.meta.test.min_years - 1 : null;
   const [chosenYear, setChosenYear] = useState<number | null>(null);
   const [playRequest, setPlayRequest] = useState<boolean | null>(null);
   const [layers, setLayers] = useState<TimelapseLayers>(DEFAULT_LAYERS);
@@ -77,9 +78,11 @@ export function useTimelapse(enabled: boolean, autoplay: boolean, reducedMotion:
       const stop = window.setTimeout(() => setPlayRequest(false), 0);
       return () => window.clearTimeout(stop);
     }
-    const timer = window.setTimeout(() => setChosenYear(year + 1), TIMELAPSE_YEAR_MS);
+    const untested = firstTested !== null && year + 1 < firstTested;
+    const delay = untested ? TIMELAPSE_UNTESTED_YEAR_MS : TIMELAPSE_YEAR_MS;
+    const timer = window.setTimeout(() => setChosenYear(year + 1), delay);
     return () => window.clearTimeout(timer);
-  }, [playing, year, last]);
+  }, [playing, year, last, firstTested]);
 
   const togglePlay = () => {
     if (playing) {
