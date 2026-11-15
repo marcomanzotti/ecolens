@@ -1,14 +1,12 @@
 # EcoLens: project page text
 
 Text for the NASA Space Apps Challenge 2026 project page, in the order of the submission form.
-Short versions for copy and paste are in `form-answers.md`. Placeholders in square brackets
-must be filled by hand.
 
 - **Challenge:** Be An Earth System Trend Detective!
-- **Team:** [TEAM NAME] ([MEMBER 1], [MEMBER 2])
+- **Team:** project_nasa (Marco Manzotti, Dario Bottari, Miles McCrudden)
 - **Live app (no login):** https://ecolens-earth.vercel.app
 - **Code (MIT licence):** https://github.com/marcomanzotti/ecolens
-- **Demo (7 slides):** [PUBLIC LINK TO THE SLIDES]
+- **Demo (7 slides):** https://github.com/marcomanzotti/ecolens/blob/main/submission/slides/ecolens-slides.pdf
 
 ---
 
@@ -34,7 +32,7 @@ anyone with a browser.
 
 ## 3. Project demo
 
-[PUBLIC LINK TO THE SLIDES]: seven slides (`submission/slides/`, also as PDF).
+Seven slides (PDF, no login): https://github.com/marcomanzotti/ecolens/blob/main/submission/slides/ecolens-slides.pdf
 
 ## 4. Final project
 

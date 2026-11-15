@@ -1,4 +1,4 @@
-# Segreti
+# Secrets
 .env
 .env.*
 !.env.example
@@ -17,12 +17,12 @@ node_modules/
 out/
 .vercel/
 
-# Sistema e strumenti
+# System and tools
 .DS_Store
 .claude/settings.local.json
 
-# Dati scaricati di grandi dimensioni
+# Large downloaded data
 data/raw/
 
-# Cartelle di pubblicazione
+# Deployment folders
 .deploy/

@@ -2,7 +2,7 @@ import type { Variable } from "@/lib/api";
 
 /**
  * Product labels POWER does not declare. Only these three were confirmed against the POWER
- * documentation (docs/STATUS.md, 14/11/2026); every other label is shown as provisional.
+ * documentation (checked on 14/11/2026); every other label is shown as provisional.
  */
 const CONFIRMED_PRODUCT_IDS: readonly string[] = ["PRECTOTCORR", "TQV", "PW"];
 

@@ -17,7 +17,7 @@ Agreed on 14/11/2026 (stage 1). Front-end and back-end are built against this do
 Field-level detail (every field, type and description) is in `models.py` and in
 `docs/openapi.json`; this document gives the rules that the schema cannot express.
 
-**Changing the contract** (main session only, never a sub-agent on its own):
+**Changing the contract:**
 
 ```bash
 # 1. edit models.py / schemas.py, then
@@ -27,7 +27,7 @@ cd backend && .venv/bin/python -m pytest               # contract tests
 cd ../frontend && npm run typecheck
 ```
 
-A sub-agent that needs a contract change stops and reports it instead of editing these files.
+Never edit the generated files by hand: change the models and run the steps above.
 
 ## Running against the contract
 
