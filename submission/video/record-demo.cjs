@@ -17,7 +17,7 @@ async function overlays(page) {
     css.textContent = `
       #demo-cap{position:fixed;left:50%;bottom:56px;transform:translateX(-50%);z-index:999998;max-width:1500px;
         padding:18px 34px;border-radius:14px;background:rgba(7,23,63,.92);border:1px solid rgba(234,254,7,.55);
-        color:#fff;font:600 34px/1.25 ${body};letter-spacing:.2px;text-align:center;opacity:0;transition:opacity .35s;pointer-events:none;
+        color:#fff;font:600 34px/1.25 ${body};letter-spacing:.2px;text-align:center;opacity:0;transition:none;pointer-events:none;
         box-shadow:0 10px 40px rgba(0,0,0,.45)}
       #demo-card{position:fixed;inset:0;z-index:999999;display:flex;flex-direction:column;justify-content:center;padding:0 160px;
         background:linear-gradient(135deg,#1B45B4 0%,#07173F 70%);color:#fff;opacity:0;transition:opacity .5s;pointer-events:none}
@@ -104,19 +104,16 @@ async function click(page, locator, label) {
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
     await overlays(page);
     await wait(page, 1500);
+    await caption(page, 'CMIP6 climate models, 2041–2060: scenarios, not forecasts');
     mark('futureStart');
     await click(page, page.getByText('2050', { exact: true }).last(), '2050 tab');
-    await wait(page, 1800);
-    await caption(page, 'CMIP6 climate models, 2041–2060: scenarios, not forecasts');
     mark('future'); await wait(page, 4200);
 
     // E: end card
     await caption(page, null);
-    await card(page, `<h1 style="font-size:130px">EcoLens</h1>
+    await card(page, `<h1 style="font-size:150px">EcoLens</h1>
       <div class="t">The tool finds the trends. <span>You investigate them.</span></div>
-      <div class="u">ecolens-earth.vercel.app</div>
-      <div class="m">Open source: github.com/marcomanzotti/ecolens · Team project_nasa</div>
-      <div class="s">Data: NASA POWER, NASA GISS GISTEMP v4, MODIS via NASA GIBS, CMIP6 (WCRP). Not endorsed by NASA.<br>Built with the help of an AI coding assistant; the app itself uses no AI.</div>`);
+      <div class="u">ecolens-earth.vercel.app</div>`);
     mark('end'); await wait(page, 3500); mark('endEnd');
   } catch (e) {
     console.error('DEMO ERROR:', e.message);
