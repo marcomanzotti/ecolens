@@ -27,7 +27,7 @@ export function LimitationsSection({ caseResult }: { caseResult: CaseResult | nu
       title="Limitations"
       lede="What this case cannot tell you. Read these before quoting the verdict."
     >
-      <div className="grid gap-10 border-t border-line pt-8 lg:grid-cols-2">
+      <div className="grid gap-10 border-t border-line pt-8 @4xl:grid-cols-2">
         {caseResult && caseResult.limitations.length > 0 ? (
           <Caveats title="About this case" items={caseResult.limitations} />
         ) : null}

@@ -45,7 +45,7 @@ function Lineup({
           aria-hidden="true"
           className={cn(
             LINEUP_GRID,
-            "hidden border-b border-line px-4 py-2.5 text-sm text-muted-foreground md:grid",
+            "hidden border-b border-line px-4 py-2.5 text-sm text-muted-foreground @min-[52rem]:grid",
           )}
         >
           <span>#</span>

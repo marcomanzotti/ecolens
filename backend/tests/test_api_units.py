@@ -77,6 +77,16 @@ def test_settings_reject_bad_numbers(value: str) -> None:
         load_settings({"RATE_LIMIT_PER_MINUTE": value})
 
 
+# maxDuration of the Python function in scripts/deploy_api_vercel.sh: past it Vercel cuts the
+# request with a plain-text 504 that the front-end cannot read.
+VERCEL_FUNCTION_MAX_SECONDS = 60
+
+
+def test_default_request_timeout_ends_before_the_hosting_limit() -> None:
+    timeout = load_settings({}).request_timeout_seconds
+    assert 0 < timeout < VERCEL_FUNCTION_MAX_SECONDS
+
+
 def test_unknown_forwarded_hop_falls_back_to_the_safe_default() -> None:
     assert load_settings({"FORWARDED_IP_HOP": "middle"}).forwarded_ip_hop == "last"
 

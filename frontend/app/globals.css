@@ -34,6 +34,7 @@
   --color-yonder: var(--brand-blue-yonder);
   --color-rocket: var(--brand-rocket-red);
   --color-neon: var(--brand-neon-yellow);
+  --color-space: var(--space);
 
   /* Roles */
   --color-line: var(--line);
@@ -105,6 +106,10 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-press: 140ms;
   --duration-reveal: 520ms;
+
+  /* Space behind the Earth: Deep Blue pushed towards black. Never a text surface on its own:
+     text over it sits on a Deep Blue panel or on the Deep Blue side of a gradient. */
+  --space: color-mix(in srgb, var(--brand-deep-blue) 42%, #000);
 
   /* Surfaces: Deep Blue raised a little towards Electric Blue for panels. */
   --surface-raised: color-mix(in srgb, var(--brand-electric-blue) 18%, var(--brand-deep-blue));
@@ -189,6 +194,12 @@
     background-size: 3rem 3rem;
     mask-image: linear-gradient(180deg, black, transparent 85%);
     opacity: 0.25;
+  }
+  /* Landing hero: the investigation desk (Deep Blue) opening onto space behind the globe. */
+  .hero-space {
+    background:
+      radial-gradient(120% 90% at 78% 45%, transparent 35%, var(--space) 75%),
+      linear-gradient(90deg, var(--brand-deep-blue) 0%, var(--brand-deep-blue) 32%, var(--space) 62%);
   }
   .tabular {
     font-variant-numeric: tabular-nums;

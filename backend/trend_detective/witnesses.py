@@ -14,6 +14,7 @@ from itertools import combinations
 
 from trend_detective import catalog, limitations, stats
 from trend_detective.errors import NoDataError
+from trend_detective.external_witnesses import ExternalWitnesses
 from trend_detective.models import (
     MIN_YEARS_FOR_TREND,
     Location,
@@ -29,6 +30,7 @@ from trend_detective.series import is_valid, series_points
 from trend_detective.wording import lowercase_first
 
 Series = Mapping[str, Sequence[float | None]]
+MIN_WITNESSES = 2
 
 
 def _valid_span(years: Sequence[int], values: Sequence[float | None]) -> tuple[int, int] | None:
@@ -105,6 +107,18 @@ def _agreement(trends: Sequence[TrendStats | None], correlation: float | None) -
     directions = {t.direction for t in tested}
     same = len(directions) == 1
     all_significant = all(t.significant for t in tested)
+    if not same and not any(t.significant for t in tested):
+        # Opposite signs inside the noise are not a contradiction: nobody claims a trend.
+        return WitnessAgreement(
+            level="partly",
+            same_direction=False,
+            all_significant=False,
+            correlation=correlation,
+            text=(
+                "No witness finds a significant trend; their small slopes differ in sign, "
+                "which is within the noise."
+            ),
+        )
     level = "disagree" if not same else "agree" if all_significant else "partly"
     return WitnessAgreement(
         level=level,
@@ -115,6 +129,25 @@ def _agreement(trends: Sequence[TrendStats | None], correlation: float | None) -
     )
 
 
+def _merged(
+    members: Sequence[Variable], series: Series, extra: ExternalWitnesses
+) -> tuple[list[Variable], dict[str, Sequence[float | None]]]:
+    """POWER members first, then the external witnesses, with every series by variable id."""
+    all_members = [*members, *(e.variable for e in extra.series)]
+    all_series: dict[str, Sequence[float | None]] = {
+        **series,
+        **{e.variable.id: e.values for e in extra.series},
+    }
+    return all_members, all_series
+
+
+def _need_two(members: Sequence[Variable], extra: ExternalWitnesses) -> None:
+    if len(members) >= MIN_WITNESSES:
+        return
+    reason = " ".join(extra.unavailable) or "No other dataset covers this quantity here."
+    raise NoDataError(f"There is no second source to compare with here. {reason}")
+
+
 def build_witnesses(
     location: Location,
     period: Period,
@@ -122,8 +155,13 @@ def build_witnesses(
     group: str,
     members: Sequence[Variable],
     series: Series,
+    extra: ExternalWitnesses | None = None,
 ) -> WitnessesResult:
-    """`series` holds display-unit values, one per year of `period`, by variable id."""
+    """`series` holds display-unit values, one per year of `period`, by variable id. `extra`
+    adds witnesses from outside NASA POWER (their values are aligned the same way)."""
+    external = extra or ExternalWitnesses()
+    members, series = _merged(members, series, external)
+    _need_two(members, external)
     years = catalog.period_years(period)
     start, end = common_span(years, members, series)
     keep = [i for i, year in enumerate(years) if start <= year <= end]
@@ -131,6 +169,7 @@ def build_witnesses(
     windows = [[series[m.id][i] for i in keep] for m in members]
     witnesses = [_witness(m, window_years, w) for m, w in zip(members, windows, strict=True)]
     common = Period(start_year=start, end_year=end)
+    notes = [note for e in external.series for note in e.notes]
     return WitnessesResult(
         location=location,
         quantity=catalog.WITNESS_QUANTITIES.get(group, group.replace("_", " ").capitalize()),
@@ -138,5 +177,5 @@ def build_witnesses(
         common_period=common,
         witnesses=witnesses,
         agreement=_agreement([w.trend for w in witnesses], _correlation(windows)),
-        limitations=limitations.witness_limitations(members, common, season),
+        limitations=limitations.witness_limitations(members, common, season, notes),
     )

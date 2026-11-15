@@ -24,6 +24,8 @@ interface MapSectionProps {
   location: Location | null;
   variableName: string | null;
   onOpenPlace: (location: Location) => void;
+  /** Wide screens: the trend map is painted on the side globe, so this block keeps the text only. */
+  globeBeside: boolean;
 }
 
 function cellLocation(cell: TrendMapCell): Location {
@@ -44,7 +46,7 @@ function TwinButton({
     <button
       type="button"
       onClick={onOpen}
-      className="group flex w-full cursor-pointer items-start gap-3 rounded-lg border border-line-strong p-3 text-left transition-[background-color,border-color] duration-150 hover:border-white hover:bg-electric"
+      className="group flex min-h-11 w-full cursor-pointer items-start gap-3 rounded-lg border border-line-strong p-3 text-left transition-[background-color,border-color] duration-150 hover:border-white hover:bg-electric"
     >
       <DirectionIcon direction={cell.direction} className="mt-0.5" />
       <span className="tabular min-w-0 text-sm">
@@ -66,28 +68,38 @@ function TwinButton({
 function TrendMap({
   map,
   onOpenPlace,
+  globeBeside,
 }: {
   map: TrendMapResult;
   onOpenPlace: (l: Location) => void;
+  globeBeside: boolean;
 }) {
   const twin = map.opposite_twin;
   const unit = map.variable.unit;
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
-      <div className="relative -mx-5 sm:mx-0">
-        <Globe
-          className="h-[min(70svh,26rem)] w-full sm:h-[34rem] sm:rounded-2xl sm:border sm:border-line lg:h-[40rem]"
-          places={NO_PLACES}
-          // No `selected` here: with both a selection and a map at mount, the globe keeps the
-          // whole-Earth zoom instead of framing the box (reported to FE-2). The box is centred
-          // on the place anyway.
-          selected={null}
-          onSelect={onOpenPlace}
-          trendMap={map}
-          onCellSelect={(cell) => onOpenPlace(cellLocation(cell))}
-          highlightTwin={twin}
-        />
-      </div>
+    <div
+      className={
+        globeBeside
+          ? "grid gap-8 @3xl:grid-cols-2 @3xl:gap-10"
+          : "grid gap-8 @4xl:grid-cols-[minmax(0,1fr)_22rem]"
+      }
+    >
+      {globeBeside ? null : (
+        <div className="relative -mx-5 sm:mx-0">
+          <Globe
+            className="h-[min(70svh,26rem)] w-full sm:h-[34rem] sm:rounded-2xl sm:border sm:border-line"
+            places={NO_PLACES}
+            // No `selected` here: with both a selection and a map at mount, the globe keeps the
+            // whole-Earth zoom instead of framing the box (reported to FE-2). The box is centred
+            // on the place anyway.
+            selected={null}
+            onSelect={onOpenPlace}
+            trendMap={map}
+            onCellSelect={(cell) => onOpenPlace(cellLocation(cell))}
+            highlightTwin={twin}
+          />
+        </div>
+      )}
       <div className="space-y-6">
         <p className="text-lg font-bold">{map.summary.text}</p>
         <dl className="grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-line bg-line text-center">
@@ -107,8 +119,15 @@ function TrendMap({
           {map.grid.lat_step}° × {map.grid.lon_step}°). Rising and falling count only cells
           significant after the {map.correction.label} across all {map.correction.n_tests} cells.
         </p>
+        {globeBeside ? (
+          <p className="text-sm font-bold">
+            Painted on the globe beside this page. Click any cell there to open a case.
+          </p>
+        ) : null}
+      </div>
+      <div className="space-y-6">
         {twin ? (
-          <div className="space-y-3 border-t border-line pt-5">
+          <div className={globeBeside ? "space-y-3" : "space-y-3 border-t border-line pt-5"}>
             <h3 className="font-heading text-xl font-black">The opposite twin</h3>
             <p>
               {twin.text}{" "}
@@ -133,16 +152,25 @@ function TrendMap({
             directions.
           </p>
         )}
-        <p className="text-sm text-muted-foreground">
-          Click any cell of the map to open a case there.
-        </p>
+        {globeBeside ? null : (
+          <p className="text-sm text-muted-foreground">
+            Click any cell of the map to open a case there.
+          </p>
+        )}
       </div>
     </div>
   );
 }
 
 /** Block B: the same test on every grid point around the place, painted on the globe. */
-export function MapSection({ ref, section, location, variableName, onOpenPlace }: MapSectionProps) {
+export function MapSection({
+  ref,
+  section,
+  location,
+  variableName,
+  onOpenPlace,
+  globeBeside,
+}: MapSectionProps) {
   const where = location ? placeName(location) : "this place";
   return (
     <Section
@@ -155,14 +183,20 @@ export function MapSection({ ref, section, location, variableName, onOpenPlace }
         state={section.state}
         onRetry={section.retry}
         loadingMessage={`Testing ${variableName ? variableName.toLowerCase() : "the variable"} on every grid point around ${where}. This can take 10 seconds or more…`}
-        skeleton={<Skeleton className="h-[26rem] rounded-2xl sm:h-[34rem] lg:h-[40rem]" />}
+        skeleton={
+          <Skeleton
+            className={globeBeside ? "h-48 rounded-2xl" : "h-[26rem] rounded-2xl sm:h-[34rem]"}
+          />
+        }
         idle={
-          <div className="grid h-64 place-items-center rounded-2xl border border-dashed border-line-strong p-6 text-center text-muted-foreground">
-            The map is drawn when you reach this part of the case.
+          <div className="grid h-40 place-items-center rounded-2xl border border-dashed border-line-strong p-6 text-center text-muted-foreground">
+            {globeBeside
+              ? "The map is painted on the globe when you reach this part of the case."
+              : "The map is drawn when you reach this part of the case."}
           </div>
         }
       >
-        {(map) => <TrendMap map={map} onOpenPlace={onOpenPlace} />}
+        {(map) => <TrendMap map={map} onOpenPlace={onOpenPlace} globeBeside={globeBeside} />}
       </AsyncView>
     </Section>
   );

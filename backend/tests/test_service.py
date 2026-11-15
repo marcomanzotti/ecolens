@@ -289,11 +289,30 @@ async def test_witnesses_convert_pw_to_kg_per_m2() -> None:
     assert pw.series[0].value == pytest.approx(vapour_points()["PW"][20] * 10)  # type: ignore[operator]
 
 
+async def test_temperature_witnesses_add_gistemp_to_merra2() -> None:
+    service, source = investigator({"T2M": rising(25, 0.03, 0.3)})
+
+    result = await service.witnesses(NIAMEY, "T2M", FULL, "annual")
+
+    assert list(source.point_calls[0][1]) == ["T2M"]
+    assert [w.variable.id for w in result.witnesses] == ["T2M", "GISTEMP_ANOMALY"]
+    assert result.witnesses[1].variable.source.kind == "station_grid"
+    assert result.quantity == "Air temperature"
+    assert any("1,200 km" in line for line in result.limitations)
+
+
+async def test_temperature_witnesses_for_a_season_have_no_second_source() -> None:
+    service, _ = investigator({"T2M": rising(25, 0.03, 0.3)})
+
+    with pytest.raises(NoDataError, match="annual"):
+        await service.witnesses(NIAMEY, "T2M", FULL, "JJA")
+
+
 async def test_witnesses_variable_without_group_is_rejected() -> None:
     service, source = investigator({})
 
     with pytest.raises(UnknownVariableError, match="witness"):
-        await service.witnesses(NIAMEY, "T2M", FULL, "annual")
+        await service.witnesses(NIAMEY, "WS10M", FULL, "annual")
     with pytest.raises(UnknownVariableError):
         await service.witnesses(NIAMEY, "NOPE", FULL, "annual")
 

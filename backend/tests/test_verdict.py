@@ -220,3 +220,38 @@ def test_not_established_slope_is_labelled_as_such() -> None:
     result = verdict(make_trend(evidence="none", ols_p=0.4, mk_p=0.5))
 
     assert "not statistically established" in result.how_much
+
+
+def test_corrected_caveat_says_mann_kendall_was_corrected_and_t_test_was_not() -> None:
+    result = verdict(make_trend(lag1=0.42, corrected=True, mk_p_hr=0.03, mk_p=0.001))
+
+    caveat = next(c for c in result.caveats if "autocorrelation" in c)
+    assert "+0.42" in caveat
+    assert "Hamed" in caveat
+    assert "t-test" in caveat
+    assert "over-confident" not in caveat
+
+
+def test_corrected_how_sure_quotes_the_corrected_p_value() -> None:
+    result = verdict(
+        make_trend(
+            evidence="strong", ols_p=0.001, mk_p=0.0001, mk_p_hr=0.02, lag1=0.5, corrected=True
+        )
+    )
+
+    assert "corrected for autocorrelation" in result.how_sure
+    assert "0.02" in result.how_sure
+    assert "0.0001" not in result.how_sure
+
+
+def test_uncorrected_how_sure_has_no_correction_wording() -> None:
+    result = verdict(make_trend(evidence="strong", lag1=0.1))
+
+    assert "corrected" not in result.how_sure
+
+
+def test_high_autocorrelation_without_hamed_rao_keeps_the_overconfidence_caveat() -> None:
+    result = verdict(make_trend(lag1=0.42, corrected=False))
+
+    caveat = next(c for c in result.caveats if "autocorrelation" in c)
+    assert "over-confident" in caveat

@@ -36,7 +36,9 @@ class Settings:
     cache_ttl_seconds: float = 6 * 60 * 60
     cache_max_entries: int = 256
     max_body_bytes: int = 16 * 1024
-    request_timeout_seconds: float = 90.0
+    # Below the 60 s maxDuration of the Vercel function, so a slow POWER ends in an
+    # `upstream_timeout` envelope rather than a plain-text 504 from the host.
+    request_timeout_seconds: float = 50.0
     log_level: str = "INFO"
 
 

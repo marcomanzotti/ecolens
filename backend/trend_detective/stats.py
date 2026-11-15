@@ -8,8 +8,10 @@ Design notes
   gap in time, not a shift of the series.
 - Mann-Kendall and Theil-Sen are vectorised over all pairs of points: O(n^2) memory, meant for
   annual series (tens to a few hundred points), not for long daily records.
-- No pre-whitening: the lag-1 autocorrelation of the detrended residuals is reported and the
-  verdict carries a caveat when it is large. OLS and Mann-Kendall p-values are NOT corrected for it.
+- The lag-1 autocorrelation of the detrended residuals is reported. When its absolute value is
+  above AUTOCORRELATION_THRESHOLD the Mann-Kendall p-value of the verdict is the one with the
+  Hamed and Rao (1998) variance correction; the OLS t-test is never corrected (there is no
+  pre-whitening). The uncorrected Mann-Kendall p-value is always reported next to it.
 - numpy / scipy are imported lazily, inside the functions that use them.
 """
 
@@ -23,6 +25,7 @@ from typing import TYPE_CHECKING
 
 from trend_detective.models import (
     ALPHA,
+    AUTOCORRELATION_THRESHOLD,
     MIN_YEARS_FOR_TREND,
     FitPoint,
     MannKendallResult,
@@ -168,6 +171,12 @@ def _pair_indices(n: int) -> tuple[NDArray[np.intp], NDArray[np.intp]]:
     return np.triu_indices(n, k=1)
 
 
+def _two_sided_p(s: float, var_s: float) -> float:
+    """Normal-approximation p-value of the Mann-Kendall score, with continuity correction."""
+    z = 0.0 if var_s <= 0 or s == 0 else (s - math.copysign(1.0, s)) / math.sqrt(var_s)
+    return min(1.0, math.erfc(abs(z) / math.sqrt(2.0)))
+
+
 def mann_kendall(y: FloatArray) -> MannKendall:
     """Mann-Kendall test: tie-corrected variance, continuity correction, two-sided p."""
     import numpy as np
@@ -184,8 +193,43 @@ def mann_kendall(y: FloatArray) -> MannKendall:
         var_s=var_s,
         z=z,
         tau=s / (0.5 * n * (n - 1)),
-        p_value=min(1.0, math.erfc(abs(z) / math.sqrt(2.0))),
+        p_value=_two_sided_p(s, var_s),
     )
+
+
+def hamed_rao_factor(x: FloatArray, y: FloatArray) -> float | None:
+    """Hamed and Rao (1998) variance inflation n/n*: the Mann-Kendall variance is multiplied by it.
+
+    The series is detrended with Sen's slope, replaced by its ranks, and the autocorrelations
+    of the ranks at every lag whose value lies outside the 95% band of white noise are summed.
+    None when the factor is not positive (the corrected variance would be undefined).
+    """
+    import numpy as np
+    from scipy.stats import rankdata
+
+    n = len(y)
+    # Time runs 1, 2, 3, ... as in pymannkendall: the Sen-detrended values always contain exact
+    # ties (the median pair), and float rounding decides whether they are seen as ties.
+    steps = x - x[0] + 1.0
+    ranks = rankdata(y - sen_slope(x, y) * steps)
+    centred = ranks - ranks.mean()
+    acov = np.correlate(centred, centred, "full")[n - 1 :] / n
+    if acov[0] == 0.0:  # every detrended value ties: a perfect line, nothing to estimate
+        return None
+    acf = acov[1:] / acov[0]
+    lags = np.arange(1, n, dtype=float)
+    outside = np.abs(acf) > _z_two_sided() / math.sqrt(n)
+    weights = (n - lags) * (n - lags - 1) * (n - lags - 2)
+    factor = 1.0 + 2.0 / (n * (n - 1) * (n - 2)) * float(np.sum((weights * acf)[outside]))
+    return factor if factor > 0 else None
+
+
+def hamed_rao_p_value(x: FloatArray, y: FloatArray) -> float | None:
+    """Mann-Kendall p-value with the Hamed and Rao (1998) correction for autocorrelation.
+    Same as pymannkendall.hamed_rao_modification_test. None when it cannot be computed."""
+    mk = mann_kendall(y)
+    factor = hamed_rao_factor(x, y)
+    return None if factor is None else _two_sided_p(mk.s, mk.var_s * factor)
 
 
 def pair_slopes(x: FloatArray, y: FloatArray) -> FloatArray:
@@ -275,10 +319,16 @@ def compute_trend(
     fit = ols_fit(x, y)
     ols = _ols_result(fit, float(x[0]))
     mk = mann_kendall(y)
+    lag1 = lag1_autocorrelation(fit.residuals)
+    factor = hamed_rao_factor(x, y)
+    p_hr = None if factor is None else _two_sided_p(mk.s, mk.var_s * factor)
+    corrected = p_hr is not None and abs(lag1) > AUTOCORRELATION_THRESHOLD
+    mk_p_used = p_hr if corrected and p_hr is not None else mk.p_value
+    var_for_interval = mk.var_s * factor if corrected and factor is not None else mk.var_s
     slopes = pair_slopes(x, y)
     sen_year = float(np.median(slopes))
-    low, high = _sen_interval(slopes, mk.var_s)
-    evidence, significant = _evidence(ols.p_value, mk.p_value)
+    low, high = _sen_interval(slopes, var_for_interval)
+    evidence, significant = _evidence(ols.p_value, mk_p_used)
     mean, std = float(y.mean()), float(y.std(ddof=1))
     total_change = fit.slope * float(x[-1] - x[0])
     return TrendStats(
@@ -289,14 +339,17 @@ def compute_trend(
         direction=_direction(sen_year),
         evidence=evidence,
         significant=significant,
-        methods_agree=(ols.p_value < ALPHA) == (mk.p_value < ALPHA),
+        methods_agree=(ols.p_value < ALPHA) == (mk_p_used < ALPHA),
         total_change=total_change,
         percent_change=_percent_change(total_change, mean, std),
         mean=mean,
         std=std,
-        lag1_autocorrelation=lag1_autocorrelation(fit.residuals),
+        lag1_autocorrelation=lag1,
+        autocorrelation_corrected=corrected,
         ols=ols,
-        mann_kendall=MannKendallResult(s=mk.s, z=mk.z, tau=mk.tau, p_value=mk.p_value),
+        mann_kendall=MannKendallResult(
+            s=mk.s, z=mk.z, tau=mk.tau, p_value=mk.p_value, p_value_hamed_rao=p_hr
+        ),
         sen=SenResult(
             slope_per_decade=sen_year * YEARS_PER_DECADE,
             ci95_low=low * YEARS_PER_DECADE,

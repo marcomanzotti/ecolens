@@ -11,6 +11,9 @@ Writes:
   frontend/public/earth/ndvi/{anomaly.bin, emerged.bin, rate.bin, meta.json}
 The statistics are in earth_gistemp.py and earth_ndvi.py (tested in
 backend/tests/test_build_earth_assets.py and test_build_earth_ndvi.py).
+`--dataset projections` builds the CMIP6 "2050" layer instead (earth_projections_build.py:
+needs the dev-only zarr/fsspec/aiohttp of requirements-dev.txt; tested in
+test_build_earth_projections.py).
 """
 
 from __future__ import annotations
@@ -367,9 +370,17 @@ def main() -> None:
     )
     parser.add_argument("--skip-images", action="store_true", help="do not rebuild the Earth image")
     parser.add_argument(
-        "--dataset", choices=("gistemp", "ndvi", "all"), default="all", help="time-lapse to build"
+        "--dataset",
+        choices=("gistemp", "ndvi", "projections", "all"),
+        default="all",
+        help="layer to build ('projections' = CMIP6 2050 map, not part of 'all': slow download)",
     )
     args = parser.parse_args()
+    if args.dataset == "projections":
+        import earth_projections_build
+
+        earth_projections_build.build_all(earth_projections_build.VARIABLES)
+        return
     EARTH_OUT.mkdir(parents=True, exist_ok=True)
     if not args.skip_images:
         for name, size in build_images().items():

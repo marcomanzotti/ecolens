@@ -7,12 +7,19 @@ import { AsyncView, Skeleton } from "@/components/ui/async-view";
 import { Section } from "@/components/ui/section";
 import { EmergenceChart } from "@/components/charts/emergence-chart";
 
-interface Headline {
+export interface Headline {
   big: string;
   small: string;
 }
 
-function headline(emergence: Emergence): Headline {
+/** The emergence in two lines: shared by this block and the verdict card. */
+export function emergenceHeadline(emergence: Emergence | null): Headline {
+  if (emergence === null) {
+    return {
+      big: "Too early to say",
+      small: "Not enough years to follow the trend over time",
+    };
+  }
   if (emergence.status === "emerged" && emergence.emerged_year !== null) {
     return {
       big: String(emergence.emerged_year),
@@ -29,7 +36,10 @@ function headline(emergence: Emergence): Headline {
           : "The trend has not stayed significant to the end of the record",
     };
   }
-  return { big: "Too early to say", small: "Not enough years to follow the trend over time" };
+  return {
+    big: "Too early to say",
+    small: "Not enough years to follow the trend over time",
+  };
 }
 
 function chartSummary(result: CaseResult, emergence: Emergence): string {
@@ -48,10 +58,10 @@ function Cracked({ result }: { result: CaseResult }) {
       </p>
     );
   }
-  const text = headline(emergence);
+  const text = emergenceHeadline(emergence);
   const alpha = result.trend?.alpha;
   return (
-    <div className="grid gap-10 lg:grid-cols-[20rem_minmax(0,1fr)]">
+    <div className="grid gap-10 @3xl:grid-cols-[16rem_minmax(0,1fr)]">
       <div>
         <p className="tabular font-heading text-[clamp(3.5rem,2.5rem+4vw,6rem)] leading-none font-black tracking-tight text-neon">
           {text.big}
@@ -97,7 +107,7 @@ export function EmergenceSection({ section }: { section: SectionState<CaseResult
         loadingMessage="Waiting for the evidence…"
         idle={<p className="text-muted-foreground">This block follows the verdict above.</p>}
         skeleton={
-          <div className="grid gap-10 lg:grid-cols-[20rem_minmax(0,1fr)]">
+          <div className="grid gap-10 @3xl:grid-cols-[16rem_minmax(0,1fr)]">
             <Skeleton className="h-40" />
             <Skeleton className="h-64" />
           </div>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Sparkline } from "@/components/case/sparkline";
 
 export const LINEUP_GRID =
-  "grid grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-4 gap-y-2 md:grid-cols-[2rem_minmax(0,1fr)_7.5rem_10rem_7rem_9.5rem]";
+  "grid grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-4 gap-y-2 @min-[52rem]:grid-cols-[2rem_minmax(0,1fr)_7.5rem_9rem_6.5rem_8.5rem]";
 
 function Status({ item }: { item: LineupItem }) {
   if (item.status === "no_data") {
@@ -56,7 +56,7 @@ export function LineupRow({ item, isCurrent, onInvestigate }: LineupRowProps) {
           {variable.definition}
         </span>
       </span>
-      <span className="col-start-2 flex flex-wrap items-center gap-x-5 gap-y-2 md:contents">
+      <span className="col-start-2 flex flex-wrap items-center gap-x-5 gap-y-2 @min-[52rem]:contents">
         <span>
           <Sparkline values={item.sparkline} direction={item.direction} muted={!item.significant} />
         </span>
@@ -71,15 +71,15 @@ export function LineupRow({ item, isCurrent, onInvestigate }: LineupRowProps) {
         </span>
         <span className="tabular text-sm">
           {usable ? formatP(item.p_adjusted) : "–"}
-          <span className="block text-muted-foreground md:hidden">after correction</span>
+          <span className="block text-muted-foreground @min-[52rem]:hidden">after correction</span>
         </span>
       </span>
-      <span className="col-start-2 flex items-center gap-3 md:col-start-auto md:justify-between">
+      <span className="col-start-2 flex items-center gap-3 @min-[52rem]:col-start-auto @min-[52rem]:justify-between">
         <Status item={item} />
         {usable && !isCurrent ? (
           <ArrowRight
             aria-hidden="true"
-            className="hidden size-4 opacity-0 transition-[opacity,transform] duration-150 group-hover:translate-x-0.5 group-hover:opacity-100 md:block"
+            className="hidden size-4 opacity-0 transition-[opacity,transform] duration-150 group-hover:translate-x-0.5 group-hover:opacity-100 @min-[52rem]:block"
           />
         ) : null}
       </span>

@@ -19,6 +19,9 @@ import {
 import { Earth } from "./earth";
 import type { LatLon } from "./geo";
 import { PlaceMarkers, SelectedMarker } from "./markers";
+import type { ProjectionField, ProjectionMeta } from "@/lib/projections";
+import { ProjectionLayer } from "./projection-layer";
+import { PROJECTION_LAYERS, type ProjectionLayerVariable } from "./projection-scales";
 import type { TimelapseData } from "./timelapse-data";
 import { TimelapseLayer, type TimelapseLayers } from "./timelapse-layer";
 import { TrendLayer, TwinHighlight } from "./trend-layer";
@@ -36,6 +39,8 @@ export interface TimelapseScene {
 export interface GlobeSceneProps extends Omit<GlobeProps, "className" | "timelapse"> {
   /** The GISTEMP time-lapse to draw, if any (state lives in index.tsx). */
   timelapse: TimelapseScene | null;
+  /** The static "2050" model projection, drawn instead of the time-lapse when set. */
+  projection?: { meta: ProjectionMeta; field: ProjectionField } | null;
   /** A place focused in the accessible list: its marker is highlighted. */
   focusedPlaceId: string | null;
   reducedMotion: boolean;
@@ -51,6 +56,7 @@ export default function GlobeScene({
   onCellSelect,
   highlightTwin,
   timelapse,
+  projection = null,
   focusedPlaceId,
   reducedMotion,
   onContextLost,
@@ -84,6 +90,13 @@ export default function GlobeScene({
           year={timelapse.year}
           layers={timelapse.layers}
           reducedMotion={reducedMotion}
+        />
+      ) : null}
+      {projection ? (
+        <ProjectionLayer
+          meta={projection.meta}
+          field={projection.field}
+          spec={PROJECTION_LAYERS[projection.field.variableId as ProjectionLayerVariable]}
         />
       ) : null}
       {trendMap ? <TrendLayer map={trendMap} onCellSelect={onCellSelect} onHoverChange={setHoveringCell} /> : null}

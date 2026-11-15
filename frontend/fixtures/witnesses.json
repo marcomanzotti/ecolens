@@ -297,6 +297,7 @@
      "mean": 30.3252,
      "std": 1.4694475152246849,
      "lag1_autocorrelation": -0.042992278458413094,
+     "autocorrelation_corrected": false,
      "ols": {
       "slope_per_decade": 1.2858461538461539,
       "stderr_per_decade": 0.3184852300818577,
@@ -311,7 +312,8 @@
       "s": 129.0,
       "z": 2.990251579976467,
       "tau": 0.43,
-      "p_value": 0.002787477609807577
+      "p_value": 0.002787477609807577,
+      "p_value_hamed_rao": 0.002787477609807577
      },
      "sen": {
       "slope_per_decade": 1.1750000000000007,
@@ -604,6 +606,7 @@
      "mean": 27.716000000000005,
      "std": 2.4795295252661673,
      "lag1_autocorrelation": 0.42424069405309117,
+     "autocorrelation_corrected": true,
      "ols": {
       "slope_per_decade": 0.7907692307692311,
       "stderr_per_decade": 0.68286356606463,
@@ -618,12 +621,13 @@
       "s": 57.0,
       "z": 1.308949623452514,
       "tau": 0.19,
-      "p_value": 0.19055141568839334
+      "p_value": 0.19055141568839334,
+      "p_value_hamed_rao": 0.22853743263919088
      },
      "sen": {
       "slope_per_decade": 1.022727272727274,
-      "ci95_low": -0.49999999999998934,
-      "ci95_high": 2.333333333333331
+      "ci95_low": -0.5000000000000071,
+      "ci95_high": 2.5
      }
     }
    }
@@ -640,7 +644,7 @@
    "The witnesses are compared over their common period only (2001–2025), so these trends can differ from the ones over each record's full length.",
    "The correlation includes any trend the series share, so it can be high even when their year-to-year ups and downs do not match.",
    "Only straight-line trends are tested. A change that speeds up, slows down or reverses is not captured.",
-   "The tests treat each year as independent of the one before. No correction for year-to-year correlation is applied.",
+   "Years that resemble the one before them make the tests over-confident. When the lag-1 autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected.",
    "PW is distributed by POWER in centimetres of water and shown here in kg/m² (x 10)."
   ]
  },

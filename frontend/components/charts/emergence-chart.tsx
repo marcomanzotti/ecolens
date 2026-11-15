@@ -16,6 +16,8 @@ import { formatP, formatSigned } from "@/lib/format";
 import {
   AXIS_LINE,
   AXIS_TICK,
+  AXIS_TITLE_OFFSET,
+  AXIS_TITLE_ROOM,
   CHART_MARGIN,
   ChartFigure,
   TooltipBox,
@@ -105,7 +107,11 @@ export function EmergenceChart({
       }}
     >
       <ResponsiveContainer width="100%" height={CHART_HEIGHT}>
-        <LineChart data={rows} margin={CHART_MARGIN} accessibilityLayer={false}>
+        <LineChart
+          data={rows}
+          margin={{ ...CHART_MARGIN, top: AXIS_TITLE_ROOM }}
+          accessibilityLayer={false}
+        >
           <CartesianGrid stroke="var(--chart-grid)" vertical={false} />
           <XAxis
             dataKey="endYear"
@@ -131,7 +137,8 @@ export function EmergenceChart({
               position: "insideTopLeft",
               fill: "var(--chart-axis)",
               fontSize: 12,
-              dy: -12,
+              // Above the top tick, not on it: the unit and the first number used to overlap.
+              dy: AXIS_TITLE_OFFSET,
               dx: 4,
             }}
           />
@@ -148,7 +155,12 @@ export function EmergenceChart({
               fontSize: 12,
             }}
           />
-          <ReferenceLine y={alpha} stroke="var(--chart-fit)" strokeWidth={2} strokeDasharray="5 4" />
+          <ReferenceLine
+            y={alpha}
+            stroke="var(--chart-fit)"
+            strokeWidth={2}
+            strokeDasharray="5 4"
+          />
           {emergedYear !== null ? (
             <ReferenceLine
               x={emergedYear}
@@ -186,7 +198,12 @@ export function EmergenceChart({
             stroke="var(--chart-series)"
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 5, fill: "var(--chart-series)", stroke: "var(--background)", strokeWidth: 2 }}
+            activeDot={{
+              r: 5,
+              fill: "var(--chart-series)",
+              stroke: "var(--background)",
+              strokeWidth: 2,
+            }}
             isAnimationActive={false}
           />
         </LineChart>

@@ -91,10 +91,12 @@ def test_first_years_match_the_saved_power_samples() -> None:
         assert int(min(annual)[:4]) == variable.first_year, variable.id
 
 
-def test_only_one_witness_group_with_tqv_and_pw() -> None:
+def test_witness_groups_are_water_vapour_pair_and_air_temperature() -> None:
     groups = Counter(v.witness_group for v in catalog.build_catalog().variables if v.witness_group)
 
-    assert groups == {"column_water_vapour": 2}
+    assert groups == {"column_water_vapour": 2, "air_temperature": 1}
+    assert [v.id for v in catalog.witness_group_members("air_temperature")] == ["T2M"]
+    assert catalog.WITNESS_QUANTITIES["air_temperature"] == "Air temperature"
     assert [v.id for v in catalog.witness_group_members("column_water_vapour")] == ["TQV", "PW"]
 
 

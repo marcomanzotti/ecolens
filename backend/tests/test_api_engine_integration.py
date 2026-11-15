@@ -153,7 +153,7 @@ def test_catalog_and_places_come_from_the_engine(client: TestClient) -> None:
         ("/case", {**CASE_BODY, "variable_id": "NOT_A_VARIABLE"}),
         ("/lineup", {**LINEUP_BODY, "variable_ids": ["T2M", "NOT_A_VARIABLE"]}),
         ("/witnesses", {**WITNESSES_BODY, "variable_id": "NOT_A_VARIABLE"}),
-        ("/witnesses", {**WITNESSES_BODY, "variable_id": "T2M"}),  # no witness group
+        ("/witnesses", {**WITNESSES_BODY, "variable_id": "WS10M"}),  # no witness group
         ("/trendmap", {**TRENDMAP_BODY, "variable_id": "NOT_A_VARIABLE"}),
     ],
 )

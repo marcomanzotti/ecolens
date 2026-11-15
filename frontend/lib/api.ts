@@ -1,5 +1,5 @@
 /**
- * Typed client for the Trend Detective API (see docs/API_CONTRACT.md).
+ * Typed client for the EcoLens API (see docs/API_CONTRACT.md).
  *
  * Types come from lib/api-types.gen.ts, generated from the back-end models by
  * scripts/gen_types.sh. Do not hand-edit them.
@@ -78,6 +78,24 @@ const USE_FIXTURES = process.env.NEXT_PUBLIC_USE_FIXTURES === "1";
 const UNREACHABLE_MESSAGE =
   "The investigation service cannot be reached. Check your connection and try again.";
 const MALFORMED_MESSAGE = "The investigation service sent an answer that could not be read.";
+const HOST_TIMEOUT_MESSAGE = "The investigation took too long to answer. Please try again in a moment.";
+const HOST_UNAVAILABLE_MESSAGE =
+  "The investigation service is not available right now. Please try again in a moment.";
+const HOST_RATE_LIMITED_MESSAGE = "Too many requests. Please wait a moment and try again.";
+const HTTP_GATEWAY_TIMEOUT = 504;
+const HTTP_TOO_MANY_REQUESTS = 429;
+const HTTP_SERVER_ERROR = 500;
+
+/**
+ * An answer without our JSON envelope comes from the hosting platform (e.g. a function cut at its
+ * time limit), not from the API: say what happened instead of "could not be read".
+ */
+function errorWithoutEnvelope(status: number): ApiError {
+  if (status === HTTP_GATEWAY_TIMEOUT) return new ApiError("upstream_timeout", HOST_TIMEOUT_MESSAGE);
+  if (status === HTTP_TOO_MANY_REQUESTS) return new ApiError("rate_limited", HOST_RATE_LIMITED_MESSAGE);
+  if (status >= HTTP_SERVER_ERROR) return new ApiError("upstream_unavailable", HOST_UNAVAILABLE_MESSAGE);
+  return new ApiError("internal_error", MALFORMED_MESSAGE);
+}
 
 const FIXTURES = {
   health: () => import("../fixtures/health.json"),
@@ -139,7 +157,7 @@ async function request<T>(
   try {
     envelope = (await response.json()) as Envelope<T>;
   } catch {
-    throw new ApiError("internal_error", MALFORMED_MESSAGE);
+    throw errorWithoutEnvelope(response.status);
   }
   return unwrap(envelope);
 }

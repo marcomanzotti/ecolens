@@ -16,8 +16,19 @@ STRAIGHT_LINE_NOTE = (
     "is not captured."
 )
 AUTOCORRELATION_NOTE = (
-    "The tests treat each year as independent of the one before. No correction for "
-    "year-to-year correlation is applied."
+    "Years that resemble the one before them make the tests over-confident. When the lag-1 "
+    "autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall "
+    "p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected."
+)
+OTHER_BLOCKS_NOTE = (
+    "The line-up, the trend map and the emergence year use the Mann-Kendall p-value without "
+    "the autocorrelation correction."
+)
+POWER_PROVIDER = "NASA POWER"
+TEMPERATURE_INDEPENDENCE_NOTE = (
+    "The witnesses are built differently (a reanalysis, a gridded record of stations and ships, "
+    "single stations), but they may rely on some of the same observations. How independent "
+    "they are has not been fully established, so agreement between them is not proof."
 )
 CAUSE_NOTE = "A trend shows that a value changed, not why it changed."
 SEASON_NOTE = (
@@ -43,6 +54,8 @@ def _grid_note(variable: Variable) -> str:
         "reanalysis": "a global reanalysis (a weather model corrected with observations)",
         "satellite": "a satellite-based product",
         "derived": "a derived product",
+        "station": "a weather station record",
+        "station_grid": "a gridded analysis of station and ship records",
     }[variable.source.kind]
     return (
         f"Values come from {product}, {kind}, on a grid of roughly {km} km: they describe the "
@@ -69,6 +82,7 @@ def case_limitations(variable: Variable, period: Period, season: Season) -> list
         _grid_note(variable),
         STRAIGHT_LINE_NOTE,
         AUTOCORRELATION_NOTE,
+        OTHER_BLOCKS_NOTE,
         CAUSE_NOTE,
         *_unit_note(variable),
         *([SEASON_NOTE] if season != "annual" else []),
@@ -76,17 +90,27 @@ def case_limitations(variable: Variable, period: Period, season: Season) -> list
     ]
 
 
+def _independence_note(members: Sequence[Variable]) -> str:
+    only_power = all(member.source.provider == POWER_PROVIDER for member in members)
+    return INDEPENDENCE_NOTE if only_power else TEMPERATURE_INDEPENDENCE_NOTE
+
+
 def witness_limitations(
-    members: Sequence[Variable], common_period: Period, season: Season
+    members: Sequence[Variable],
+    common_period: Period,
+    season: Season,
+    extra_notes: Sequence[str] = (),
 ) -> list[str]:
+    """`members` are all the witnesses compared; `extra_notes` come with the external ones."""
     return [
-        INDEPENDENCE_NOTE,
+        _independence_note(members),
         f"The witnesses are compared over their common period only "
         f"({common_period.start_year}–{common_period.end_year}), so these trends can differ "
         "from the ones over each record's full length.",
         CORRELATION_NOTE,
         STRAIGHT_LINE_NOTE,
         AUTOCORRELATION_NOTE,
+        *extra_notes,
         *(note for member in members for note in _unit_note(member)),
         *([SEASON_NOTE] if season != "annual" else []),
     ]

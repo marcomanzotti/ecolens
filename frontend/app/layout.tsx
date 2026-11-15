@@ -11,8 +11,8 @@ import { SiteFooter } from "@/components/site/site-footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Trend Detective",
-    template: "%s · Trend Detective",
+    default: "EcoLens",
+    template: "%s · EcoLens",
   },
   description:
     "Pick a place on Earth and find out what is changing there, by how much, and whether the change is statistically significant.",

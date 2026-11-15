@@ -17,11 +17,40 @@ function significance(p: number, alpha: number): string {
 }
 
 /** Positive memory inflates the tests; negative memory only makes them approximate. */
-function memoryNote(lag1: number, high: boolean): string {
+function memoryNote(trend: Stats, high: boolean): string {
+  const lag1 = trend.lag1_autocorrelation;
   if (!high) return `Within ±${AUTOCORRELATION_WARNING}: small effect on the tests`;
+  if (trend.autocorrelation_corrected) {
+    return lag1 > 0
+      ? `Above +${AUTOCORRELATION_WARNING}: alike years, so the Mann-Kendall p-value was corrected`
+      : `Below −${AUTOCORRELATION_WARNING}: alternating years, so the Mann-Kendall p-value was corrected`;
+  }
   return lag1 > 0
     ? `Above +${AUTOCORRELATION_WARNING}: alike years, the tests are over-confident`
     : `Below −${AUTOCORRELATION_WARNING}: alternating years, p-values approximate`;
+}
+
+/** The two Mann-Kendall p-values side by side, saying which one the verdict used. */
+function mannKendallStats(trend: Stats): readonly Stat[] {
+  const { p_value: plain, p_value_hamed_rao: corrected, tau } = trend.mann_kendall;
+  const used = trend.autocorrelation_corrected;
+  const usedNote = (isUsed: boolean) =>
+    isUsed ? "Used for the verdict" : "Not used for the verdict";
+  return [
+    {
+      term: "Mann-Kendall p",
+      value: formatP(plain),
+      note: `τ = ${formatNumber(tau, 2)}, ${significance(plain, trend.alpha)}. ${usedNote(!used)}`,
+    },
+    {
+      term: "Mann-Kendall p, corrected for autocorrelation",
+      value: formatP(corrected ?? null),
+      note:
+        corrected === undefined || corrected === null
+          ? "Could not be computed for this series"
+          : `${significance(corrected, trend.alpha)}. ${usedNote(used)}`,
+    },
+  ];
 }
 
 function buildStats(trend: Stats): readonly Stat[] {
@@ -43,11 +72,7 @@ function buildStats(trend: Stats): readonly Stat[] {
       value: formatP(trend.ols.p_value),
       note: `t = ${formatNumber(trend.ols.t_statistic)}, ${significance(trend.ols.p_value, trend.alpha)}`,
     },
-    {
-      term: "Mann-Kendall test",
-      value: formatP(trend.mann_kendall.p_value),
-      note: `τ = ${formatNumber(trend.mann_kendall.tau, 2)}, ${significance(trend.mann_kendall.p_value, trend.alpha)}`,
-    },
+    ...mannKendallStats(trend),
     {
       term: "Change over the whole period",
       value: `${formatSigned(trend.total_change)} ${unit}`,
@@ -59,18 +84,13 @@ function buildStats(trend: Stats): readonly Stat[] {
     {
       term: "Year-to-year memory",
       value: formatSigned(trend.lag1_autocorrelation, 3),
-      note: memoryNote(trend.lag1_autocorrelation, memoryHigh),
+      note: memoryNote(trend, memoryHigh),
       warn: memoryHigh,
     },
     {
       term: "Average",
       value: `${formatNumber(trend.mean)} ${unit}`,
-      note: `Typical spread ±${formatNumber(trend.std, 2)} ${unit}`,
-    },
-    {
-      term: "Years tested",
-      value: String(trend.n),
-      note: trend.n_missing > 0 ? `${trend.n_missing} years missing` : "No missing years",
+      note: `Typical spread ±${formatNumber(trend.std, 2)} ${unit}, ${trend.n} years tested${trend.n_missing > 0 ? `, ${trend.n_missing} missing` : ""}`,
     },
   ];
 }
@@ -78,7 +98,7 @@ function buildStats(trend: Stats): readonly Stat[] {
 /** Every statistic behind the verdict, with its plain-language label. */
 export function TrendStats({ trend }: { trend: Stats }) {
   return (
-    <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line min-[480px]:grid-cols-2 lg:grid-cols-4">
+    <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-line bg-line @md:grid-cols-2 @5xl:grid-cols-4">
       {buildStats(trend).map((stat) => (
         <div key={stat.term} className="bg-deep p-4 sm:p-5">
           <dt className="text-sm text-muted-foreground">{stat.term}</dt>

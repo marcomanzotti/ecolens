@@ -19,6 +19,7 @@ ALPHA = 0.05
 MIN_YEAR = 1981
 MAX_YEAR = 2025
 MIN_YEARS_FOR_TREND = 10
+AUTOCORRELATION_THRESHOLD = 0.3
 MIN_BBOX_SPAN_DEG = 2.0
 MAX_BBOX_SPAN_DEG = 10.0
 MAX_QUESTION_LENGTH = 500
@@ -26,7 +27,7 @@ MAX_QUESTION_LENGTH = 500
 Season = Literal["annual", "DJF", "MAM", "JJA", "SON"]
 Direction = Literal["up", "down", "flat"]
 ThemeId = Literal["temperature", "water", "soil", "snow", "sunlight", "air", "wind"]
-SourceKind = Literal["reanalysis", "satellite", "derived"]
+SourceKind = Literal["reanalysis", "satellite", "derived", "station", "station_grid"]
 PlaceKind = Literal[
     "desert",
     "rainforest",
@@ -176,6 +177,15 @@ class MannKendallResult(Model):
     z: float
     tau: float = Field(ge=-1, le=1)
     p_value: float = Field(ge=0, le=1)
+    p_value_hamed_rao: float | None = Field(
+        default=None,
+        ge=0,
+        le=1,
+        description=(
+            "Mann-Kendall p-value with the Hamed and Rao (1998) variance correction for "
+            "autocorrelation; null when it cannot be computed"
+        ),
+    )
 
 
 class SenResult(Model):
@@ -200,6 +210,12 @@ class TrendStats(Model):
     mean: float
     std: float
     lag1_autocorrelation: float
+    autocorrelation_corrected: bool = Field(
+        default=False,
+        description=(
+            "True when the verdict used the Hamed-Rao p-value because |lag-1 autocorrelation| > 0.3"
+        ),
+    )
     ols: OlsResult
     mann_kendall: MannKendallResult
     sen: SenResult

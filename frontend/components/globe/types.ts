@@ -24,4 +24,9 @@ export interface GlobeProps {
 
 export interface TimelapseOptions {
   autoplay?: boolean;
+  /**
+   * Drives the time-lapse from outside (the guided tour): the globe shows this year, clamped to
+   * the dataset, and hides its own play controls.
+   */
+  year?: number;
 }

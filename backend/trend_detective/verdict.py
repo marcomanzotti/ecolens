@@ -7,6 +7,7 @@ No sentence states a number or a direction that was not computed.
 from __future__ import annotations
 
 from trend_detective.models import (
+    AUTOCORRELATION_THRESHOLD,
     MIN_YEARS_FOR_TREND,
     Direction,
     Evidence,
@@ -27,7 +28,6 @@ from trend_detective.wording import (
     with_unit,
 )
 
-AUTOCORRELATION_CAVEAT_THRESHOLD = 0.3
 SHORT_RECORD_YEARS = 20
 METHODS_DISAGREE_CAVEAT = (
     "The t-test and the Mann-Kendall test disagree, so treat the result with caution."
@@ -72,8 +72,11 @@ def _how_much(trend: TrendStats | None) -> str:
 
 
 def _p_values(trend: TrendStats) -> str:
-    ols, mk = format_p(trend.ols.p_value), format_p(trend.mann_kendall.p_value)
-    return f"t-test {ols}, Mann-Kendall {mk}"
+    ols = format_p(trend.ols.p_value)
+    if trend.autocorrelation_corrected and trend.mann_kendall.p_value_hamed_rao is not None:
+        mk = format_p(trend.mann_kendall.p_value_hamed_rao)
+        return f"t-test {ols}, Mann-Kendall corrected for autocorrelation {mk}"
+    return f"t-test {ols}, Mann-Kendall {format_p(trend.mann_kendall.p_value)}"
 
 
 def _how_sure(trend: TrendStats | None, n_valid: int) -> str:
@@ -101,9 +104,16 @@ def _insufficient_reason(n_valid: int) -> str:
     return f"{needed}."
 
 
-def _autocorrelation_caveat(lag1: float) -> str | None:
-    if abs(lag1) <= AUTOCORRELATION_CAVEAT_THRESHOLD:
+def _autocorrelation_caveat(trend: TrendStats) -> str | None:
+    lag1 = trend.lag1_autocorrelation
+    if abs(lag1) <= AUTOCORRELATION_THRESHOLD:
         return None
+    if trend.autocorrelation_corrected:
+        return (
+            f"Consecutive years are {'alike' if lag1 > 0 else 'alternating'} "
+            f"(autocorrelation {lag1:+.2f}), so the Mann-Kendall p-value was corrected for it "
+            "(Hamed and Rao method). The t-test p-value was not corrected and may be too small."
+        )
     if lag1 > 0:
         return (
             f"Consecutive years are alike (autocorrelation {lag1:+.2f}), which makes the tests "
@@ -119,7 +129,7 @@ def _caveats(trend: TrendStats | None) -> list[str]:
     if trend is None:
         return []
     found = [
-        _autocorrelation_caveat(trend.lag1_autocorrelation),
+        _autocorrelation_caveat(trend),
         _missing_caveat(trend),
         None if trend.methods_agree else METHODS_DISAGREE_CAVEAT,
         _short_caveat(trend),

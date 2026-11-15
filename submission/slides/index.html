@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EcoLens: NASA Space Apps Challenge 2026 demo (7 slides)</title>
+<meta name="description" content="EcoLens, our answer to the NASA Space Apps Challenge 2026 challenge Be An Earth System Trend Detective! Seven slides.">
+<!--
+  Seven-slide demo deck for the Space Apps project page.
+  Self-contained: inline CSS and JS, local fonts (Fira Sans and Overpass, SIL Open Font License),
+  screenshots of the live app in img/. Arrow keys, Page Up/Down, Space, wheel and swipe move
+  between slides. Printing (or Playwright page.pdf) gives one 1280x720 page per slide.
+  Brand: Space Apps colours (Deep Blue, Electric Blue, Neon Yellow as accent only), no NASA
+  insignia or mission identifiers.
+-->
+<style>
+@font-face { font-family: "Fira Sans"; font-weight: 700; font-display: swap; src: url("fonts/fira-sans-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fira Sans"; font-weight: 900; font-display: swap; src: url("fonts/fira-sans-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "Overpass"; font-weight: 400; font-display: swap; src: url("fonts/overpass-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Overpass"; font-weight: 700; font-display: swap; src: url("fonts/overpass-latin-700-normal.woff2") format("woff2"); }
+
+/* ===========================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES
+   =========================================== */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide {
+  width: 100vw; height: 100vh; height: 100dvh; overflow: hidden;
+  scroll-snap-align: start; display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  max-height: 100%; overflow: hidden; padding: var(--slide-padding);
+}
+:root {
+  /* Space Apps palette (docs/BRAND.md) */
+  --deep: #07173F;
+  --electric: #0042A6;
+  --neon-blue: #0960E1;
+  --yonder: #2E96F5;
+  --neon: #EAFE07;
+  --rocket: #E43700;
+  --white: #FFFFFF;
+  --muted: #C9D6F0;
+
+  --title-size: clamp(1.5rem, 5vw, 4.25rem);
+  --h2-size: clamp(1.25rem, 3.4vw, 2.75rem);
+  --h3-size: clamp(0.95rem, 1.6vw, 1.35rem);
+  --body-size: clamp(0.75rem, 1.35vw, 1.15rem);
+  --small-size: clamp(0.62rem, 0.95vw, 0.85rem);
+  --big-number: clamp(1.8rem, 5.2vw, 4.5rem);
+
+  --slide-padding: clamp(1rem, 4vw, 4rem);
+  --content-gap: clamp(0.5rem, 2vw, 2rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+@media (max-height: 700px) {
+  :root {
+    --slide-padding: clamp(0.75rem, 3vw, 2rem);
+    --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+    --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+    --h2-size: clamp(1rem, 3vw, 1.75rem);
+    --big-number: clamp(1.4rem, 4vw, 2.6rem);
+  }
+}
+@media (max-height: 600px) {
+  :root {
+    --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+    --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+    --title-size: clamp(1.1rem, 4vw, 2rem);
+    --body-size: clamp(0.68rem, 1.2vw, 0.95rem);
+  }
+  .nav-dots, .keyboard-hint, .decorative { display: none; }
+}
+@media (max-height: 500px) {
+  :root {
+    --slide-padding: clamp(0.4rem, 2vw, 1rem);
+    --title-size: clamp(1rem, 3.5vw, 1.5rem);
+    --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+    --body-size: clamp(0.62rem, 1vw, 0.85rem);
+    --small-size: clamp(0.55rem, 0.9vw, 0.7rem);
+  }
+  .hide-short { display: none !important; }
+}
+
+/* ===========================================
+   THEME
+   =========================================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--deep); color: var(--white);
+  font-family: "Overpass", system-ui, sans-serif; font-size: var(--body-size); line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+/* Brand gradient: Electric Blue top-left to Deep Blue bottom-right, about 45 degrees */
+.slide { background: linear-gradient(135deg, var(--electric) 0%, var(--deep) 62%); }
+.slide.plain { background: var(--deep); }
+/* Orbit pattern at ~25% opacity (brand "pattern" guidance) */
+.slide::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.25;
+  background:
+    radial-gradient(circle at 88% 12%, transparent 0 22vmin, rgba(46,150,245,.55) 22vmin calc(22vmin + 1px), transparent calc(22vmin + 2px)),
+    radial-gradient(circle at 88% 12%, transparent 0 34vmin, rgba(46,150,245,.4) 34vmin calc(34vmin + 1px), transparent calc(34vmin + 2px)),
+    radial-gradient(circle at 88% 12%, transparent 0 48vmin, rgba(46,150,245,.3) 48vmin calc(48vmin + 1px), transparent calc(48vmin + 2px));
+}
+h1, h2, h3 { font-family: "Fira Sans", system-ui, sans-serif; letter-spacing: -0.02em; line-height: 1.02; }
+h1 { font-weight: 900; font-size: var(--title-size); }
+h2 { font-weight: 900; font-size: var(--h2-size); margin-bottom: var(--content-gap); max-width: 22ch; }
+h3 { font-weight: 700; font-size: var(--h3-size); line-height: 1.15; }
+.kicker {
+  font-family: "Fira Sans", sans-serif; font-weight: 700; font-size: var(--small-size);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--neon); margin-bottom: var(--element-gap);
+}
+.accent { color: var(--neon); }
+.muted { color: var(--muted); }
+.small { font-size: var(--small-size); }
+p + p { margin-top: var(--element-gap); }
+strong { font-weight: 700; }
+a { color: var(--white); text-decoration-color: var(--neon); text-underline-offset: 0.2em; }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--content-gap); align-items: center; height: 100%; }
+.split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.col { display: flex; flex-direction: column; gap: var(--element-gap); min-width: 0; }
+
+.shot { margin: 0; display: flex; flex-direction: column; gap: 0.4em; min-height: 0; }
+.shot img {
+  width: 100%; max-width: 100%; max-height: min(62vh, 560px); object-fit: cover; object-position: top center;
+  border-radius: 10px; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 1.5vmin 5vmin rgba(0,0,0,.45);
+  display: block;
+}
+.shot.short img { max-height: min(36vh, 300px); }
+.shot figcaption { font-size: var(--small-size); color: var(--muted); }
+.stack { display: flex; flex-direction: column; gap: var(--element-gap); min-height: 0; }
+
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.35rem, 1.1vh, 0.9rem); }
+.bullet-list li { padding-left: 1.1em; position: relative; line-height: 1.4; }
+.bullet-list li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 0.5em; height: 2px; background: var(--neon); }
+
+/* Title slide */
+.title-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--content-gap); align-items: center; height: 100%; }
+.title-wrap h1 { font-size: clamp(2.4rem, 9vw, 7.5rem); line-height: 0.92; }
+.tagline { font-family: "Fira Sans", sans-serif; font-weight: 700; font-size: var(--h3-size); margin-top: var(--element-gap); max-width: 26ch; }
+.meta { margin-top: var(--content-gap); display: grid; gap: 0.35em; font-size: var(--body-size); }
+.meta dt { font-size: var(--small-size); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.meta dd { margin-bottom: 0.4em; }
+.placeholder { border-bottom: 2px dashed var(--neon); }
+
+/* Flow of six steps */
+.flow { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.4rem, 1.2vw, 1rem); counter-reset: step; }
+.flow li { counter-increment: step; border-top: 2px solid var(--neon); padding-top: 0.75rem; }
+.flow li::before { content: counter(step); font-family: "Fira Sans", sans-serif; font-weight: 900; color: var(--neon); font-size: var(--h3-size); display: block; line-height: 1; margin-bottom: 0.2em; }
+.flow h3 { margin-bottom: 0.2em; }
+.flow p { font-size: var(--small-size); color: var(--muted); line-height: 1.35; }
+
+/* Numbers */
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(0.5rem, 1.4vw, 1.2rem) var(--content-gap); }
+.stat .n { font-family: "Fira Sans", sans-serif; font-weight: 900; font-size: var(--big-number); line-height: 1; letter-spacing: -0.03em; }
+.stat .l { font-size: var(--small-size); color: var(--muted); margin-top: 0.25em; line-height: 1.3; }
+
+/* Data list */
+.data { list-style: none; display: flex; flex-direction: column; gap: clamp(0.35rem, 1vh, 0.75rem); }
+.data li { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: 0.8em; border-bottom: 1px solid rgba(255,255,255,.14); padding-bottom: clamp(0.3rem, 0.9vh, 0.6rem); }
+.data li:last-child { border-bottom: 0; }
+.data b { font-family: "Fira Sans", sans-serif; font-weight: 700; }
+.data span { color: var(--muted); font-size: var(--small-size); line-height: 1.35; }
+
+/* Two lists side by side */
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--content-gap); }
+.box { border: 1px solid rgba(255,255,255,.2); border-radius: 10px; padding: clamp(0.875rem, 1.6vw, 1.5rem); background: rgba(7,23,63,.55); }
+.box h3 { margin-bottom: 0.6em; }
+.box .bullet-list li { font-size: var(--small-size); }
+
+/* Links slide */
+.links { display: flex; flex-direction: column; gap: var(--content-gap); }
+.url { font-family: "Fira Sans", sans-serif; font-weight: 900; font-size: clamp(1rem, 2.5vw, 2.4rem); letter-spacing: -0.02em; line-height: 1.05; word-break: break-word; }
+.url-label { font-size: var(--small-size); letter-spacing: .14em; text-transform: uppercase; color: var(--neon); font-weight: 700; }
+.cases { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.chip { border: 1px solid var(--neon); color: var(--white); border-radius: 999px; padding: 0.75rem 1rem; line-height: 1.1; font-size: var(--small-size); }
+.foot { position: absolute; left: var(--slide-padding); right: var(--slide-padding); bottom: clamp(0.4rem, 1.6vh, 1.2rem); font-size: var(--small-size); color: var(--muted); display: flex; justify-content: space-between; gap: 1em; pointer-events: none; }
+
+/* Progress and slide index */
+.progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--neon); width: 0; z-index: 10; transition: width .3s ease; }
+.nav-dots { position: fixed; right: clamp(0.4rem, 1.2vw, 1rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 0.6rem; z-index: 10; }
+.nav-dots button { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--white); background: transparent; cursor: pointer; padding: 0; }
+.nav-dots button[aria-current="true"] { background: var(--neon); border-color: var(--neon); }
+.nav-dots button:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+.keyboard-hint { position: fixed; left: 50%; bottom: 0.6rem; transform: translateX(-50%); font-size: var(--small-size); color: var(--muted); z-index: 10; opacity: .8; }
+
+/* Reveal on enter */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+.slide.visible .reveal { opacity: 1; transform: none; }
+.slide.visible .reveal:nth-child(2) { transition-delay: .08s; }
+.slide.visible .reveal:nth-child(3) { transition-delay: .16s; }
+.slide.visible .reveal:nth-child(4) { transition-delay: .24s; }
+
+@media (max-width: 900px) {
+  .split, .split.even, .title-wrap { grid-template-columns: 1fr; align-content: center; }
+  .shot img { max-height: 30vh; }
+  .shot.short img { max-height: 22vh; }
+  .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .two { grid-template-columns: 1fr; }
+  .hide-narrow { display: none !important; }
+}
+@media (max-width: 600px) {
+  :root { --title-size: clamp(1.25rem, 7vw, 2.5rem); }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .data li { grid-template-columns: 1fr; gap: 0.1em; }
+  .nav-dots { display: none; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .split, .split.even, .title-wrap { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .shot img { max-height: 70vh; }
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .flow p { display: none; }
+  .two { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+  .reveal { transform: none; }
+}
+
+/* One 1280x720 page per slide when printed */
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html { scroll-snap-type: none; }
+  html, body { height: auto; overflow: visible; }
+  .slide { width: 1280px; height: 720px; break-after: page; page-break-after: always; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .progress, .nav-dots, .keyboard-hint { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<nav class="nav-dots" aria-label="Slides"></nav>
+<p class="keyboard-hint hide-narrow" aria-hidden="true">Use the arrow keys</p>
+
+<main>
+
+<!-- 1. Title -->
+<section class="slide" id="s1" aria-label="Slide 1 of 7: EcoLens">
+  <div class="slide-content">
+    <div class="title-wrap">
+      <div class="col">
+        <p class="kicker reveal">NASA Space Apps Challenge 2026 · Be An Earth System Trend Detective!</p>
+        <h1 class="reveal">EcoLens</h1>
+        <p class="tagline reveal">The tool finds the trends. <span class="accent">You investigate them.</span></p>
+        <dl class="meta reveal">
+          <dt>Team</dt><dd><span class="placeholder">[TEAM NAME]</span></dd>
+          <dt>Members</dt><dd><span class="placeholder">[MEMBER 1]</span>, <span class="placeholder">[MEMBER 2]</span></dd>
+        </dl>
+      </div>
+      <figure class="shot reveal">
+        <img src="img/landing-2025.jpg" alt="EcoLens home page: a 3D globe with the yearly temperature anomaly from GISTEMP v4; in 2025, significant warming over 78% of the measured surface since 1981.">
+        <figcaption>The live app: GISTEMP v4 time-lapse on a Blue Marble globe. By 2025, 78% of the measured surface shows a significant warming trend since 1981.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 2. The problem -->
+<section class="slide" id="s2" aria-label="Slide 2 of 7: The problem">
+  <div class="slide-content">
+    <div class="split even">
+      <div class="col">
+        <p class="kicker reveal">The problem</p>
+        <h2 class="reveal">Hundreds of variables. Which ones are really changing, here?</h2>
+        <ul class="bullet-list reveal">
+          <li>NASA POWER alone lists <strong>1,388 monthly variables</strong>. A student cannot know where to start.</li>
+          <li>A line drawn through noisy data is not a trend until it has been <strong>tested</strong>.</li>
+          <li>The same variable can <strong>rise in one place and fall a short way off</strong>.</li>
+          <li>Data portals give numbers. Students and the public need a guide that explains them.</li>
+        </ul>
+      </div>
+      <div class="stack reveal">
+        <div class="box">
+          <p class="kicker">From the live app · Delhi, sunlight reaching the ground, 1981–2025</p>
+          <div class="stats">
+            <div class="stat"><div class="n">−0.61</div><div class="l">MJ/m²/day per decade at Delhi. Both tests agree, p &lt; 0.001</div></div>
+            <div class="stat"><div class="n accent">455 km</div><div class="l">to the nearest pair of grid cells trending in opposite directions, both significant</div></div>
+            <div class="stat"><div class="n">84</div><div class="l">of 100 cells in a 10°×10° box falling significantly</div></div>
+            <div class="stat"><div class="n">7</div><div class="l">rising significantly in the same box (Benjamini-Hochberg, α 0.05)</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. How it works -->
+<section class="slide" id="s3" aria-label="Slide 3 of 7: How it works">
+  <div class="slide-content">
+    <div class="split">
+      <div class="col">
+        <p class="kicker reveal">How it works</p>
+        <h2 class="reveal">One place, six questions.</h2>
+        <ol class="flow reveal">
+          <li><h3>Pick a place</h3><p>34,216 cities, coordinates, or a click on the globe.</p></li>
+          <li><h3>Test the trend</h3><p>Least squares + t-test and Mann-Kendall + Sen's slope. Significant only if both agree.</p></li>
+          <li><h3>The line-up</h3><p>31 NASA POWER variables ranked, corrected for multiple testing.</p></li>
+          <li><h3>Witnesses</h3><p>A second record of the same quantity: GISTEMP v4, NOAA stations.</p></li>
+          <li><h3>When it cracked</h3><p>The year the trend became significant, and a rough "years to detect".</p></li>
+          <li><h3>2050</h3><p>What 12 CMIP6 climate models project. Scenarios, not forecasts.</p></li>
+        </ol>
+      </div>
+      <figure class="shot reveal">
+        <img src="img/tour-evidence-delhi.jpg" alt="The guided tour of EcoLens: on the left, the yearly series of sunlight reaching the ground at Delhi with its trend line and the year it became clear (1998); on the right, the globe centred on Delhi.">
+        <figcaption>"Watch a solved case": a guided tour of about 30 seconds per case, on real data.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 4. A real case: Venice -->
+<section class="slide" id="s4" aria-label="Slide 4 of 7: A real case, Venice">
+  <div class="slide-content">
+    <div class="split">
+      <div class="col">
+        <p class="kicker reveal">A real case · Venice Lagoon, air temperature, 1981–2025</p>
+        <h2 class="reveal">Case closed: the air is warming.</h2>
+        <div class="stats reveal">
+          <div class="stat"><div class="n accent">+0.41 °C</div><div class="l">per decade measured (Sen's slope, NASA POWER / MERRA-2). 95% interval +0.29 to +0.51</div></div>
+          <div class="stat"><div class="n">2000</div><div class="l">the year the trend became significant and stayed so</div></div>
+          <div class="stat"><div class="n">+0.50 °C</div><div class="l">per decade from the GISTEMP v4 witness. Same direction, r = 0.96</div></div>
+          <div class="stat"><div class="n">13 of 31</div><div class="l">variables at the same place with a significant trend after correction</div></div>
+        </div>
+        <p class="reveal small muted">CMIP6, 2041–2060 vs 1995–2014: <strong class="accent">+1.6 °C</strong> (SSP2-4.5) and <strong class="accent">+2.3 °C</strong> (SSP5-8.5), median of 12 models; 12 of 12 project warming. Scenario projections, not forecasts.</p>
+      </div>
+      <div class="stack reveal">
+        <figure class="shot short">
+          <img src="img/case-verdict.jpg" alt="Verdict card for Venice: Case closed, air temperature is rising, plus 0.41 degrees Celsius per decade, with the yearly series, trend line and confidence band.">
+        </figure>
+        <figure class="shot short">
+          <img src="img/case-future.jpg" alt="Panel What climate models project: plus 1.6 degrees under SSP2-4.5 and plus 2.3 degrees under SSP5-8.5, 12 of 12 models project warmer conditions.">
+          <figcaption>Screenshots of the live case page, 15 Nov 2026.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. NASA data -->
+<section class="slide" id="s5" aria-label="Slide 5 of 7: The NASA data behind it">
+  <div class="slide-content">
+    <div class="split">
+      <div class="col">
+        <p class="kicker reveal">The data</p>
+        <h2 class="reveal">NASA data do the work.</h2>
+        <ul class="data reveal">
+          <li><b>NASA POWER</b><span>Live, no login: 31 variables, monthly, 1981–2025, point and 10°×10° grid. Products: MERRA-2 reanalysis, CERES SYN1deg, GEWEX SRB.</span></li>
+          <li><b>GISTEMP v4 (NASA GISS)</b><span>Globe time-lapse: a trend test in every 2° cell for every year; temperature witness.</span></li>
+          <li><b>MODIS Terra NDVI (via GIBS)</b><span>Vegetation time-lapse 2001–2025: greening and browning.</span></li>
+          <li><b>Blue Marble (via GIBS)</b><span>The Earth on the globe, up to 8K.</span></li>
+          <li><b>Also used</b><span>CMIP6 (WCRP, 12 models incl. NASA GISS-E2-1-G), NOAA station records, GeoNames, Natural Earth.</span></li>
+        </ul>
+      </div>
+      <figure class="shot reveal">
+        <img src="img/globe-2050.jpg" alt="The 2050 layer of the globe: projected temperature change by 2041 to 2060 under SSP2-4.5, median of 12 CMIP6 models, hatched where fewer than 80% of models agree.">
+        <figcaption>The 2050 layer: median of 12 CMIP6 models, hatched where fewer than 80% agree on the direction.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Rigour and honesty -->
+<section class="slide" id="s6" aria-label="Slide 6 of 7: Rigour and honest limits">
+  <div class="slide-content">
+    <p class="kicker reveal">Scientific rigour</p>
+    <h2 class="reveal" style="max-width: 30ch">Every number is computed. Every limit is said.</h2>
+    <div class="two reveal">
+      <div class="box">
+        <h3>What the engine does</h3>
+        <ul class="bullet-list">
+          <li>Annual or seasonal means, at least 10 valid years.</li>
+          <li>"Significant" only when the t-test and Mann-Kendall agree at α = 0.05.</li>
+          <li>Benjamini-Hochberg correction across the line-up and the map.</li>
+          <li>Hamed-Rao correction for autocorrelation in the verdict when it exceeds 0.3.</li>
+          <li>Checked against numpy, scipy and pymannkendall in automated tests.</li>
+          <li>No AI produces any number or verdict.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>What it tells you it cannot do</h3>
+        <ul class="bullet-list">
+          <li>Only straight-line trends. A trend shows that a value changed, not why.</li>
+          <li>"Years to detect" is a rough estimate adapted from Weatherhead et al. (1998), not a prediction.</li>
+          <li>Line-up, map and emergence year use p-values without the autocorrelation correction.</li>
+          <li>Some source-product labels are provisional: POWER does not always name them.</li>
+          <li>CMIP6: scenarios, not forecasts; 1–2.5° models, no bias correction.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Try it -->
+<section class="slide" id="s7" aria-label="Slide 7 of 7: Try it">
+  <div class="slide-content">
+    <div class="split even">
+      <div class="links">
+        <p class="kicker reveal">Your turn</p>
+        <h2 class="reveal">Open a case anywhere on Earth.</h2>
+        <div class="reveal">
+          <p class="url-label">Live app, no login</p>
+          <p class="url"><a href="https://ecolens-earth.vercel.app">ecolens-earth.vercel.app</a></p>
+        </div>
+        <div class="reveal">
+          <p class="url-label">Open-source code (MIT)</p>
+          <p class="url"><a href="https://github.com/marcomanzotti/ecolens">github.com/marcomanzotti/ecolens</a></p>
+        </div>
+      </div>
+      <div class="col reveal">
+        <h3>Four solved cases to start from</h3>
+        <div class="cases">
+          <span class="chip">Sahel: the rain that came back</span>
+          <span class="chip">Delhi: less sun</span>
+          <span class="chip">Pantanal: the missing rain</span>
+          <span class="chip">Venice: a warmer lagoon</span>
+        </div>
+        <p class="muted" style="margin-top: var(--content-gap)">Built for high-school and college students and a curious public: plain-language definitions, a guided tour, and the evidence behind every verdict.</p>
+        <p class="small muted">Code and texts written with the help of an AI coding assistant (Claude, by Anthropic) under the team's direction and review. The app itself uses no AI. EcoLens is an independent project and is not endorsed by NASA, NOAA or WCRP.</p>
+      </div>
+    </div>
+  </div>
+  <p class="foot hide-short"><span>EcoLens · <span class="placeholder">[TEAM NAME]</span></span><span>NASA Space Apps Challenge 2026</span></p>
+</section>
+
+</main>
+
+<script>
+/* Presentation controller: keyboard, wheel, touch, dots, progress, reveal on enter. */
+class Deck {
+  constructor() {
+    this.slides = [...document.querySelectorAll('.slide')];
+    this.index = 0;
+    this.lock = false;
+    this.progress = document.querySelector('.progress');
+    this.dots = document.querySelector('.nav-dots');
+    this.buildDots();
+    this.observe();
+    this.bind();
+  }
+  buildDots() {
+    this.slides.forEach((slide, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      b.addEventListener('click', () => this.go(i));
+      this.dots.appendChild(b);
+    });
+  }
+  observe() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        this.index = this.slides.indexOf(e.target);
+        this.update();
+      });
+    }, { threshold: 0.55 });
+    this.slides.forEach((s) => io.observe(s));
+  }
+  update() {
+    this.progress.style.width = `${((this.index + 1) / this.slides.length) * 100}%`;
+    [...this.dots.children].forEach((d, i) => d.setAttribute('aria-current', String(i === this.index)));
+  }
+  go(i) {
+    const next = Math.max(0, Math.min(this.slides.length - 1, i));
+    this.slides[next].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+  bind() {
+    document.addEventListener('keydown', (e) => {
+      const forward = ['ArrowDown', 'ArrowRight', 'PageDown', ' '];
+      const back = ['ArrowUp', 'ArrowLeft', 'PageUp'];
+      if (forward.includes(e.key)) { e.preventDefault(); this.go(this.index + 1); }
+      else if (back.includes(e.key)) { e.preventDefault(); this.go(this.index - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); this.go(0); }
+      else if (e.key === 'End') { e.preventDefault(); this.go(this.slides.length - 1); }
+    });
+    window.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) < 20) return;
+      e.preventDefault();
+      if (this.lock) return;
+      this.lock = true;
+      this.go(this.index + (e.deltaY > 0 ? 1 : -1));
+      setTimeout(() => { this.lock = false; }, 700);
+    }, { passive: false });
+    let startY = null;
+    window.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchend', (e) => {
+      if (startY === null) return;
+      const dy = startY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) > 50) this.go(this.index + (dy > 0 ? 1 : -1));
+      startY = null;
+    }, { passive: true });
+  }
+}
+new Deck();
+</script>
+</body>
+</html>

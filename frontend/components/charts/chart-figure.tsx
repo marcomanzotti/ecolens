@@ -112,3 +112,7 @@ export function TooltipBox({ title, lines }: TooltipBoxProps) {
 export const AXIS_TICK = { fill: "var(--chart-axis)", fontSize: 12 } as const;
 export const AXIS_LINE = { stroke: "var(--line-strong)" } as const;
 export const CHART_MARGIN = { top: 12, right: 16, bottom: 4, left: 0 } as const;
+/** Top margin that leaves a line for the axis title above the plot. */
+export const AXIS_TITLE_ROOM = 30;
+/** Shift of the axis title from the plot's top edge, clear of the first tick label. */
+export const AXIS_TITLE_OFFSET = -26;

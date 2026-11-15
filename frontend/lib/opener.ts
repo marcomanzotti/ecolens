@@ -1,5 +1,6 @@
 import type { AskResult, Location, Period, Place, Season, ThemeId } from "@/lib/api";
 import { DEFAULT_PERIOD, type CaseQuery } from "@/lib/case-query";
+import { foldText } from "@/lib/place-search";
 
 /** What the visitor has chosen so far on the landing page. */
 export interface OpenerState {
@@ -101,8 +102,9 @@ export function parseCoordinates(text: string): Location | null {
   return valid ? { lat, lon, label: null } : null;
 }
 
+/** Suggested places: any part of the name, country or kind, accents and case ignored. */
 export function matchesPlace(place: Place, query: string): boolean {
-  const needle = query.trim().toLocaleLowerCase("en");
+  const needle = foldText(query);
   if (needle === "") return true;
-  return `${place.name} ${place.country} ${place.kind}`.toLocaleLowerCase("en").includes(needle);
+  return foldText(`${place.name} ${place.country} ${place.kind}`).includes(needle);
 }

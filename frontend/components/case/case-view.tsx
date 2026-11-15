@@ -8,15 +8,18 @@ import type { Location } from "@/lib/api";
 import { caseHref, parseCaseQuery, type CaseQuery } from "@/lib/case-query";
 import { useReferenceData } from "@/components/providers/reference-data";
 import { Button } from "@/components/ui/button";
+import { CaseGlobe, CaseLocator } from "@/components/case/case-globe";
 import { CaseHeader } from "@/components/case/case-header";
 import { DemoNotes } from "@/components/case/demo-notes";
 import { EmergenceSection } from "@/components/case/emergence-section";
 import { LimitationsSection } from "@/components/case/limitations-section";
 import { LineupSection } from "@/components/case/lineup-section";
 import { MapSection } from "@/components/case/map-section";
+import { ProjectionSection } from "@/components/case/projection-section";
 import { SectionNav } from "@/components/case/section-nav";
 import { VerdictSection } from "@/components/case/verdict-section";
 import { WitnessesSection } from "@/components/case/witnesses-section";
+import { useWideScreen } from "@/components/case/use-wide-screen";
 import { ServiceBanner, useServiceUnreachable } from "@/components/site/service-banner";
 
 function NoPlace() {
@@ -41,6 +44,7 @@ export function CaseView() {
   const { findVariable, catalog } = useReferenceData();
   const [mapRef, mapSeen] = useSeenOnce<HTMLElement>();
   const data = useCaseData(query, findVariable, mapSeen);
+  const wide = useWideScreen();
   const caseState = data.demo ?? data.caseResult.state;
   const unreachable =
     useServiceUnreachable() ||
@@ -88,34 +92,61 @@ export function CaseView() {
         <>
           {data.demo ? <DemoNotes demo={data.demo} /> : null}
           <SectionNav />
-          <div className="mt-10 space-y-24">
-            <VerdictSection
-              section={data.caseResult}
-              variableFromLineup={data.variableFromLineup}
-              waitingForLineup={data.variableId === null}
-              lineupState={data.lineup.state}
-            />
-            <EmergenceSection section={data.caseResult} />
-            <LineupSection
-              section={data.lineup}
-              currentVariableId={data.variableId}
-              onInvestigate={openVariable}
-            />
-            <MapSection
-              ref={mapRef}
-              section={data.trendMap}
-              location={data.location}
-              variableName={variable?.name ?? caseData?.variable.name ?? null}
-              onOpenPlace={openPlace}
-            />
-            <WitnessesSection
-              section={data.witnesses}
-              hasWitnesses={data.hasWitnesses}
-              variable={caseData?.variable ?? variable}
-              catalog={catalog.status === "success" ? catalog.data : null}
-              onInvestigate={openVariable}
-            />
-            <LimitationsSection caseResult={caseData} />
+          <div className="mt-6 grid gap-8 lg:mt-8 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,32%)] lg:gap-10 xl:gap-12">
+            {/* One globe only: beside the evidence on wide screens, a flat locator on phones. */}
+            <aside
+              aria-label="Where this case is"
+              className="lg:sticky lg:top-[4.5rem] lg:order-2 lg:h-[calc(100svh-6rem)] lg:min-h-[28rem] lg:self-start"
+            >
+              {wide ? (
+                <CaseGlobe
+                  location={data.location}
+                  trendMap={data.trendMap}
+                  onOpenPlace={openPlace}
+                />
+              ) : (
+                <CaseLocator location={data.location} />
+              )}
+            </aside>
+            <div className="@container min-w-0 space-y-20 lg:space-y-24">
+              <VerdictSection
+                section={data.caseResult}
+                variableFromLineup={data.variableFromLineup}
+                waitingForLineup={data.variableId === null}
+                lineupState={data.lineup.state}
+                witnesses={{
+                  available: data.hasWitnesses,
+                  state: data.witnesses.state,
+                }}
+              />
+              <ProjectionSection
+                location={data.location}
+                variableId={data.variableId}
+                caseResult={caseData}
+              />
+              <EmergenceSection section={data.caseResult} />
+              <LineupSection
+                section={data.lineup}
+                currentVariableId={data.variableId}
+                onInvestigate={openVariable}
+              />
+              <MapSection
+                ref={mapRef}
+                section={data.trendMap}
+                location={data.location}
+                variableName={variable?.name ?? caseData?.variable.name ?? null}
+                onOpenPlace={openPlace}
+                globeBeside={wide}
+              />
+              <WitnessesSection
+                section={data.witnesses}
+                hasWitnesses={data.hasWitnesses}
+                variable={caseData?.variable ?? variable}
+                catalog={catalog.status === "success" ? catalog.data : null}
+                onInvestigate={openVariable}
+              />
+              <LimitationsSection caseResult={caseData} />
+            </div>
           </div>
         </>
       )}

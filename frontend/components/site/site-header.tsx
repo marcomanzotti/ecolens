@@ -39,7 +39,7 @@ export function SiteHeader({ children, className }: SiteHeaderProps) {
         className="group flex items-center gap-2.5 rounded-md py-1 pr-2 font-heading text-lg leading-none font-black tracking-tight"
       >
         <DetectiveMark className="transition-transform duration-200 ease-out group-hover:-rotate-6" />
-        <span translate="no">Trend Detective</span>
+        <span translate="no">EcoLens</span>
       </Link>
       {children ? <nav aria-label="Main">{children}</nav> : null}
     </header>

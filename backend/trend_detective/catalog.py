@@ -44,8 +44,12 @@ DISPLAY_SCALE: Mapping[str, float] = MappingProxyType({"PW": 10.0})
 POWER_UNIT_NOTES: Mapping[str, str] = MappingProxyType(
     {"PW": "PW is distributed by POWER in centimetres of water and shown here in kg/m² (x 10)."}
 )
+AIR_TEMPERATURE_GROUP = "air_temperature"
 WITNESS_QUANTITIES: Mapping[str, str] = MappingProxyType(
-    {"column_water_vapour": "Water vapour in the air column"}
+    {
+        "column_water_vapour": "Water vapour in the air column",
+        AIR_TEMPERATURE_GROUP: "Air temperature",
+    }
 )
 
 
@@ -88,7 +92,8 @@ def _var(
 # fmt: off
 VARIABLES: tuple[Variable, ...] = (
     _var("T2M", "Air temperature", "°C", "temperature", _MERRA2, 1981,
-         "How warm the air is about 2 metres above the ground, averaged over day and night."),
+         "How warm the air is about 2 metres above the ground, averaged over day and night.",
+         AIR_TEMPERATURE_GROUP),
     _var("T2M_MAX", "Hottest temperature", "°C", "temperature", _MERRA2, 1981,
          "How hot the hottest hour of the day gets, 2 metres above the ground, on average."),
     _var("T2M_MIN", "Coldest temperature", "°C", "temperature", _MERRA2, 1981,

@@ -5,6 +5,7 @@ import {
   CartesianGrid,
   ComposedChart,
   Line,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -15,6 +16,8 @@ import { formatNumber } from "@/lib/format";
 import {
   AXIS_LINE,
   AXIS_TICK,
+  AXIS_TITLE_OFFSET,
+  AXIS_TITLE_ROOM,
   CHART_MARGIN,
   ChartFigure,
   TooltipBox,
@@ -29,6 +32,8 @@ interface SeriesChartProps {
   summary: string;
   /** Pixel height of the plot area; smaller for side-by-side witnesses. */
   height?: number;
+  /** Year the trend became statistically clear (emergence, from the API), marked on the chart. */
+  crackedYear?: number | null;
 }
 
 interface SeriesRow {
@@ -68,6 +73,23 @@ const LEGEND: readonly LegendEntry[] = [
   },
 ];
 
+const CRACKED_ENTRY: LegendEntry = {
+  label: "Year the trend became statistically clear",
+  swatch: (
+    <svg width="28" height="10" viewBox="0 0 28 10">
+      <line
+        x1="14"
+        y1="0"
+        x2="14"
+        y2="10"
+        stroke="var(--brand-neon-yellow)"
+        strokeWidth="2"
+        strokeDasharray="3 2"
+      />
+    </svg>
+  ),
+};
+
 function buildRows(series: readonly SeriesPoint[], fit: readonly FitPoint[]): SeriesRow[] {
   const fitByYear = new Map(fit.map((point) => [point.year, point]));
   return series.map((point) => {
@@ -89,6 +111,7 @@ export function SeriesChart({
   variableName,
   summary,
   height = CHART_HEIGHT,
+  crackedYear = null,
 }: SeriesChartProps) {
   const rows = buildRows(series, fit);
   const hasFit = fit.length > 0;
@@ -96,7 +119,10 @@ export function SeriesChart({
   return (
     <ChartFigure
       summary={summary}
-      legend={hasFit ? LEGEND : LEGEND.slice(0, 1)}
+      legend={[
+        ...(hasFit ? LEGEND : LEGEND.slice(0, 1)),
+        ...(crackedYear !== null ? [CRACKED_ENTRY] : []),
+      ]}
       table={{
         caption: `${variableName} by year, in ${unit}`,
         columns: ["Year", `Value (${unit})`, `Trend line (${unit})`, "95% band"],
@@ -111,7 +137,11 @@ export function SeriesChart({
       }}
     >
       <ResponsiveContainer width="100%" height={height}>
-        <ComposedChart data={rows} margin={CHART_MARGIN} accessibilityLayer={false}>
+        <ComposedChart
+          data={rows}
+          margin={{ ...CHART_MARGIN, top: AXIS_TITLE_ROOM }}
+          accessibilityLayer={false}
+        >
           <CartesianGrid stroke="var(--chart-grid)" vertical={false} />
           <XAxis
             dataKey="year"
@@ -135,7 +165,8 @@ export function SeriesChart({
               position: "insideTopLeft",
               fill: "var(--chart-axis)",
               fontSize: 12,
-              dy: -12,
+              // Above the top tick, not on it: the unit and the first number used to overlap.
+              dy: AXIS_TITLE_OFFSET,
               dx: 4,
             }}
           />
@@ -160,6 +191,20 @@ export function SeriesChart({
               );
             }}
           />
+          {crackedYear !== null ? (
+            <ReferenceLine
+              x={crackedYear}
+              stroke="var(--brand-neon-yellow)"
+              strokeDasharray="4 4"
+              label={{
+                value: `Clear from ${crackedYear}`,
+                position: "insideTopRight",
+                fill: "var(--brand-neon-yellow)",
+                fontSize: 12,
+                fontWeight: 700,
+              }}
+            />
+          ) : null}
           <Area
             dataKey="band"
             stroke="none"

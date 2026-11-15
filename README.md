@@ -1,8 +1,8 @@
-# Trend Detective
+# EcoLens
 
 **The tool finds the trends. You investigate them.**
 
-Trend Detective is our answer to the NASA Space Apps Challenge 2026 challenge
+EcoLens is our answer to the NASA Space Apps Challenge 2026 challenge
 *Be An Earth System Trend Detective!*. Pick any place on Earth, and it questions 31 Earth-system
 variables from [NASA POWER](https://power.larc.nasa.gov/) (1981–2025) and tells you **what** is
 changing, **where**, **by how much**, and **how sure** we can be that the change is real.
@@ -67,9 +67,10 @@ NEXT_PUBLIC_API_URL=http://localhost:8000 npm run dev
   and the map; at least 10 valid years. Checked in tests against numpy, scipy and pymannkendall.
 - **Years needed to detect a trend**: a rough estimate adapted from Weatherhead et al. (1998)
   to yearly data. It is an approximation, not a prediction.
-- **Known limits**: p-values are not corrected for autocorrelation (the app shows it and warns
-  when it is high); only straight-line trends are tested; a trend says that a value changed, not
-  why.
+- **Known limits**: the verdict switches to the Hamed-Rao autocorrelation-corrected
+  Mann-Kendall test only when year-to-year autocorrelation is high (|r| > 0.3); the time-lapse
+  maps use the uncorrected test; only straight-line trends are tested; a trend says that a value
+  changed, not why.
 
 ## Use of AI
 
@@ -77,12 +78,29 @@ NEXT_PUBLIC_API_URL=http://localhost:8000 npm run dev
   coding assistant (Claude, by Anthropic), under the direction and review of the team. Every
   statistical method was checked against independent libraries in automated tests.
 - **In the app**: no AI produces any number or verdict. All figures and verdicts come from
-  fixed statistical rules in `backend/trend_detective/`. An optional assistant may only turn a
-  free-text question into a place and variables from the catalogue; it is off unless a key is
-  configured.
+  fixed statistical rules in `backend/trend_detective/`. The public app has no AI assistant and
+  sends nothing to an AI service.
 
 ## Credits
 
 Data: NASA POWER (NASA Langley Research Center). Coastlines: Natural Earth via `world-atlas`.
-Trend Detective is an independent project for the NASA Space Apps Challenge 2026 and is not
-endorsed by NASA.
+
+Static files shipped with the app (`frontend/public/`, `backend/trend_detective/data/`, `data/`):
+
+- **Earth image**: Blue Marble, NASA Earth Observatory, via NASA GIBS.
+- **Temperature time-lapse and witness**: GISTEMP v4, NASA Goddard Institute for Space Studies
+  (GISS Surface Temperature Analysis).
+- **Vegetation time-lapse**: MODIS Terra monthly NDVI (NASA LP DAAC), via NASA GIBS.
+- **2050 projections**: CMIP6 multi-model ensemble (WCRP), through the Pangeo / Google Cloud
+  public dataset, licensed CC BY 4.0. Models and members are listed in
+  `frontend/public/earth/projections/meta.json`. We thank the climate modelling groups for
+  producing and making available their model output.
+- **Weather-station witnesses**: NOAA NCEI Global Summary of the Year (GHCN).
+- **Place search**: GeoNames (`cities15000`), licensed CC BY 4.0, https://www.geonames.org/.
+
+NASA data are used under NASA's open data policy. EcoLens is an independent project for the
+NASA Space Apps Challenge 2026 and is not endorsed by NASA, NOAA or WCRP.
+
+## License
+
+Code: MIT, see `LICENSE`. Data files keep the licences listed in Credits.

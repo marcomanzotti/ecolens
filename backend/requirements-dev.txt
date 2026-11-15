@@ -5,3 +5,7 @@ pytest-asyncio>=0.24
 respx>=0.21
 pymannkendall>=1.4
 ruff>=0.7
+# Dev-only: download of the CMIP6 projections (scripts/earth_projections_build.py); never in the image
+zarr>=2.18,<3
+fsspec>=2024.6
+aiohttp>=3.9

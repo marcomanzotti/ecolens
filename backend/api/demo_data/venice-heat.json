@@ -27,7 +27,7 @@
     "url": "https://power.larc.nasa.gov/"
    },
    "first_year": 1981,
-   "witness_group": null
+   "witness_group": "air_temperature"
   },
   "period": {
    "start_year": 1981,
@@ -502,6 +502,7 @@
    "mean": 14.908444444444445,
    "std": 0.6809584006636114,
    "lag1_autocorrelation": 0.050196239173399625,
+   "autocorrelation_corrected": false,
    "ols": {
     "slope_per_decade": 0.4048616600790514,
     "stderr_per_decade": 0.04939191825754623,
@@ -516,7 +517,8 @@
     "s": 581.0,
     "z": 5.674016951876243,
     "tau": 0.5868686868686869,
-    "p_value": 1.3948731976629255e-08
+    "p_value": 1.3948731976629255e-08,
+    "p_value_hamed_rao": 1.3948731976629255e-08
    },
    "sen": {
     "slope_per_decade": 0.4131884057971014,
@@ -727,7 +729,8 @@
   "limitations": [
    "Values come from MERRA-2, a global reanalysis (a weather model corrected with observations), on a grid of roughly 50 km: they describe the area around the point, not the exact spot.",
    "Only straight-line trends are tested. A change that speeds up, slows down or reverses is not captured.",
-   "The tests treat each year as independent of the one before. No correction for year-to-year correlation is applied.",
+   "Years that resemble the one before them make the tests over-confident. When the lag-1 autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected.",
+   "The line-up, the trend map and the emergence year use the Mann-Kendall p-value without the autocorrelation correction.",
    "A trend shows that a value changed, not why it changed."
   ]
  },
@@ -986,7 +989,7 @@
       "url": "https://power.larc.nasa.gov/"
      },
      "first_year": 1981,
-     "witness_group": null
+     "witness_group": "air_temperature"
     },
     "status": "ok",
     "n": 45,
@@ -3047,7 +3050,1055 @@
   "n_significant": 13,
   "summary": "13 of 31 tested variables show a significant trend after correcting for the number of tests."
  },
- "witnesses": null,
+ "witnesses": {
+  "location": {
+   "lat": 45.44,
+   "lon": 12.33,
+   "label": "Venice Lagoon, Italy"
+  },
+  "quantity": "Air temperature",
+  "season": "annual",
+  "common_period": {
+   "start_year": 1981,
+   "end_year": 2025
+  },
+  "witnesses": [
+   {
+    "variable": {
+     "id": "T2M",
+     "name": "Air temperature",
+     "definition": "How warm the air is about 2 metres above the ground, averaged over day and night.",
+     "unit": "°C",
+     "theme": "temperature",
+     "source": {
+      "provider": "NASA POWER",
+      "product": "MERRA-2",
+      "kind": "reanalysis",
+      "url": "https://power.larc.nasa.gov/"
+     },
+     "first_year": 1981,
+     "witness_group": "air_temperature"
+    },
+    "series": [
+     {
+      "year": 1981,
+      "value": 14.09
+     },
+     {
+      "year": 1982,
+      "value": 14.71
+     },
+     {
+      "year": 1983,
+      "value": 14.61
+     },
+     {
+      "year": 1984,
+      "value": 13.59
+     },
+     {
+      "year": 1985,
+      "value": 14.11
+     },
+     {
+      "year": 1986,
+      "value": 14.12
+     },
+     {
+      "year": 1987,
+      "value": 13.93
+     },
+     {
+      "year": 1988,
+      "value": 14.65
+     },
+     {
+      "year": 1989,
+      "value": 14.28
+     },
+     {
+      "year": 1990,
+      "value": 14.7
+     },
+     {
+      "year": 1991,
+      "value": 13.9
+     },
+     {
+      "year": 1992,
+      "value": 14.67
+     },
+     {
+      "year": 1993,
+      "value": 14.45
+     },
+     {
+      "year": 1994,
+      "value": 15.31
+     },
+     {
+      "year": 1995,
+      "value": 14.24
+     },
+     {
+      "year": 1996,
+      "value": 13.89
+     },
+     {
+      "year": 1997,
+      "value": 14.89
+     },
+     {
+      "year": 1998,
+      "value": 14.74
+     },
+     {
+      "year": 1999,
+      "value": 14.69
+     },
+     {
+      "year": 2000,
+      "value": 15.37
+     },
+     {
+      "year": 2001,
+      "value": 15.03
+     },
+     {
+      "year": 2002,
+      "value": 15.07
+     },
+     {
+      "year": 2003,
+      "value": 15.24
+     },
+     {
+      "year": 2004,
+      "value": 14.41
+     },
+     {
+      "year": 2005,
+      "value": 14.04
+     },
+     {
+      "year": 2006,
+      "value": 14.77
+     },
+     {
+      "year": 2007,
+      "value": 15.41
+     },
+     {
+      "year": 2008,
+      "value": 15.02
+     },
+     {
+      "year": 2009,
+      "value": 15.22
+     },
+     {
+      "year": 2010,
+      "value": 14.22
+     },
+     {
+      "year": 2011,
+      "value": 15.24
+     },
+     {
+      "year": 2012,
+      "value": 15.23
+     },
+     {
+      "year": 2013,
+      "value": 14.8
+     },
+     {
+      "year": 2014,
+      "value": 15.7
+     },
+     {
+      "year": 2015,
+      "value": 15.42
+     },
+     {
+      "year": 2016,
+      "value": 14.99
+     },
+     {
+      "year": 2017,
+      "value": 15.15
+     },
+     {
+      "year": 2018,
+      "value": 15.86
+     },
+     {
+      "year": 2019,
+      "value": 15.64
+     },
+     {
+      "year": 2020,
+      "value": 15.55
+     },
+     {
+      "year": 2021,
+      "value": 15.11
+     },
+     {
+      "year": 2022,
+      "value": 16.29
+     },
+     {
+      "year": 2023,
+      "value": 16.22
+     },
+     {
+      "year": 2024,
+      "value": 16.39
+     },
+     {
+      "year": 2025,
+      "value": 15.92
+     }
+    ],
+    "fit": [
+     {
+      "year": 1981,
+      "value": 14.017748792270524,
+      "ci_low": 13.763276074460233,
+      "ci_high": 14.272221510080815
+     },
+     {
+      "year": 1982,
+      "value": 14.058234958278433,
+      "ci_low": 13.812287840677614,
+      "ci_high": 14.304182075879252
+     },
+     {
+      "year": 1983,
+      "value": 14.098721124286342,
+      "ci_low": 13.861187881441888,
+      "ci_high": 14.336254367130797
+     },
+     {
+      "year": 1984,
+      "value": 14.139207290294237,
+      "ci_low": 13.9099638945117,
+      "ci_high": 14.368450686076775
+     },
+     {
+      "year": 1985,
+      "value": 14.179693456302147,
+      "ci_low": 13.958601928157641,
+      "ci_high": 14.400784984446652
+     },
+     {
+      "year": 1986,
+      "value": 14.220179622310056,
+      "ci_low": 14.007086146627923,
+      "ci_high": 14.433273097992188
+     },
+     {
+      "year": 1987,
+      "value": 14.260665788317965,
+      "ci_low": 14.055398569325337,
+      "ci_high": 14.465933007310593
+     },
+     {
+      "year": 1988,
+      "value": 14.30115195432586,
+      "ci_low": 14.103518785901887,
+      "ci_high": 14.498785122749833
+     },
+     {
+      "year": 1989,
+      "value": 14.34163812033377,
+      "ci_low": 14.151423652999432,
+      "ci_high": 14.531852587668107
+     },
+     {
+      "year": 1990,
+      "value": 14.382124286341678,
+      "ci_low": 14.199086983698395,
+      "ci_high": 14.565161588984962
+     },
+     {
+      "year": 1991,
+      "value": 14.422610452349574,
+      "ci_low": 14.246479248446834,
+      "ci_high": 14.598741656252313
+     },
+     {
+      "year": 1992,
+      "value": 14.463096618357483,
+      "ci_low": 14.293567316845373,
+      "ci_high": 14.632625919869593
+     },
+     {
+      "year": 1993,
+      "value": 14.503582784365392,
+      "ci_low": 14.340314283399053,
+      "ci_high": 14.666851285331731
+     },
+     {
+      "year": 1994,
+      "value": 14.544068950373301,
+      "ci_low": 14.38667943675164,
+      "ci_high": 14.701458463994962
+     },
+     {
+      "year": 1995,
+      "value": 14.584555116381196,
+      "ci_low": 14.432618449174143,
+      "ci_high": 14.73649178358825
+     },
+     {
+      "year": 1996,
+      "value": 14.625041282389105,
+      "ci_low": 14.478083877201186,
+      "ci_high": 14.771998687577025
+     },
+     {
+      "year": 1997,
+      "value": 14.665527448397015,
+      "ci_low": 14.52302606843597,
+      "ci_high": 14.80802882835806
+     },
+     {
+      "year": 1998,
+      "value": 14.70601361440491,
+      "ci_low": 14.56739455404273,
+      "ci_high": 14.84463267476709
+     },
+     {
+      "year": 1999,
+      "value": 14.746499780412819,
+      "ci_low": 14.611139960842012,
+      "ci_high": 14.881859599983626
+     },
+     {
+      "year": 2000,
+      "value": 14.786985946420728,
+      "ci_low": 14.654216394691254,
+      "ci_high": 14.919755498150202
+     },
+     {
+      "year": 2001,
+      "value": 14.827472112428623,
+      "ci_low": 14.696584132719616,
+      "ci_high": 14.95836009213763
+     },
+     {
+      "year": 2002,
+      "value": 14.867958278436532,
+      "ci_low": 14.73821233880133,
+      "ci_high": 14.997704218071734
+     },
+     {
+      "year": 2003,
+      "value": 14.908444444444442,
+      "ci_low": 14.77908142528907,
+      "ci_high": 15.037807463599814
+     },
+     {
+      "year": 2004,
+      "value": 14.94893061045235,
+      "ci_low": 14.81918467081715,
+      "ci_high": 15.078676550087552
+     },
+     {
+      "year": 2005,
+      "value": 14.989416776460246,
+      "ci_low": 14.858528796751239,
+      "ci_high": 15.120304756169253
+     },
+     {
+      "year": 2006,
+      "value": 15.029902942468155,
+      "ci_low": 14.89713339073868,
+      "ci_high": 15.16267249419763
+     },
+     {
+      "year": 2007,
+      "value": 15.070389108476064,
+      "ci_low": 14.935029288905257,
+      "ci_high": 15.205748928046871
+     },
+     {
+      "year": 2008,
+      "value": 15.11087527448396,
+      "ci_low": 14.97225621412178,
+      "ci_high": 15.249494334846139
+     },
+     {
+      "year": 2009,
+      "value": 15.151361440491868,
+      "ci_low": 15.008860060530823,
+      "ci_high": 15.293862820452913
+     },
+     {
+      "year": 2010,
+      "value": 15.191847606499778,
+      "ci_low": 15.044890201311858,
+      "ci_high": 15.338805011687697
+     },
+     {
+      "year": 2011,
+      "value": 15.232333772507687,
+      "ci_low": 15.080397105300634,
+      "ci_high": 15.38427043971474
+     },
+     {
+      "year": 2012,
+      "value": 15.272819938515582,
+      "ci_low": 15.11543042489392,
+      "ci_high": 15.430209452137243
+     },
+     {
+      "year": 2013,
+      "value": 15.313306104523491,
+      "ci_low": 15.150037603557152,
+      "ci_high": 15.47657460548983
+     },
+     {
+      "year": 2014,
+      "value": 15.3537922705314,
+      "ci_low": 15.18426296901929,
+      "ci_high": 15.52332157204351
+     },
+     {
+      "year": 2015,
+      "value": 15.394278436539295,
+      "ci_low": 15.218147232636555,
+      "ci_high": 15.570409640442035
+     },
+     {
+      "year": 2016,
+      "value": 15.434764602547205,
+      "ci_low": 15.251727299903921,
+      "ci_high": 15.617801905190488
+     },
+     {
+      "year": 2017,
+      "value": 15.475250768555114,
+      "ci_low": 15.285036301220776,
+      "ci_high": 15.665465235889451
+     },
+     {
+      "year": 2018,
+      "value": 15.515736934563023,
+      "ci_low": 15.31810376613905,
+      "ci_high": 15.713370102986996
+     },
+     {
+      "year": 2019,
+      "value": 15.556223100570918,
+      "ci_low": 15.35095588157829,
+      "ci_high": 15.761490319563546
+     },
+     {
+      "year": 2020,
+      "value": 15.596709266578827,
+      "ci_low": 15.383615790896695,
+      "ci_high": 15.80980274226096
+     },
+     {
+      "year": 2021,
+      "value": 15.637195432586736,
+      "ci_low": 15.416103904442231,
+      "ci_high": 15.858286960731242
+     },
+     {
+      "year": 2022,
+      "value": 15.677681598594631,
+      "ci_low": 15.448438202812094,
+      "ci_high": 15.90692499437717
+     },
+     {
+      "year": 2023,
+      "value": 15.71816776460254,
+      "ci_low": 15.480634521758086,
+      "ci_high": 15.955701007446995
+     },
+     {
+      "year": 2024,
+      "value": 15.75865393061045,
+      "ci_low": 15.51270681300963,
+      "ci_high": 16.00460104821127
+     },
+     {
+      "year": 2025,
+      "value": 15.799140096618359,
+      "ci_low": 15.544667378808068,
+      "ci_high": 16.05361281442865
+     }
+    ],
+    "trend": {
+     "n": 45,
+     "n_missing": 0,
+     "unit": "°C",
+     "alpha": 0.05,
+     "direction": "up",
+     "evidence": "strong",
+     "significant": true,
+     "methods_agree": true,
+     "total_change": 1.7813913043478262,
+     "percent_change": 11.948874418025902,
+     "mean": 14.908444444444445,
+     "std": 0.6809584006636114,
+     "lag1_autocorrelation": 0.050196239173399625,
+     "autocorrelation_corrected": false,
+     "ols": {
+      "slope_per_decade": 0.4048616600790514,
+      "stderr_per_decade": 0.04939191825754623,
+      "ci95_low": 0.3052533638241596,
+      "ci95_high": 0.5044699563339432,
+      "t_statistic": 8.196921163660122,
+      "p_value": 2.498480722485623e-10,
+      "r_squared": 0.6097632393612156,
+      "intercept": 14.017748792270524
+     },
+     "mann_kendall": {
+      "s": 581.0,
+      "z": 5.674016951876243,
+      "tau": 0.5868686868686869,
+      "p_value": 1.3948731976629255e-08,
+      "p_value_hamed_rao": 1.3948731976629255e-08
+     },
+     "sen": {
+      "slope_per_decade": 0.4131884057971014,
+      "ci95_low": 0.29444444444444456,
+      "ci95_high": 0.5115384615384609
+     }
+    }
+   },
+   {
+    "variable": {
+     "id": "GISTEMP_ANOMALY",
+     "name": "Air temperature anomaly (GISTEMP)",
+     "definition": "How much warmer or colder than the 1951–1980 average the air near the ground was, from land weather stations and ocean ships and buoys, spread over a 2° grid.",
+     "unit": "°C",
+     "theme": "temperature",
+     "source": {
+      "provider": "NASA GISS",
+      "product": "GISTEMP v4",
+      "kind": "station_grid",
+      "url": "https://data.giss.nasa.gov/gistemp/"
+     },
+     "first_year": 1981,
+     "witness_group": "air_temperature"
+    },
+    "series": [
+     {
+      "year": 1981,
+      "value": 0.06
+     },
+     {
+      "year": 1982,
+      "value": 0.67
+     },
+     {
+      "year": 1983,
+      "value": 0.7
+     },
+     {
+      "year": 1984,
+      "value": -0.23
+     },
+     {
+      "year": 1985,
+      "value": -0.35
+     },
+     {
+      "year": 1986,
+      "value": 0.03
+     },
+     {
+      "year": 1987,
+      "value": -0.14
+     },
+     {
+      "year": 1988,
+      "value": 0.79
+     },
+     {
+      "year": 1989,
+      "value": 1.03
+     },
+     {
+      "year": 1990,
+      "value": 1.12
+     },
+     {
+      "year": 1991,
+      "value": 0.12
+     },
+     {
+      "year": 1992,
+      "value": 1.07
+     },
+     {
+      "year": 1993,
+      "value": 0.53
+     },
+     {
+      "year": 1994,
+      "value": 1.73
+     },
+     {
+      "year": 1995,
+      "value": 0.7
+     },
+     {
+      "year": 1996,
+      "value": -0.31
+     },
+     {
+      "year": 1997,
+      "value": 0.88
+     },
+     {
+      "year": 1998,
+      "value": 0.95
+     },
+     {
+      "year": 1999,
+      "value": 1.15
+     },
+     {
+      "year": 2000,
+      "value": 1.74
+     },
+     {
+      "year": 2001,
+      "value": 1.06
+     },
+     {
+      "year": 2002,
+      "value": 1.54
+     },
+     {
+      "year": 2003,
+      "value": 1.41
+     },
+     {
+      "year": 2004,
+      "value": 0.82
+     },
+     {
+      "year": 2005,
+      "value": 0.58
+     },
+     {
+      "year": 2006,
+      "value": 1.27
+     },
+     {
+      "year": 2007,
+      "value": 1.71
+     },
+     {
+      "year": 2008,
+      "value": 1.43
+     },
+     {
+      "year": 2009,
+      "value": 1.32
+     },
+     {
+      "year": 2010,
+      "value": 0.29
+     },
+     {
+      "year": 2011,
+      "value": 1.65
+     },
+     {
+      "year": 2012,
+      "value": 1.35
+     },
+     {
+      "year": 2013,
+      "value": 1.01
+     },
+     {
+      "year": 2014,
+      "value": 2.17
+     },
+     {
+      "year": 2015,
+      "value": 1.98
+     },
+     {
+      "year": 2016,
+      "value": 1.63
+     },
+     {
+      "year": 2017,
+      "value": 1.62
+     },
+     {
+      "year": 2018,
+      "value": 2.34
+     },
+     {
+      "year": 2019,
+      "value": 2.21
+     },
+     {
+      "year": 2020,
+      "value": 2.2
+     },
+     {
+      "year": 2021,
+      "value": 1.32
+     },
+     {
+      "year": 2022,
+      "value": 2.51
+     },
+     {
+      "year": 2023,
+      "value": 2.58
+     },
+     {
+      "year": 2024,
+      "value": 2.88
+     },
+     {
+      "year": 2025,
+      "value": 2.2
+     }
+    ],
+    "fit": [
+     {
+      "year": 1981,
+      "value": 0.09030917874396494,
+      "ci_low": -0.20284429998855574,
+      "ci_high": 0.3834626574764856
+     },
+     {
+      "year": 1982,
+      "value": 0.1400628019323733,
+      "ci_low": -0.1432691549443047,
+      "ci_high": 0.4233947588090513
+     },
+     {
+      "year": 1983,
+      "value": 0.18981642512078167,
+      "ci_low": -0.08382271802060592,
+      "ci_high": 0.46345556826216927
+     },
+     {
+      "year": 1984,
+      "value": 0.23957004830919004,
+      "ci_low": -0.02451916144337396,
+      "ci_high": 0.503659258061754
+     },
+     {
+      "year": 1985,
+      "value": 0.2893236714975842,
+      "ci_low": 0.0346254423452978,
+      "ci_high": 0.5440219006498705
+     },
+     {
+      "year": 1986,
+      "value": 0.33907729468599257,
+      "ci_low": 0.09359285050289726,
+      "ci_high": 0.5845617388690879
+     },
+     {
+      "year": 1987,
+      "value": 0.38883091787440094,
+      "ci_low": 0.15236234931728435,
+      "ci_high": 0.6252994864315176
+     },
+     {
+      "year": 1988,
+      "value": 0.4385845410628093,
+      "ci_low": 0.21091042599476714,
+      "ci_high": 0.6662586561308514
+     },
+     {
+      "year": 1989,
+      "value": 0.4883381642512177,
+      "ci_low": 0.2692104193041748,
+      "ci_high": 0.7074659091982606
+     },
+     {
+      "year": 1990,
+      "value": 0.538091787439626,
+      "ci_low": 0.32723216182075054,
+      "ci_high": 0.7489514130585015
+     },
+     {
+      "year": 1991,
+      "value": 0.5878454106280202,
+      "ci_low": 0.38494163539531473,
+      "ci_high": 0.7907491858607256
+     },
+     {
+      "year": 1992,
+      "value": 0.6375990338164286,
+      "ci_low": 0.44230067368959086,
+      "ci_high": 0.8328973939432662
+     },
+     {
+      "year": 1993,
+      "value": 0.6873526570048369,
+      "ci_low": 0.499266761441731,
+      "ci_high": 0.8754385525679429
+     },
+     {
+      "year": 1994,
+      "value": 0.7371062801932453,
+      "ci_low": 0.5557929990241179,
+      "ci_high": 0.9184195613623727
+     },
+     {
+      "year": 1995,
+      "value": 0.7868599033816537,
+      "ci_low": 0.6118283207348344,
+      "ci_high": 0.961891486028473
+     },
+     {
+      "year": 1996,
+      "value": 0.8366135265700478,
+      "ci_low": 0.6673180715324672,
+      "ci_high": 1.0059089816076283
+     },
+     {
+      "year": 1997,
+      "value": 0.8863671497584562,
+      "ci_low": 0.722205051678819,
+      "ci_high": 1.0505292478380934
+     },
+     {
+      "year": 1998,
+      "value": 0.9361207729468646,
+      "ci_low": 0.7764311208950447,
+      "ci_high": 1.0958104249986844
+     },
+     {
+      "year": 1999,
+      "value": 0.985874396135273,
+      "ci_low": 0.8299394011022465,
+      "ci_high": 1.1418093911682994
+     },
+     {
+      "year": 2000,
+      "value": 1.0356280193236813,
+      "ci_low": 0.8826770220844854,
+      "ci_high": 1.1885790165628771
+     },
+     {
+      "year": 2001,
+      "value": 1.0853816425120897,
+      "ci_low": 0.9345982229528593,
+      "ci_high": 1.23616506207132
+     },
+     {
+      "year": 2002,
+      "value": 1.1351352657004838,
+      "ci_low": 0.985667480380432,
+      "ci_high": 1.2846030510205357
+     },
+     {
+      "year": 2003,
+      "value": 1.1848888888888922,
+      "ci_low": 1.0358622293276474,
+      "ci_high": 1.333915548450137
+     },
+     {
+      "year": 2004,
+      "value": 1.2346425120773006,
+      "ci_low": 1.0851747267572487,
+      "ci_high": 1.3841102973973525
+     },
+     {
+      "year": 2005,
+      "value": 1.284396135265709,
+      "ci_low": 1.1336127157064786,
+      "ci_high": 1.4351795548249393
+     },
+     {
+      "year": 2006,
+      "value": 1.3341497584541173,
+      "ci_low": 1.1811987612149215,
+      "ci_high": 1.4871007556933131
+     },
+     {
+      "year": 2007,
+      "value": 1.3839033816425115,
+      "ci_low": 1.227968386609485,
+      "ci_high": 1.539838376675538
+     },
+     {
+      "year": 2008,
+      "value": 1.4336570048309198,
+      "ci_low": 1.2739673527791,
+      "ci_high": 1.5933466568827397
+     },
+     {
+      "year": 2009,
+      "value": 1.4834106280193282,
+      "ci_low": 1.319248529939691,
+      "ci_high": 1.6475727260989654
+     },
+     {
+      "year": 2010,
+      "value": 1.5331642512077366,
+      "ci_low": 1.363868796170156,
+      "ci_high": 1.702459706245317
+     },
+     {
+      "year": 2011,
+      "value": 1.582917874396145,
+      "ci_low": 1.4078862917493256,
+      "ci_high": 1.7579494570429643
+     },
+     {
+      "year": 2012,
+      "value": 1.6326714975845533,
+      "ci_low": 1.451358216415426,
+      "ci_high": 1.8139847787536807
+     },
+     {
+      "year": 2013,
+      "value": 1.6824251207729475,
+      "ci_low": 1.4943392252098415,
+      "ci_high": 1.8705110163360534
+     },
+     {
+      "year": 2014,
+      "value": 1.7321787439613558,
+      "ci_low": 1.5368803838345182,
+      "ci_high": 1.9274771040881935
+     },
+     {
+      "year": 2015,
+      "value": 1.7819323671497642,
+      "ci_low": 1.5790285919170588,
+      "ci_high": 1.9848361423824696
+     },
+     {
+      "year": 2016,
+      "value": 1.8316859903381726,
+      "ci_low": 1.620826364719297,
+      "ci_high": 2.042545615957048
+     },
+     {
+      "year": 2017,
+      "value": 1.881439613526581,
+      "ci_low": 1.662311868579538,
+      "ci_high": 2.100567358473624
+     },
+     {
+      "year": 2018,
+      "value": 1.9311932367149751,
+      "ci_low": 1.703519121646933,
+      "ci_high": 2.1588673517830173
+     },
+     {
+      "year": 2019,
+      "value": 1.9809468599033835,
+      "ci_low": 1.7444782913462669,
+      "ci_high": 2.2174154284605
+     },
+     {
+      "year": 2020,
+      "value": 2.030700483091792,
+      "ci_low": 1.7852160389086966,
+      "ci_high": 2.2761849272748873
+     },
+     {
+      "year": 2021,
+      "value": 2.0804541062802,
+      "ci_low": 1.8257558771279139,
+      "ci_high": 2.3351523354324866
+     },
+     {
+      "year": 2022,
+      "value": 2.1302077294686086,
+      "ci_low": 1.8661185197160446,
+      "ci_high": 2.3942969392211726
+     },
+     {
+      "year": 2023,
+      "value": 2.179961352657017,
+      "ci_low": 1.9063222095156294,
+      "ci_high": 2.453600495798405
+     },
+     {
+      "year": 2024,
+      "value": 2.229714975845411,
+      "ci_low": 1.9463830189687332,
+      "ci_high": 2.513046932722089
+     },
+     {
+      "year": 2025,
+      "value": 2.2794685990338195,
+      "ci_low": 1.9863151203012988,
+      "ci_high": 2.57262207776634
+     }
+    ],
+    "trend": {
+     "n": 45,
+     "n_missing": 0,
+     "unit": "°C",
+     "alpha": 0.05,
+     "direction": "up",
+     "evidence": "strong",
+     "significant": true,
+     "methods_agree": true,
+     "total_change": 2.189159420289855,
+     "percent_change": 184.75651521576046,
+     "mean": 1.1848888888888889,
+     "std": 0.8167970211364471,
+     "lag1_autocorrelation": 0.07429734635210668,
+     "autocorrelation_corrected": false,
+     "ols": {
+      "slope_per_decade": 0.49753623188405793,
+      "stderr_per_decade": 0.056899666035186994,
+      "ci95_low": 0.38278711925222797,
+      "ci95_high": 0.612285344515888,
+      "t_statistic": 8.744097576537257,
+      "p_value": 4.301777253538801e-11,
+      "r_squared": 0.6400445949093052,
+      "intercept": 0.09030917874396494
+     },
+     "mann_kendall": {
+      "s": 605.0,
+      "z": 5.909369431311222,
+      "tau": 0.6111111111111112,
+      "p_value": 3.4341975388654637e-09,
+      "p_value_hamed_rao": 3.4341975388654637e-09
+     },
+     "sen": {
+      "slope_per_decade": 0.5029411764705882,
+      "ci95_low": 0.3956521739130434,
+      "ci95_high": 0.6382352941176472
+     }
+    }
+   }
+  ],
+  "agreement": {
+   "level": "agree",
+   "same_direction": true,
+   "all_significant": true,
+   "correlation": 0.9600756653242133,
+   "text": "All witnesses point the same way (up) and every trend is significant."
+  },
+  "limitations": [
+   "The witnesses are built differently (a reanalysis, a gridded record of stations and ships, single stations), but they may rely on some of the same observations. How independent they are has not been fully established, so agreement between them is not proof.",
+   "The witnesses are compared over their common period only (1981–2025), so these trends can differ from the ones over each record's full length.",
+   "The correlation includes any trend the series share, so it can be high even when their year-to-year ups and downs do not match.",
+   "Only straight-line trends are tested. A change that speeds up, slows down or reverses is not captured.",
+   "Years that resemble the one before them make the tests over-confident. When the lag-1 autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected.",
+   "GISTEMP is an anomaly from the 1951–1980 average, while MERRA-2 is an absolute temperature: their levels differ, so only trends and year-to-year changes are compared (slopes are in the same unit, °C per decade).",
+   "A GISTEMP cell is 2° wide (about 200 km) and spreads station and ship data up to 1,200 km, while a MERRA-2 cell is 0.5° (about 50 km): the two describe areas of different sizes."
+  ]
+ },
  "trendmap": {
   "variable": {
    "id": "T2M",
@@ -3062,7 +4113,7 @@
     "url": "https://power.larc.nasa.gov/"
    },
    "first_year": 1981,
-   "witness_group": null
+   "witness_group": "air_temperature"
   },
   "bbox": {
    "lat_min": 40.0,

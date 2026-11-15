@@ -23,3 +23,6 @@ out/
 
 # Dati scaricati di grandi dimensioni
 data/raw/
+
+# Cartelle di pubblicazione
+.deploy/

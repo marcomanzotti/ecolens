@@ -6,6 +6,7 @@ import pytest
 
 from tests.investigation_helpers import NIAMEY, line, wiggle
 from trend_detective import catalog
+from trend_detective import external_witnesses as ew
 from trend_detective import models as m
 from trend_detective.errors import NoDataError
 from trend_detective.witnesses import build_witnesses
@@ -125,6 +126,17 @@ def test_disagree_even_when_only_one_trend_is_significant() -> None:
     assert result.agreement.all_significant is False
 
 
+def test_no_disagreement_when_no_trend_is_significant() -> None:
+    result = witnesses(noisy(25, 0.01, 3.0), noisy(30, -0.01, 3.0))
+    agreement = result.agreement
+
+    assert not any(w.trend.significant for w in result.witnesses if w.trend)
+    assert agreement.level == "partly"
+    assert agreement.same_direction is False
+    assert agreement.all_significant is False
+    assert "No witness finds a significant trend" in agreement.text
+
+
 def test_insufficient_when_a_witness_cannot_be_tested() -> None:
     constant: list[float | None] = [27.0] * N
 
@@ -173,3 +185,90 @@ def test_result_is_a_valid_model() -> None:
     result = witnesses(noisy(25, 0.2, 0.3), noisy(20, 0.2, 0.3))
 
     assert m.WitnessesResult.model_validate(result.model_dump()) == result
+
+
+# -- external witnesses (air temperature) ----------------------------------------------------------
+
+T2M = catalog.witness_group_members("air_temperature")
+
+
+def external(
+    values: list[float | None], kind: m.SourceKind = "station_grid", var_id: str = "GISTEMP_ANOMALY"
+) -> ew.ExternalSeries:
+    variable = m.Variable(
+        id=var_id,
+        name="Air temperature anomaly (GISTEMP)",
+        definition="d",
+        unit="°C",
+        theme="temperature",
+        source=m.DataSource(provider="NASA GISS", product="GISTEMP v4", kind=kind),
+        first_year=1981,
+        witness_group="air_temperature",
+    )
+    return ew.ExternalSeries(variable, tuple(values), ("note about the grid",))
+
+
+def temperature(t2m: list[float | None], extra: ew.ExternalWitnesses) -> m.WitnessesResult:
+    return build_witnesses(
+        NIAMEY, FULL, "annual", "air_temperature", T2M, {"T2M": t2m}, extra=extra
+    )
+
+
+def test_external_witness_joins_the_power_members_in_order() -> None:
+    result = temperature(
+        noisy(25, 0.03, 0.3), ew.ExternalWitnesses(series=(external(noisy(0.1, 0.03, 0.3)),))
+    )
+
+    assert [w.variable.id for w in result.witnesses] == ["T2M", "GISTEMP_ANOMALY"]
+    assert result.quantity == "Air temperature"
+    assert result.common_period == FULL
+    assert result.witnesses[1].variable.source.kind == "station_grid"
+    assert result.agreement.correlation is not None
+
+
+def test_external_series_is_cut_to_the_common_period() -> None:
+    late_gistemp = late(noisy(0.1, 0.03, 0.3), 10)
+
+    result = temperature(
+        noisy(25, 0.03, 0.3), ew.ExternalWitnesses(series=(external(late_gistemp),))
+    )
+
+    assert result.common_period == m.Period(start_year=1991, end_year=2025)
+
+
+def test_limitations_carry_the_external_notes_and_a_non_power_independence_note() -> None:
+    result = temperature(
+        noisy(25, 0.03, 0.3), ew.ExternalWitnesses(series=(external(noisy(0.1, 0.03, 0.3)),))
+    )
+
+    assert "note about the grid" in result.limitations
+    assert not any("all distributed by NASA POWER" in line for line in result.limitations)
+    assert any("reanalysis" in line and "station" in line for line in result.limitations)
+    assert any("autocorrelation" in line and "Hamed" in line for line in result.limitations)
+
+
+def test_power_only_groups_keep_the_original_independence_note() -> None:
+    result = witnesses(noisy(25, 0.1, 0.5), noisy(20, 0.1, 0.5))
+
+    assert any("all distributed by NASA POWER" in line for line in result.limitations)
+
+
+def test_one_source_only_is_a_no_data_error_with_the_reason() -> None:
+    extra = ew.ExternalWitnesses(
+        unavailable=("GISTEMP has no data in the 2° cell around this point.",)
+    )
+
+    with pytest.raises(NoDataError, match="GISTEMP has no data"):
+        temperature(noisy(25, 0.03, 0.3), extra)
+
+
+def test_one_source_only_without_a_reason_still_explains() -> None:
+    with pytest.raises(NoDataError, match="second source"):
+        temperature(noisy(25, 0.03, 0.3), ew.ExternalWitnesses())
+
+
+def test_external_witness_with_too_few_common_years_is_refused() -> None:
+    sparse = late(noisy(0.1, 0.03, 0.3), 40)
+
+    with pytest.raises(NoDataError, match="share"):
+        temperature(noisy(25, 0.03, 0.3), ew.ExternalWitnesses(series=(external(sparse),)))

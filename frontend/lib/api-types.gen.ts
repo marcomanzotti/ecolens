@@ -343,7 +343,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "reanalysis" | "satellite" | "derived";
+            kind: "reanalysis" | "satellite" | "derived" | "station" | "station_grid";
             /** Url */
             url?: string | null;
         };
@@ -662,6 +662,11 @@ export interface components {
             tau: number;
             /** P Value */
             p_value: number;
+            /**
+             * P Value Hamed Rao
+             * @description Mann-Kendall p-value with the Hamed and Rao (1998) variance correction for autocorrelation; null when it cannot be computed
+             */
+            p_value_hamed_rao?: number | null;
         };
         /** OlsResult */
         OlsResult: {
@@ -933,6 +938,12 @@ export interface components {
             std: number;
             /** Lag1 Autocorrelation */
             lag1_autocorrelation: number;
+            /**
+             * Autocorrelation Corrected
+             * @description True when the verdict used the Hamed-Rao p-value because |lag-1 autocorrelation| > 0.3
+             * @default false
+             */
+            autocorrelation_corrected: boolean;
             ols: components["schemas"]["OlsResult"];
             mann_kendall: components["schemas"]["MannKendallResult"];
             sen: components["schemas"]["SenResult"];

@@ -1,0 +1,1788 @@
+{
+ "format_version": 1,
+ "built": "2026-11-15",
+ "source": {
+  "name": "CMIP6 multi-model projections (WCRP), Pangeo / Google Cloud public dataset",
+  "catalogue": "https://storage.googleapis.com/cmip6/pangeo-cmip6.csv",
+  "license": "CC BY 4.0 for all CMIP6 models since October 2022 (PCMDI CMIP6 Terms of Use, which supersede the older license attribute kept per model below); cite each model's institution and acknowledge WCRP CMIP6",
+  "terms_of_use": "https://pcmdi.llnl.gov/CMIP6/TermsOfUse/TermsOfUse6-2.html"
+ },
+ "baseline": [
+  1995,
+  2014
+ ],
+ "future": [
+  2041,
+  2060
+ ],
+ "scenarios": {
+  "ssp245": "SSP2-4.5 (moderate emissions)",
+  "ssp585": "SSP5-8.5 (high emissions)"
+ },
+ "grid": {
+  "n_lat": 90,
+  "n_lon": 180,
+  "lat_first": -89.0,
+  "lon_first": -179.0,
+  "step_deg": 2.0,
+  "order": "lat (south to north), lon (west to east); cell centres"
+ },
+ "regridding": "bilinear from each model's native grid; cells next to a missing value stay missing",
+ "file_layout": {
+  "parts": [
+   "median int16 LE",
+   "p10 int16 LE",
+   "p90 int16 LE",
+   "agreement uint8 (% of models with the sign of the median)",
+   "count uint8 (models)"
+  ],
+  "shape": [
+   90,
+   180
+  ],
+  "value": "int16 * scale",
+  "missing_int16": 32767,
+  "missing_uint8": 255
+ },
+ "statistics": "per model mean of annual means per 20-year period; across models median, 10th and 90th percentile; a cell needs at least 3 models",
+ "agreement_rule": "share of models whose change has the sign of the median; robust if >= 80% (IPCC AR6 simple approach)",
+ "caveats": [
+  "Scenario projections, not forecasts.",
+  "Model resolution is about 1-2.5 degrees; no bias correction or downscaling.",
+  "Projections know nothing about the local trends measured by the app."
+ ],
+ "variables": {
+  "tas": {
+   "name": "Near-surface air temperature",
+   "cmip6_id": "tas",
+   "table": "Amon",
+   "unit": "K",
+   "scale": 0.01,
+   "change": "future - baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/tas/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/tas/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/tas/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20210317"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/tas/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/tas/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/tas/gn/v20210317/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/tas/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/tas/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/tas/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/tas/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/tas/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/tas/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-ESM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190726",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Amon/tas/gr1/v20190726/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Amon/tas/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Amon/tas/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/tas/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/tas/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/tas/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181212",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/tas/gn/v20181212/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/tas/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/tas/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/tas/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/tas/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/tas/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190222",
+      "ssp245": "20190222",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Amon/tas/gn/v20190222/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Amon/tas/gn/v20190222/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Amon/tas/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/tas/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/tas/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/tas/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181126",
+      "ssp245": "20190314",
+      "ssp585": "20190314"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Amon/tas/gn/v20181126/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Amon/tas/gn/v20190314/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Amon/tas/gn/v20190314/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/tas/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/tas/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/tas/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "tas_ssp245.bin",
+    "ssp585": "tas_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": 1.339,
+    "ssp585": 1.745
+   }
+  },
+  "pr": {
+   "name": "Precipitation",
+   "cmip6_id": "pr",
+   "table": "Amon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/pr/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/pr/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/pr/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20210317"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/pr/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/pr/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/pr/gn/v20210317/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/pr/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/pr/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/pr/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/pr/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/pr/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/pr/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/pr/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/pr/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/pr/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181212",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/pr/gn/v20181212/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/pr/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/pr/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/pr/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/pr/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/pr/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190222",
+      "ssp245": "20190222",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Amon/pr/gn/v20190222/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Amon/pr/gn/v20190222/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Amon/pr/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/pr/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/pr/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/pr/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181126",
+      "ssp245": "20190314",
+      "ssp585": "20190314"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Amon/pr/gn/v20181126/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Amon/pr/gn/v20190314/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Amon/pr/gn/v20190314/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190415",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/pr/gn/v20190415/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/pr/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/pr/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "pr_ssp245.bin",
+    "ssp585": "pr_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": 3.174,
+    "ssp585": 3.894
+   },
+   "baseline_floor_native_units": 1.1574074074074074e-06
+  },
+  "mrsos": {
+   "name": "Soil moisture (top 10 cm)",
+   "cmip6_id": "mrsos",
+   "table": "Lmon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Lmon/mrsos/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p2f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p2f1/Lmon/mrsos/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p2f1/Lmon/mrsos/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p2f1/Lmon/mrsos/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Lmon/mrsos/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Lmon/mrsos/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Lmon/mrsos/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Lmon/mrsos/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Lmon/mrsos/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Lmon/mrsos/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181212",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Lmon/mrsos/gn/v20181212/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Lmon/mrsos/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190603",
+      "ssp245": "20190603",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Lmon/mrsos/gn/v20190603/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20190603/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Lmon/mrsos/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Lmon/mrsos/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Lmon/mrsos/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181114",
+      "ssp245": "20190308",
+      "ssp585": "20190308"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Lmon/mrsos/gn/v20181114/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20190308/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20190308/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20190815"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Lmon/mrsos/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Lmon/mrsos/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Lmon/mrsos/gn/v20190815/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "CNRM-ESM2-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20181206",
+      "ssp245": "20190328",
+      "ssp585": "20191021"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-ESM2-1/historical/r1i1p1f2/Lmon/mrsos/gr/v20181206/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-ESM2-1/ssp245/r1i1p1f2/Lmon/mrsos/gr/v20190328/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-ESM2-1/ssp585/r1i1p1f2/Lmon/mrsos/gr/v20191021/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-CM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20180701",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-CM4/historical/r1i1p1f1/Lmon/mrsos/gr1/v20180701/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-CM4/ssp245/r1i1p1f1/Lmon/mrsos/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-CM4/ssp585/r1i1p1f1/Lmon/mrsos/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "mrsos_ssp245.bin",
+    "ssp585": "mrsos_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": -0.961,
+    "ssp585": -1.153
+   },
+   "baseline_floor_native_units": 1.0
+  },
+  "hurs": {
+   "name": "Near-surface relative humidity",
+   "cmip6_id": "hurs",
+   "table": "Amon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/hurs/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/hurs/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/hurs/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20210317"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/hurs/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/hurs/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/hurs/gn/v20210317/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/hurs/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/hurs/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/hurs/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/hurs/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/hurs/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/hurs/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/hurs/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/hurs/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/hurs/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181212",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/hurs/gn/v20181212/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/hurs/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/hurs/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190815",
+      "ssp245": "20190815",
+      "ssp585": "20190815"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/hurs/gn/v20190815/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/hurs/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/hurs/gn/v20190815/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/hurs/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/hurs/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/hurs/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/hurs/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/hurs/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/hurs/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "FGOALS-g3",
+     "institution_id": "CAS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190818",
+      "ssp245": "20190818",
+      "ssp585": "20190818"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CAS/FGOALS-g3/historical/r1i1p1f1/Amon/hurs/gn/v20190818/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CAS/FGOALS-g3/ssp245/r1i1p1f1/Amon/hurs/gn/v20190818/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CAS/FGOALS-g3/ssp585/r1i1p1f1/Amon/hurs/gn/v20190818/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by Lawrence Livermore PCMDI is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    }
+   ],
+   "files": {
+    "ssp245": "hurs_ssp245.bin",
+    "ssp585": "hurs_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": -0.149,
+    "ssp585": -0.184
+   },
+   "baseline_floor_native_units": 1.0
+  },
+  "rsds": {
+   "name": "Surface downwelling shortwave radiation (sunlight)",
+   "cmip6_id": "rsds",
+   "table": "Amon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/rsds/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/rsds/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/rsds/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/rsds/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/rsds/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/rsds/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/rsds/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/rsds/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/rsds/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/rsds/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/rsds/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/rsds/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-ESM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190726",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Amon/rsds/gr1/v20190726/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Amon/rsds/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Amon/rsds/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/rsds/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/rsds/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/rsds/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190311",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/rsds/gn/v20190311/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/rsds/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/rsds/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/rsds/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/rsds/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/rsds/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190222",
+      "ssp245": "20190222",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Amon/rsds/gn/v20190222/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Amon/rsds/gn/v20190222/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Amon/rsds/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/rsds/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/rsds/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/rsds/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181126",
+      "ssp245": "20190314",
+      "ssp585": "20190314"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Amon/rsds/gn/v20181126/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Amon/rsds/gn/v20190314/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Amon/rsds/gn/v20190314/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/rsds/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/rsds/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/rsds/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "rsds_ssp245.bin",
+    "ssp585": "rsds_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": -0.329,
+    "ssp585": -0.636
+   },
+   "baseline_floor_native_units": 1.0
+  },
+  "sfcWind": {
+   "name": "Near-surface wind speed",
+   "cmip6_id": "sfcWind",
+   "table": "Amon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/sfcWind/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/sfcWind/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/sfcWind/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20210317"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/sfcWind/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20210317/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/sfcWind/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/sfcWind/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/sfcWind/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/sfcWind/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-ESM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190726",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Amon/sfcWind/gr1/v20190726/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Amon/sfcWind/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Amon/sfcWind/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/sfcWind/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/sfcWind/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/sfcWind/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181212",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/sfcWind/gn/v20181212/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/sfcWind/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190222",
+      "ssp245": "20190222",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Amon/sfcWind/gn/v20190222/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190222/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/sfcWind/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/sfcWind/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/sfcWind/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181126",
+      "ssp245": "20190314",
+      "ssp585": "20190314"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Amon/sfcWind/gn/v20181126/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190314/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20190314/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/sfcWind/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/sfcWind/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/sfcWind/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "sfcWind_ssp245.bin",
+    "ssp585": "sfcWind_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": -0.235,
+    "ssp585": -0.283
+   },
+   "baseline_floor_native_units": 0.1
+  },
+  "clt": {
+   "name": "Total cloud cover",
+   "cmip6_id": "clt",
+   "table": "Amon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Amon/clt/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Amon/clt/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Amon/clt/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "ACCESS-CM2",
+     "institution_id": "CSIRO-ARCCSS",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20191108",
+      "ssp245": "20191108",
+      "ssp585": "20210317"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CSIRO-ARCCSS/ACCESS-CM2/historical/r1i1p1f1/Amon/clt/gn/v20191108/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp245/r1i1p1f1/Amon/clt/gn/v20191108/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CSIRO-ARCCSS/ACCESS-CM2/ssp585/r1i1p1f1/Amon/clt/gn/v20210317/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CSIRO is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/).  Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment.  Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file).  The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law."
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p1f1/Amon/clt/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p1f1/Amon/clt/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p1f1/Amon/clt/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Amon/clt/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Amon/clt/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Amon/clt/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-ESM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190726",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Amon/clt/gr1/v20190726/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Amon/clt/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Amon/clt/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Amon/clt/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Amon/clt/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Amon/clt/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MIROC6",
+     "institution_id": "MIROC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190311",
+      "ssp245": "20190627",
+      "ssp585": "20190627"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MIROC/MIROC6/historical/r1i1p1f1/Amon/clt/gn/v20190311/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp245/r1i1p1f1/Amon/clt/gn/v20190627/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MIROC/MIROC6/ssp585/r1i1p1f1/Amon/clt/gn/v20190627/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MIROC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Amon/clt/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Amon/clt/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Amon/clt/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MRI-ESM2-0",
+     "institution_id": "MRI",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190222",
+      "ssp245": "20190222",
+      "ssp585": "20191108"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MRI/MRI-ESM2-0/historical/r1i1p1f1/Amon/clt/gn/v20190222/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp245/r1i1p1f1/Amon/clt/gn/v20190222/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MRI/MRI-ESM2-0/ssp585/r1i1p1f1/Amon/clt/gn/v20191108/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190406",
+      "ssp245": "20190507",
+      "ssp585": "20190507"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Amon/clt/gn/v20190406/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Amon/clt/gn/v20190507/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Amon/clt/gn/v20190507/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181126",
+      "ssp245": "20190314",
+      "ssp585": "20190314"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Amon/clt/gn/v20181126/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Amon/clt/gn/v20190314/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Amon/clt/gn/v20190314/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20200702"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Amon/clt/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Amon/clt/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Amon/clt/gn/v20200702/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    }
+   ],
+   "files": {
+    "ssp245": "clt_ssp245.bin",
+    "ssp585": "clt_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": -1.031,
+    "ssp585": -1.338
+   },
+   "baseline_floor_native_units": 1.0
+  },
+  "lai": {
+   "name": "Leaf area index (vegetation)",
+   "cmip6_id": "lai",
+   "table": "Lmon",
+   "unit": "%",
+   "scale": 0.1,
+   "change": "100 * (future - baseline) / baseline",
+   "models": [
+    {
+     "source_id": "GISS-E2-1-G",
+     "institution_id": "NASA-GISS",
+     "member_id": "r1i1p3f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190702",
+      "ssp245": "20200115",
+      "ssp585": "20200115"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NASA-GISS/GISS-E2-1-G/historical/r1i1p3f1/Lmon/lai/gn/v20190702/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp245/r1i1p3f1/Lmon/lai/gn/v20200115/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NASA-GISS/GISS-E2-1-G/ssp585/r1i1p3f1/Lmon/lai/gn/v20200115/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NASA Goddard Institute for Space Studies is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CanESM5",
+     "institution_id": "CCCma",
+     "member_id": "r1i1p2f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190429",
+      "ssp245": "20190429",
+      "ssp585": "20190429"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CCCma/CanESM5/historical/r1i1p2f1/Lmon/lai/gn/v20190429/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp245/r1i1p2f1/Lmon/lai/gn/v20190429/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CCCma/CanESM5/ssp585/r1i1p2f1/Lmon/lai/gn/v20190429/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by The Government of Canada (Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada) is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-CM6-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180917",
+      "ssp245": "20190219",
+      "ssp585": "20190219"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-CM6-1/historical/r1i1p1f2/Lmon/lai/gr/v20180917/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp245/r1i1p1f2/Lmon/lai/gr/v20190219/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-CM6-1/ssp585/r1i1p1f2/Lmon/lai/gr/v20190219/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "GFDL-ESM4",
+     "institution_id": "NOAA-GFDL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190726",
+      "ssp245": "20180701",
+      "ssp585": "20180701"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NOAA-GFDL/GFDL-ESM4/historical/r1i1p1f1/Lmon/lai/gr1/v20190726/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp245/r1i1p1f1/Lmon/lai/gr1/v20180701/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NOAA-GFDL/GFDL-ESM4/ssp585/r1i1p1f1/Lmon/lai/gr1/v20180701/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by NOAA-GFDL is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "IPSL-CM6A-LR",
+     "institution_id": "IPSL",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20180803",
+      "ssp245": "20190119",
+      "ssp585": "20190903"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/IPSL/IPSL-CM6A-LR/historical/r1i1p1f1/Lmon/lai/gr/v20180803/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp245/r1i1p1f1/Lmon/lai/gr/v20190119/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/IPSL/IPSL-CM6A-LR/ssp585/r1i1p1f1/Lmon/lai/gr/v20190903/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by IPSL is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "MPI-ESM1-2-LR",
+     "institution_id": "MPI-M",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190710",
+      "ssp245": "20190710",
+      "ssp585": "20190710"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MPI-M/MPI-ESM1-2-LR/historical/r1i1p1f1/Lmon/lai/gn/v20190710/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp245/r1i1p1f1/Lmon/lai/gn/v20190710/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MPI-M/MPI-ESM1-2-LR/ssp585/r1i1p1f1/Lmon/lai/gn/v20190710/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by MPI-M is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "UKESM1-0-LL",
+     "institution_id": "MOHC",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190627",
+      "ssp245": "20190715",
+      "ssp585": "20190726"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/MOHC/UKESM1-0-LL/historical/r1i1p1f2/Lmon/lai/gn/v20190627/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp245/r1i1p1f2/Lmon/lai/gn/v20190715/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/MOHC/UKESM1-0-LL/ssp585/r1i1p1f2/Lmon/lai/gn/v20190726/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by the Met Office Hadley Centre is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "BCC-CSM2-MR",
+     "institution_id": "BCC",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20181114",
+      "ssp245": "20190308",
+      "ssp585": "20190308"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/BCC/BCC-CSM2-MR/historical/r1i1p1f1/Lmon/lai/gn/v20181114/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp245/r1i1p1f1/Lmon/lai/gn/v20190308/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/BCC/BCC-CSM2-MR/ssp585/r1i1p1f1/Lmon/lai/gn/v20190308/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by BCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CESM2-WACCM",
+     "institution_id": "NCAR",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20190227",
+      "ssp245": "20190815",
+      "ssp585": "20190815"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/NCAR/CESM2-WACCM/historical/r1i1p1f1/Lmon/lai/gn/v20190227/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp245/r1i1p1f1/Lmon/lai/gn/v20190815/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/NCAR/CESM2-WACCM/ssp585/r1i1p1f1/Lmon/lai/gn/v20190815/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by <The National Center for Atmospheric Research> is licensed under a Creative Commons Attribution-[]ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "FGOALS-g3",
+     "institution_id": "CAS",
+     "member_id": "r2i1p1f1",
+     "grid_label": "gn",
+     "versions": {
+      "historical": "20200914",
+      "ssp245": "20200914",
+      "ssp585": "20200914"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CAS/FGOALS-g3/historical/r2i1p1f1/Lmon/lai/gn/v20200914/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CAS/FGOALS-g3/ssp245/r2i1p1f1/Lmon/lai/gn/v20200914/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CAS/FGOALS-g3/ssp585/r2i1p1f1/Lmon/lai/gn/v20200914/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by LASG, Institute of Atmospheric Physics, Chinese Academy of Sciences is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses/)"
+    },
+    {
+     "source_id": "INM-CM5-0",
+     "institution_id": "INM",
+     "member_id": "r1i1p1f1",
+     "grid_label": "gr1",
+     "versions": {
+      "historical": "20190610",
+      "ssp245": "20190619",
+      "ssp585": "20190724"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/INM/INM-CM5-0/historical/r1i1p1f1/Lmon/lai/gr1/v20190610/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/INM/INM-CM5-0/ssp245/r1i1p1f1/Lmon/lai/gr1/v20190619/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/INM/INM-CM5-0/ssp585/r1i1p1f1/Lmon/lai/gr1/v20190724/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by Lawrence Livermore PCMDI is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    },
+    {
+     "source_id": "CNRM-ESM2-1",
+     "institution_id": "CNRM-CERFACS",
+     "member_id": "r1i1p1f2",
+     "grid_label": "gr",
+     "versions": {
+      "historical": "20181206",
+      "ssp245": "20190328",
+      "ssp585": "20191021"
+     },
+     "zstores": {
+      "historical": "gs://cmip6/CMIP6/CMIP/CNRM-CERFACS/CNRM-ESM2-1/historical/r1i1p1f2/Lmon/lai/gr/v20181206/",
+      "ssp245": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-ESM2-1/ssp245/r1i1p1f2/Lmon/lai/gr/v20190328/",
+      "ssp585": "gs://cmip6/CMIP6/ScenarioMIP/CNRM-CERFACS/CNRM-ESM2-1/ssp585/r1i1p1f2/Lmon/lai/gr/v20191021/"
+     },
+     "license_attribute_in_store": "CMIP6 model data produced by CNRM-CERFACS is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (https://creativecommons.org/licenses)"
+    }
+   ],
+   "files": {
+    "ssp245": "lai_ssp245.bin",
+    "ssp585": "lai_ssp585.bin"
+   },
+   "global_mean_median": {
+    "ssp245": 5.962,
+    "ssp585": 8.111
+   },
+   "baseline_floor_native_units": 0.1
+  }
+ }
+}

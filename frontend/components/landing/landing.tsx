@@ -1,38 +1,33 @@
 "use client";
 
 import { useReducer } from "react";
+import Link from "next/link";
+import { Play } from "lucide-react";
 import type { Location } from "@/lib/api";
 import { revealStep } from "@/lib/motion";
 import { enrichLocation, INITIAL_OPENER, openerReducer } from "@/lib/opener";
 import Globe from "@/components/globe";
 import { useReferenceData, usePlaces } from "@/components/providers/reference-data";
 import { ErrorNotice, Skeleton } from "@/components/ui/async-view";
-import { CaseOpener } from "@/components/landing/case-opener";
+import { buttonVariants } from "@/components/ui/button";
+import { AskToggle } from "@/components/landing/ask-toggle";
+import { CaseOpener, OPENER_HEADING_ID } from "@/components/landing/case-opener";
 import { HeroHeading, HeroLede } from "@/components/landing/hero-intro";
+import { PlaceSearch } from "@/components/landing/place-search";
 import { ServiceBanner, useServiceUnreachable } from "@/components/site/service-banner";
 
-function OpenerSkeleton() {
-  return (
-    <div role="status" aria-live="polite" className="space-y-6">
-      <span className="sr-only">Loading the questions…</span>
-      {[0, 1, 2].map((row) => (
-        <div key={row} className="grid grid-cols-[2.5rem_1fr] gap-3" aria-hidden="true">
-          <Skeleton className="h-8 w-6" />
-          <div className="space-y-3">
-            <Skeleton className="h-5 w-56" />
-            <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
-              <Skeleton className="h-16" />
-              <Skeleton className="h-16" />
-              <Skeleton className="h-16" />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+/** Moves the keyboard (and the phone's scroll) to the second step once a place is chosen. */
+function focusSecondStep() {
+  window.requestAnimationFrame(() => {
+    const heading = document.getElementById(OPENER_HEADING_ID);
+    if (!heading) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    heading.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
+    heading.focus({ preventScroll: true });
+  });
 }
 
-/** The first screen: what the tool does, the questions, and the globe to pick a place. */
+/** First screen: the Earth, the title, one line of action; the case questions come second. */
 export function Landing() {
   const { catalog, retryCatalog, assistantAvailable } = useReferenceData();
   const places = usePlaces();
@@ -41,55 +36,29 @@ export function Landing() {
 
   const selectLocation = (location: Location) =>
     dispatch({ type: "setLocation", location: enrichLocation(location, places) });
+  const pickFromSearch = (location: Location) => {
+    selectLocation(location);
+    focusSecondStep();
+  };
 
-  const globe = (
-    <div
-      className="reveal relative order-3 -mx-5 mt-6 sm:-mx-8 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mx-0 lg:mt-0"
-      style={revealStep(2)}
-    >
-      <div className="lg:sticky lg:top-4">
-        <Globe
-          className="h-[min(72svh,34rem)] w-full sm:h-[34rem] lg:h-[calc(100svh-6.5rem)] lg:max-h-[56rem] lg:min-h-[36rem] lg:rounded-2xl"
-          places={places}
-          selected={state.location}
-          onSelect={selectLocation}
-          timelapse
-        />
-        <p className="px-5 pt-2 text-center text-sm text-muted-foreground lg:pt-3">
-          <span className="lg:hidden">
-            Tap a marker or anywhere on Earth. Drag to turn the globe.
-          </span>
-          <span className="hidden rounded-full border border-line bg-deep/80 px-4 py-2 backdrop-blur-sm lg:inline-block">
-            Click a marker or anywhere on Earth to choose the place. Drag to turn the globe.
-          </span>
-        </p>
-      </div>
-    </div>
-  );
-
-  const opener =
-    catalog.status === "success" ? (
-      <CaseOpener
-        catalog={catalog.data}
-        places={places}
-        state={state}
-        dispatch={dispatch}
-        assistantAvailable={assistantAvailable}
-      />
+  const secondStep =
+    state.location === null ? null : catalog.status === "success" ? (
+      <CaseOpener catalog={catalog.data} state={state} dispatch={dispatch} />
     ) : catalog.status === "error" ? (
       unreachable ? (
-        <p className="text-muted-foreground">
-          The questions appear here as soon as the service answers.
-        </p>
+        <p className="text-muted-foreground">The questions appear here as soon as the service answers.</p>
       ) : (
         <ErrorNotice error={catalog.error} onRetry={retryCatalog} />
       )
     ) : (
-      <OpenerSkeleton />
+      <div role="status" className="space-y-3">
+        <span className="sr-only">Loading the questions…</span>
+        <Skeleton className="h-6 w-48" />
+        <Skeleton className="h-28" />
+      </div>
     );
 
-  // DOM order is intro, questions, globe, so the keyboard reaches the questions first;
-  // on phones the globe is shown between the intro and the questions.
+  // DOM order: intro and search, second step, globe; on phones the globe sits between them.
   return (
     <>
       {unreachable ? (
@@ -97,25 +66,48 @@ export function Landing() {
           <ServiceBanner consequence="Cases cannot be opened until it is back." />
         </div>
       ) : null}
-      <section
-        aria-labelledby="hero-heading"
-        className="mx-auto grid w-full max-w-[90rem] gap-x-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,36rem)_minmax(0,1fr)] lg:grid-rows-[auto_auto_1fr]"
-      >
-        <div className="pointer-events-none relative z-10 order-1 lg:col-span-2 lg:col-start-1 lg:row-start-1">
-          <HeroHeading />
+      <section aria-labelledby="hero-heading" className="hero-space relative isolate">
+        <div className="mx-auto grid w-full max-w-[90rem] grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,38rem)_minmax(0,1fr)] lg:gap-x-10">
+          <div className="relative z-20 order-1 px-5 sm:px-8 lg:col-start-1 lg:row-start-1 lg:pr-0">
+            <HeroHeading />
+            <HeroLede catalog={catalog.status === "success" ? catalog.data : null} />
+            <div className="reveal relative z-30 mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-end" style={revealStep(2)}>
+              <PlaceSearch suggested={places} onPick={pickFromSearch} className="min-w-0 flex-1" />
+              <Link href="/tour" className={buttonVariants({ variant: "accent", size: "lg", className: "min-h-14 group" })}>
+                <Play aria-hidden="true" className="transition-transform duration-150 ease-out group-hover:scale-110" />
+                Watch a solved case
+              </Link>
+            </div>
+            <p className="reveal mt-3 max-w-[52ch] text-sm text-muted-foreground" style={revealStep(3)}>
+              Every point on Earth is a valid case: any city above 15,000 people, coordinates, or a
+              <span className="lg:hidden"> tap</span>
+              <span className="hidden lg:inline"> click</span> on the globe.
+            </p>
+            {assistantAvailable && catalog.status === "success" ? (
+              <AskToggle catalog={catalog.data} onUse={(result) => {
+                dispatch({ type: "applyAsk", result });
+                if (result.location) focusSecondStep();
+              }} />
+            ) : null}
+          </div>
+          <div
+            id="open-a-case"
+            className="order-3 scroll-mt-6 px-5 sm:px-8 lg:col-start-1 lg:row-start-2 lg:pr-0 lg:pb-16"
+          >
+            {secondStep}
+          </div>
+          <div className="reveal relative order-2 mt-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0" style={revealStep(1)}>
+            <div className="lg:sticky lg:top-0">
+              <Globe
+                className="h-[min(70svh,34rem)] w-full sm:h-[40rem] lg:h-[calc(100svh-5rem)] lg:min-h-[38rem]"
+                places={places}
+                selected={state.location}
+                onSelect={selectLocation}
+                timelapse
+              />
+            </div>
+          </div>
         </div>
-        <div className="order-2 lg:col-start-1 lg:row-start-2">
-          <HeroLede catalog={catalog.status === "success" ? catalog.data : null} />
-        </div>
-        <div
-          id="open-a-case"
-          className="reveal order-4 mt-10 scroll-mt-6 lg:col-start-1 lg:row-start-3 lg:mt-12 lg:pb-16"
-          style={revealStep(3)}
-        >
-          <h2 className="sr-only">Open a case</h2>
-          {opener}
-        </div>
-        {globe}
       </section>
     </>
   );

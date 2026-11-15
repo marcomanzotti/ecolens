@@ -16,7 +16,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from dataclasses import replace
 
-from trend_detective import catalog, emergence, limitations, places, stats
+from trend_detective import catalog, emergence, external_witnesses, limitations, places, stats
 from trend_detective.errors import NoDataError, UnknownVariableError, UpstreamError
 from trend_detective.lineup import build_lineup
 from trend_detective.models import (
@@ -136,7 +136,12 @@ class TrendInvestigator:
             )
         members = catalog.witness_group_members(variable.witness_group)
         found = await self._point_series(location, members, period, season)
-        return build_witnesses(location, period, season, variable.witness_group, members, found)
+        extra = external_witnesses.external_witnesses(
+            variable.witness_group, location, period, season
+        )
+        return build_witnesses(
+            location, period, season, variable.witness_group, members, found, extra
+        )
 
     # -- trend map -----------------------------------------------------------
 

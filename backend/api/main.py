@@ -56,7 +56,7 @@ def add_middleware(app: FastAPI, settings: Settings) -> None:
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     app = FastAPI(
-        title="Trend Detective API",
+        title="EcoLens API",
         version=__version__,
         description="Finds and tests long-term trends in NASA Earth science variables.",
         responses=ERROR_RESPONSES,

@@ -15,7 +15,7 @@
      "url": "https://power.larc.nasa.gov/"
     },
     "first_year": 1981,
-    "witness_group": null
+    "witness_group": "air_temperature"
    },
    {
     "id": "T2M_MAX",

@@ -504,6 +504,7 @@
     "mean": 1.4471111111111112,
     "std": 0.2671790531921365,
     "lag1_autocorrelation": -0.30439097190304776,
+    "autocorrelation_corrected": true,
     "ols": {
      "slope_per_decade": 0.09602108036890644,
      "stderr_per_decade": 0.027348889638788468,
@@ -518,12 +519,13 @@
      "s": 296.0,
      "z": 2.887350462592068,
      "tau": 0.298989898989899,
-     "p_value": 0.0038850122845191766
+     "p_value": 0.0038850122845191766,
+     "p_value_hamed_rao": 0.00019009254654949647
     },
     "sen": {
      "slope_per_decade": 0.08138528138528142,
-     "ci95_low": 0.022727272727272648,
-     "ci95_high": 0.13928571428571432
+     "ci95_low": 0.03636363636363629,
+     "ci95_high": 0.1233333333333333
     }
    },
    "emergence": {
@@ -723,15 +725,16 @@
     "what": "Precipitation is rising.",
     "where": "Niamey, Niger, 1981–2025.",
     "how_much": "+0.0814 mm/day per decade (Sen's slope); the fitted line changes by +0.422 mm/day over the whole period (+29%).",
-    "how_sure": "Both tests agree this is very unlikely to be chance (t-test p = 0.0011, Mann-Kendall p = 0.0039).",
+    "how_sure": "Both tests agree this is very unlikely to be chance (t-test p = 0.0011, Mann-Kendall corrected for autocorrelation p < 0.001).",
     "caveats": [
-     "Consecutive years tend to alternate (autocorrelation -0.30), but the tests assume independent years, so their p-values are only approximate."
+     "Consecutive years are alternating (autocorrelation -0.30), so the Mann-Kendall p-value was corrected for it (Hamed and Rao method). The t-test p-value was not corrected and may be too small."
     ]
    },
    "limitations": [
     "Values come from MERRA-2, a global reanalysis (a weather model corrected with observations), on a grid of roughly 50 km: they describe the area around the point, not the exact spot.",
     "Only straight-line trends are tested. A change that speeds up, slows down or reverses is not captured.",
-    "The tests treat each year as independent of the one before. No correction for year-to-year correlation is applied.",
+    "Years that resemble the one before them make the tests over-confident. When the lag-1 autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected.",
+    "The line-up, the trend map and the emergence year use the Mann-Kendall p-value without the autocorrelation correction.",
     "A trend shows that a value changed, not why it changed."
    ]
   },
@@ -1878,7 +1881,7 @@
        "url": "https://power.larc.nasa.gov/"
       },
       "first_year": 1981,
-      "witness_group": null
+      "witness_group": "air_temperature"
      },
      "status": "ok",
      "n": 45,

@@ -3,7 +3,7 @@
 import { CircleCheck, CircleDashed, CircleSlash, Scale } from "lucide-react";
 import type { Section as SectionState } from "@/hooks/use-case-data";
 import type { Catalog, Variable, Witness, WitnessesResult } from "@/lib/api";
-import { isProductConfirmed } from "@/lib/caveats";
+import { SOURCE_KIND_LABEL, isProductConfirmed } from "@/lib/caveats";
 import {
   directionWord,
   formatInterval,
@@ -19,7 +19,7 @@ import { EVIDENCE_TEXT } from "@/components/case/evidence-meter";
 
 const WITNESS_CHART_HEIGHT = 200;
 
-const AGREEMENT = {
+export const AGREEMENT = {
   agree: { label: "The witnesses agree", Icon: CircleCheck },
   partly: { label: "The witnesses partly agree", Icon: Scale },
   disagree: { label: "The witnesses disagree", Icon: CircleSlash },
@@ -42,8 +42,10 @@ function WitnessCard({
       <h3 className="font-heading text-lg font-black">{variable.name}</h3>
       <p className="text-sm text-muted-foreground">
         {variable.source.product}
-        {isProductConfirmed(variable) ? "" : " (label provisional)"}, {variable.source.kind}
+        {isProductConfirmed(variable) ? "" : " (label provisional)"},{" "}
+        {SOURCE_KIND_LABEL[variable.source.kind]}
       </p>
+      <p className="text-sm text-muted-foreground">{variable.source.provider}</p>
       {trend ? (
         <p className="tabular mt-3">
           <span className="font-bold">
@@ -82,7 +84,7 @@ function Witnesses({ result, variable }: { result: WitnessesResult; variable: Va
           related quantity: {result.quantity.toLowerCase()}.
         </p>
       ) : null}
-      <div className="flex flex-col gap-4 rounded-xl border border-line-strong p-5 sm:flex-row sm:items-start">
+      <div className="flex flex-col gap-4 rounded-xl border border-line-strong p-5 @md:flex-row @md:items-start">
         <Icon aria-hidden="true" className="size-8 shrink-0 text-neon" />
         <div className="min-w-0">
           <p className="font-heading text-xl font-black">{label}</p>
@@ -96,7 +98,7 @@ function Witnesses({ result, variable }: { result: WitnessesResult; variable: Va
           </p>
         </div>
       </div>
-      <ul className="grid gap-4 lg:grid-cols-2">
+      <ul className="grid gap-4 @3xl:grid-cols-2">
         {result.witnesses.map((witness) => (
           <WitnessCard key={witness.variable.id} witness={witness} period={result.common_period} />
         ))}
@@ -134,7 +136,12 @@ function NoWitnesses({ variable, catalog, onInvestigate }: NoWitnessesProps) {
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {withWitnesses.map((v) => (
-          <Button key={v.id} variant="outline" size="sm" onClick={() => onInvestigate(v.id)}>
+          <Button
+            key={v.id}
+            variant="outline"
+            onClick={() => onInvestigate(v.id)}
+            className="h-auto min-h-11 max-w-full py-2 text-left whitespace-normal"
+          >
             Investigate {v.name.toLowerCase()}
           </Button>
         ))}
@@ -168,7 +175,7 @@ export function WitnessesSection({
           onRetry={section.retry}
           loadingMessage="Calling the witnesses: fetching every dataset for the same quantity."
           skeleton={
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 @3xl:grid-cols-2">
               <Skeleton className="h-80 rounded-xl" />
               <Skeleton className="h-80 rounded-xl" />
             </div>

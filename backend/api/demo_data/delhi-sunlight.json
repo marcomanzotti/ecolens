@@ -484,6 +484,7 @@
    "mean": 17.948095238095238,
    "std": 0.8149823822582949,
    "lag1_autocorrelation": -0.17939037459266,
+   "autocorrelation_corrected": false,
    "ols": {
     "slope_per_decade": -0.5951057450773843,
     "stderr_per_decade": 0.046683933618270994,
@@ -498,7 +499,8 @@
     "s": -619.0,
     "z": -6.6990803933673755,
     "tau": -0.718931475029036,
-    "p_value": 2.097351918464885e-11
+    "p_value": 2.097351918464885e-11,
+    "p_value_hamed_rao": 2.097351918464885e-11
    },
    "sen": {
     "slope_per_decade": -0.6062499999999993,
@@ -696,7 +698,8 @@
   "limitations": [
    "Values come from GEWEX SRB + CERES SYN1deg, a satellite-based product, on a grid of roughly 100 km: they describe the area around the point, not the exact spot.",
    "Only straight-line trends are tested. A change that speeds up, slows down or reverses is not captured.",
-   "The tests treat each year as independent of the one before. No correction for year-to-year correlation is applied.",
+   "Years that resemble the one before them make the tests over-confident. When the lag-1 autocorrelation is above 0.3 in absolute value, the verdict uses the Mann-Kendall p-value corrected for it (Hamed and Rao, 1998); the t-test p-value is never corrected.",
+   "The line-up, the trend map and the emergence year use the Mann-Kendall p-value without the autocorrelation correction.",
    "A trend shows that a value changed, not why it changed.",
    "Data for this variable only start in 1984, so the trend covers a shorter period than the one requested."
   ]
@@ -2066,7 +2069,7 @@
       "url": "https://power.larc.nasa.gov/"
      },
      "first_year": 1981,
-     "witness_group": null
+     "witness_group": "air_temperature"
     },
     "status": "ok",
     "n": 45,

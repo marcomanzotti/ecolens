@@ -1,4 +1,4 @@
-# API contract — Trend Detective
+# API contract — EcoLens
 
 Agreed on 14/11/2026 (stage 1). Front-end and back-end are built against this document.
 
@@ -127,7 +127,7 @@ catalog's display unit before any statistic.
 
 | `evidence` | Meaning | `significant` |
 |---|---|---|
-| `strong` | OLS t-test **and** Mann-Kendall both p < 0.05 | `true` |
+| `strong` | OLS t-test **and** Mann-Kendall both p < 0.05 (the Hamed-Rao p when `autocorrelation_corrected`) | `true` |
 | `mixed` | only one of the two | `false` |
 | `none` | neither | `false` |
 | `insufficient` | fewer than 10 valid years, or a constant series | — |
@@ -138,9 +138,16 @@ correction; `sen.*` is the Theil-Sen slope with its 95% CI. `direction` follows 
 slope. `total_change` is the OLS slope times the span of the period. `fit` is the OLS line with the
 95% confidence band of the mean, one point per year.
 
-**Autocorrelation.** `lag1_autocorrelation` is computed on the detrended residuals. When its
-absolute value is above 0.3 the verdict carries a caveat. (Whether to also apply a pre-whitening
-correction is a BE-1 decision, to be reported, not a contract change.)
+**Autocorrelation (P3).** `lag1_autocorrelation` is computed on the detrended residuals.
+`mann_kendall.p_value_hamed_rao` is the Mann-Kendall p-value with the Hamed and Rao (1998)
+variance correction (Sen-detrended ranks, autocorrelations outside the 95% white-noise band,
+n/n\* factor), checked against `pymannkendall.hamed_rao_modification_test` (max abs difference
+below 1e-15 on 400 series); it is `null` when the corrected variance is not positive or the series
+is a perfect line. When `|lag1_autocorrelation| > 0.3` and it exists, the verdict, `evidence`,
+`significant`, `methods_agree` and the Sen interval use it and `autocorrelation_corrected` is
+`true`; otherwise they use `mann_kendall.p_value`, which is always the uncorrected one. The OLS
+t-test is never corrected. The line-up, the trend map and the emergence years keep the
+uncorrected Mann-Kendall p-value (stated in `limitations`).
 
 **Verdict.** Built by fixed rules from `TrendStats` in `verdict.py`. Never by the AI assistant.
 
@@ -164,7 +171,14 @@ adaptation is our own derivation. In the interface this number is "a rough estim
 exact prediction. `additional_years` compares it with the span of the record.
 
 **Witnesses (block D).** All variables sharing a `witness_group`, compared over their common
-period only. `agreement.level`: `agree` (same direction, all significant), `partly` (same
+period only. `source.kind` is now `reanalysis | satellite | derived | station | station_grid`:
+`station` is a point station record (NOAA GSOY), `station_grid` a gridded analysis of station and
+ship records (NASA GISTEMP). Air temperature (`T2M`, group `air_temperature`) is compared with
+GISTEMP v4 anywhere on Earth (the 2° cell holding the point, an anomaly from 1951–1980; id
+`GISTEMP_ANOMALY`, provider "NASA GISS") and, within 50 km of one of the three NOAA stations,
+with that station (id `NOAA_GSOY_<station id>`). Both are annual means: with a season selected
+`/witnesses` answers `no_data` and says so. The cell has no data, or the file is missing: the
+same error with the reason. `agreement.level`: `agree` (same direction, all significant), `partly` (same
 direction), `disagree` (opposite directions), `insufficient`.
 
 **Trend map (block B).** One cell per point of the source grid (MERRA-2: 0.5° latitude × 0.625°
@@ -195,8 +209,8 @@ engine tests (POWER revises recent years).
   (`CLOUD_AMT`, `ALLSKY_SFC_SW_DWN`, `CLRSKY_SFC_SW_DWN`, `ALLSKY_SFC_LW_DWN`) and in 2001
   (`PW`, `AOD_55`, `CLOUD_OD`, `ALLSKY_SFC_UV_INDEX`, `ALLSKY_SRF_ALB`).
 - **`IMERG_PRECTOT` (GPM) is listed by POWER but returned only `-999`**, monthly and daily, at
-  the two points tried. It is not in the catalog. The only witness group today is
-  `column_water_vapour`: `TQV` (MERRA-2, kg/m²) against `PW` (described by POWER as "sourced
+  the two points tried. It is not in the catalog. The witness groups today are `air_temperature` (`T2M` against
+  GISTEMP and nearby NOAA stations, see Witnesses) and `column_water_vapour`: `TQV` (MERRA-2, kg/m²) against `PW` (described by POWER as "sourced
   from CERES", cm × 10 = kg/m²). How independent the two really are is not established: the
   interface must not call them independent measurements without that check.
 - The `product` labels in the catalog are provisional. BE-2 confirms each one against the POWER

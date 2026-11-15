@@ -8,7 +8,7 @@ import { directionWord, formatPeriod, formatSigned, placeName, seasonLabel } fro
 import { AsyncView, ErrorNotice, LoadingNotice } from "@/components/ui/async-view";
 import { SeriesChart } from "@/components/charts/series-chart";
 import { TrendStats } from "@/components/case/trend-stats";
-import { VerdictPanel } from "@/components/case/verdict-panel";
+import { VerdictPanel, type WitnessSignal } from "@/components/case/verdict-panel";
 import { VerdictSkeleton } from "@/components/case/case-skeleton";
 
 interface VerdictSectionProps {
@@ -17,6 +17,8 @@ interface VerdictSectionProps {
   /** No variable yet: the line-up is choosing one. */
   waitingForLineup: boolean;
   lineupState: AsyncState<LineupResult>;
+  /** Whether a second dataset tells the same story: one of the signals of the card. */
+  witnesses: WitnessSignal;
 }
 
 function chartSummary(result: CaseResult): string {
@@ -29,18 +31,25 @@ function chartSummary(result: CaseResult): string {
 function Evidence({ result }: { result: CaseResult }) {
   const { variable, trend } = result;
   return (
-    <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_20rem]">
+    <div className="mt-12 grid gap-8 @5xl:grid-cols-[minmax(0,1fr)_18rem] @5xl:gap-10">
       <div className="min-w-0">
-        <h3 className="mb-4 font-heading text-2xl font-black">The evidence, year by year</h3>
+        <h3 className="mb-4 font-heading text-[clamp(1.375rem,1.2rem+0.8vw,1.75rem)] font-black">
+          The evidence, year by year
+        </h3>
         <SeriesChart
           series={result.series}
           fit={result.fit}
           unit={variable.unit}
           variableName={variable.name}
           summary={chartSummary(result)}
+          height={360}
+          crackedYear={result.emergence?.emerged_year ?? null}
         />
       </div>
-      <aside aria-label="What is measured" className="space-y-5 lg:pt-12">
+      <aside
+        aria-label="What is measured"
+        className="grid gap-5 border-t border-line pt-6 @2xl:grid-cols-2 @2xl:gap-8 @5xl:block @5xl:space-y-5 @5xl:border-t-0 @5xl:pt-12"
+      >
         <div>
           <h3 className="font-heading text-lg font-bold">What is measured</h3>
           <p className="mt-1">{variable.definition}</p>
@@ -73,7 +82,7 @@ function Evidence({ result }: { result: CaseResult }) {
         </dl>
       </aside>
       {trend ? (
-        <div className="lg:col-span-2">
+        <div className="@5xl:col-span-2">
           <h3 className="sr-only">Statistics behind the verdict</h3>
           <TrendStats trend={trend} />
         </div>
@@ -88,6 +97,7 @@ export function VerdictSection({
   variableFromLineup,
   waitingForLineup,
   lineupState,
+  witnesses,
 }: VerdictSectionProps) {
   const body = waitingForLineup ? (
     lineupState.status === "error" ? (
@@ -115,6 +125,7 @@ export function VerdictSection({
             result={result}
             alpha={result.trend?.alpha ?? CONTRACT_ALPHA}
             pickedByLineup={variableFromLineup}
+            witnesses={witnesses}
           />
           <Evidence result={result} />
         </>

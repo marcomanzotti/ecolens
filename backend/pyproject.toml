@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "trend-detective"
 version = "0.1.0"
@@ -13,3 +17,10 @@ addopts = "-m 'not live'"
 
 [tool.coverage.run]
 source = ["trend_detective", "api"]
+
+[tool.setuptools.packages.find]
+include = ["trend_detective*", "api*"]
+
+# The GISTEMP grid and the NOAA station file are read from inside the package at run time.
+[tool.setuptools.package-data]
+trend_detective = ["data/*.npz", "data/*.json"]

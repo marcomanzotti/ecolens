@@ -1143,7 +1143,7 @@
       "url": "https://power.larc.nasa.gov/"
      },
      "first_year": 1981,
-     "witness_group": null
+     "witness_group": "air_temperature"
     },
     "status": "ok",
     "n": 45,

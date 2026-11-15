@@ -1,7 +1,7 @@
 {
  "openapi": "3.1.0",
  "info": {
-  "title": "Trend Detective API",
+  "title": "EcoLens API",
   "description": "Finds and tests long-term trends in NASA Earth science variables.",
   "version": "0.1.0"
  },
@@ -1399,7 +1399,9 @@
       "enum": [
        "reanalysis",
        "satellite",
-       "derived"
+       "derived",
+       "station",
+       "station_grid"
       ],
       "title": "Kind"
      },
@@ -2390,6 +2392,20 @@
       "maximum": 1.0,
       "minimum": 0.0,
       "title": "P Value"
+     },
+     "p_value_hamed_rao": {
+      "anyOf": [
+       {
+        "type": "number",
+        "maximum": 1.0,
+        "minimum": 0.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "P Value Hamed Rao",
+      "description": "Mann-Kendall p-value with the Hamed and Rao (1998) variance correction for autocorrelation; null when it cannot be computed"
      }
     },
     "additionalProperties": false,
@@ -3042,6 +3058,12 @@
      "lag1_autocorrelation": {
       "type": "number",
       "title": "Lag1 Autocorrelation"
+     },
+     "autocorrelation_corrected": {
+      "type": "boolean",
+      "title": "Autocorrelation Corrected",
+      "description": "True when the verdict used the Hamed-Rao p-value because |lag-1 autocorrelation| > 0.3",
+      "default": false
      },
      "ols": {
       "$ref": "#/components/schemas/OlsResult"

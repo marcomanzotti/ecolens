@@ -38,6 +38,8 @@ def make_trend(
     sen_slope: float = 0.5,
     ols_p: float = 0.001,
     mk_p: float = 0.002,
+    mk_p_hr: float | None = None,
+    corrected: bool = False,
     n: int = 45,
     n_missing: int = 0,
     lag1: float = 0.1,
@@ -60,6 +62,7 @@ def make_trend(
         mean=mean,
         std=std,
         lag1_autocorrelation=lag1,
+        autocorrelation_corrected=corrected,
         ols=m.OlsResult(
             slope_per_decade=sen_slope,
             stderr_per_decade=0.1,
@@ -70,7 +73,9 @@ def make_trend(
             r_squared=0.3,
             intercept=mean,
         ),
-        mann_kendall=m.MannKendallResult(s=100.0, z=3.0, tau=0.4, p_value=mk_p),
+        mann_kendall=m.MannKendallResult(
+            s=100.0, z=3.0, tau=0.4, p_value=mk_p, p_value_hamed_rao=mk_p_hr
+        ),
         sen=m.SenResult(
             slope_per_decade=sen_slope, ci95_low=sen_slope - 0.2, ci95_high=sen_slope + 0.2
         ),

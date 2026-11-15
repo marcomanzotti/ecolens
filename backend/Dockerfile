@@ -1,4 +1,4 @@
-# Trend Detective API, built for Google Cloud Run.
+# EcoLens API, built for Google Cloud Run.
 # Build context: this directory (backend/). Nothing outside it is needed at runtime:
 # the engine reads NASA POWER over HTTPS and the demo cases live in api/demo_data/.
 #
