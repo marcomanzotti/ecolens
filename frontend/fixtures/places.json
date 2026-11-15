@@ -1,0 +1,229 @@
+{
+ "success": true,
+ "data": {
+  "places": [
+   {
+    "id": "niamey",
+    "name": "Niamey",
+    "country": "Niger",
+    "lat": 13.51,
+    "lon": 2.11,
+    "kind": "grassland",
+    "blurb": "On the edge of the Sahara, where the rains failed in the 1970s and 1980s. Have they come back?",
+    "suggested_themes": [
+     "water",
+     "soil",
+     "temperature"
+    ]
+   },
+   {
+    "id": "manaus",
+    "name": "Manaus",
+    "country": "Brazil",
+    "lat": -3.1,
+    "lon": -60.0,
+    "kind": "rainforest",
+    "blurb": "The heart of the Amazon, where forest and rainfall depend on each other.",
+    "suggested_themes": [
+     "water",
+     "temperature",
+     "air"
+    ]
+   },
+   {
+    "id": "tromso",
+    "name": "Tromsø",
+    "country": "Norway",
+    "lat": 69.65,
+    "lon": 18.96,
+    "kind": "polar",
+    "blurb": "Inside the Arctic Circle, a region that scientists say is warming faster than the rest of the planet.",
+    "suggested_themes": [
+     "temperature",
+     "snow"
+    ]
+   },
+   {
+    "id": "delhi",
+    "name": "Delhi",
+    "country": "India",
+    "lat": 28.61,
+    "lon": 77.21,
+    "kind": "city",
+    "blurb": "A megacity under some of the haziest air in the world.",
+    "suggested_themes": [
+     "air",
+     "sunlight",
+     "temperature"
+    ]
+   },
+   {
+    "id": "aral",
+    "name": "Aral Sea",
+    "country": "Kazakhstan / Uzbekistan",
+    "lat": 45.0,
+    "lon": 60.0,
+    "kind": "wetland",
+    "blurb": "A sea that shrank to a fraction of its size within one lifetime.",
+    "suggested_themes": [
+     "water",
+     "temperature",
+     "soil"
+    ]
+   },
+   {
+    "id": "alps",
+    "name": "Central Alps",
+    "country": "Switzerland",
+    "lat": 46.55,
+    "lon": 8.0,
+    "kind": "mountain",
+    "blurb": "High mountains whose snow and glaciers feed Europe's great rivers.",
+    "suggested_themes": [
+     "snow",
+     "temperature"
+    ]
+   },
+   {
+    "id": "central-valley",
+    "name": "Central Valley",
+    "country": "United States",
+    "lat": 36.75,
+    "lon": -119.77,
+    "kind": "farmland",
+    "blurb": "One of the most productive farming regions on Earth, and one of the thirstiest.",
+    "suggested_themes": [
+     "soil",
+     "water",
+     "temperature"
+    ]
+   },
+   {
+    "id": "atacama",
+    "name": "Atacama Desert",
+    "country": "Chile",
+    "lat": -24.5,
+    "lon": -69.25,
+    "kind": "desert",
+    "blurb": "The driest non-polar desert on the planet.",
+    "suggested_themes": [
+     "water",
+     "sunlight",
+     "temperature"
+    ]
+   },
+   {
+    "id": "venice",
+    "name": "Venice Lagoon",
+    "country": "Italy",
+    "lat": 45.44,
+    "lon": 12.33,
+    "kind": "coast",
+    "blurb": "A city on a tidal lagoon, exposed to every change in sea and sky.",
+    "suggested_themes": [
+     "temperature",
+     "water",
+     "wind"
+    ]
+   },
+   {
+    "id": "male",
+    "name": "Malé",
+    "country": "Maldives",
+    "lat": 4.17,
+    "lon": 73.51,
+    "kind": "island",
+    "blurb": "A low coral island in the middle of the warm Indian Ocean.",
+    "suggested_themes": [
+     "temperature",
+     "water",
+     "wind"
+    ]
+   },
+   {
+    "id": "tamanrasset",
+    "name": "Tamanrasset",
+    "country": "Algeria",
+    "lat": 22.79,
+    "lon": 5.52,
+    "kind": "desert",
+    "blurb": "An oasis town in the middle of the Sahara, far from any sea.",
+    "suggested_themes": [
+     "temperature",
+     "water",
+     "sunlight"
+    ]
+   },
+   {
+    "id": "yakutsk",
+    "name": "Yakutsk",
+    "country": "Russia",
+    "lat": 62.03,
+    "lon": 129.73,
+    "kind": "city",
+    "blurb": "Among the coldest cities on Earth, deep inside the Siberian forest.",
+    "suggested_themes": [
+     "temperature",
+     "snow"
+    ]
+   },
+   {
+    "id": "lhasa",
+    "name": "Lhasa",
+    "country": "China",
+    "lat": 29.65,
+    "lon": 91.1,
+    "kind": "mountain",
+    "blurb": "A city on the Tibetan Plateau, 3,600 metres up, where the rivers of Asia begin.",
+    "suggested_themes": [
+     "temperature",
+     "snow",
+     "sunlight"
+    ]
+   },
+   {
+    "id": "cairns",
+    "name": "Cairns",
+    "country": "Australia",
+    "lat": -16.92,
+    "lon": 145.77,
+    "kind": "coast",
+    "blurb": "A tropical coast next to the Great Barrier Reef.",
+    "suggested_themes": [
+     "temperature",
+     "water",
+     "wind"
+    ]
+   },
+   {
+    "id": "dodge-city",
+    "name": "Dodge City",
+    "country": "United States",
+    "lat": 37.75,
+    "lon": -100.02,
+    "kind": "grassland",
+    "blurb": "The heart of the Great Plains, where the Dust Bowl droughts struck in the 1930s.",
+    "suggested_themes": [
+     "soil",
+     "water",
+     "temperature"
+    ]
+   },
+   {
+    "id": "pantanal",
+    "name": "Pantanal",
+    "country": "Brazil",
+    "lat": -19.01,
+    "lon": -57.65,
+    "kind": "wetland",
+    "blurb": "The largest tropical wetland on Earth, flooded and dried out by the seasons.",
+    "suggested_themes": [
+     "water",
+     "soil",
+     "temperature"
+    ]
+   }
+  ]
+ },
+ "error": null
+}

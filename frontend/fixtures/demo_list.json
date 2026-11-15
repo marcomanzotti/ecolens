@@ -1,0 +1,36 @@
+{
+ "success": true,
+ "data": {
+  "demos": [
+   {
+    "id": "sahel-rain",
+    "title": "The rain that came back",
+    "blurb": "After the droughts of the 1980s, is the Sahel really getting wetter?",
+    "place_name": "Niamey, Niger",
+    "variable_id": "PRECTOTCORR"
+   },
+   {
+    "id": "delhi-sunlight",
+    "title": "Less sun over Delhi",
+    "blurb": "Is less sunlight reaching the ground in one of the world's busiest cities?",
+    "place_name": "Delhi, India",
+    "variable_id": "ALLSKY_SFC_SW_DWN"
+   },
+   {
+    "id": "pantanal-rain",
+    "title": "The wetland's missing rain",
+    "blurb": "The Pantanal lives on its floods. Is rainfall over it falling?",
+    "place_name": "Pantanal, Brazil",
+    "variable_id": "PRECTOTCORR"
+   },
+   {
+    "id": "venice-heat",
+    "title": "A warmer lagoon",
+    "blurb": "How much warmer is the air over the Venice Lagoon than in 1981?",
+    "place_name": "Venice Lagoon, Italy",
+    "variable_id": "T2M"
+   }
+  ]
+ },
+ "error": null
+}

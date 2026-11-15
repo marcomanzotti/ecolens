@@ -1,0 +1,15 @@
+[project]
+name = "trend-detective"
+version = "0.1.0"
+description = "Finds and tests long-term trends in NASA Earth science variables"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+markers = ["live: calls the real NASA POWER API (deselected by default)"]
+addopts = "-m 'not live'"
+
+[tool.coverage.run]
+source = ["trend_detective", "api"]

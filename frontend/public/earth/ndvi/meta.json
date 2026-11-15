@@ -1,0 +1,367 @@
+{
+ "format_version": 1,
+ "built": "2026-11-15",
+ "source": {
+  "name": "MODIS Terra L3 monthly NDVI, NASA LP DAAC, via NASA GIBS (decoded colour map)",
+  "url": "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?LAYERS=MODIS_Terra_L3_NDVI_Monthly",
+  "colormap": "https://gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_L3_NDVI.xml",
+  "file_date": "2026-11-15",
+  "missing_months": [
+   "2025-04"
+  ]
+ },
+ "baseline": "2001-2010",
+ "unit": "NDVI",
+ "labels": {
+  "up": "greening",
+  "down": "browning"
+ },
+ "statistic": "Annual peak NDVI: the maximum of the twelve monthly 1-degree means (each the mean of the valid 0.25-degree pixels, at least half of them valid); a year needs at least 4 valid months. Peak greenness is used instead of the annual mean because the layer leaves snow-covered months uncoloured, which would bias an annual mean.",
+ "mask": "Measured cells: at least 8 valid years in 2001-2010 and a baseline peak NDVI of at least 0.1 (deserts, ice and water are not tested). Missing values are never filled.",
+ "quantisation": {
+  "max_error": 0.005,
+  "content": "each pixel is the midpoint of its colour-map bin (bins 0.005-0.01 NDVI wide); error at most 0.005 NDVI before averaging"
+ },
+ "years": [
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025
+ ],
+ "grid": {
+  "n_lat": 180,
+  "n_lon": 360,
+  "lat_first": -89.5,
+  "lon_first": -179.5,
+  "step_deg": 1,
+  "order": "year, lat (south to north), lon (west to east); cell centres"
+ },
+ "files": {
+  "anomaly.bin": {
+   "type": "int16 little-endian",
+   "shape": [
+    25,
+    180,
+    360
+   ],
+   "scale": 0.001,
+   "unit": "NDVI",
+   "missing": 32767,
+   "content": "annual peak NDVI minus its 2001-2010 mean"
+  },
+  "emerged.bin": {
+   "type": "int8",
+   "shape": [
+    25,
+    180,
+    360
+   ],
+   "content": "significant trend over the window first year -> year: +1 greening, -1 browning, 0 not significant or untested"
+  },
+  "rate.bin": {
+   "parts": [
+    {
+     "type": "int16 little-endian",
+     "shape": [
+      180,
+      360
+     ],
+     "scale": 0.0001,
+     "unit": "NDVI per decade",
+     "missing": 32767,
+     "content": "Sen slope 2001-2025"
+    },
+    {
+     "type": "int8",
+     "shape": [
+      180,
+      360
+     ],
+     "offset_bytes": 129600,
+     "content": "significance at the end of the series (same as emerged.bin 2025)"
+    }
+   ]
+  }
+ },
+ "test": {
+  "rule": "For each end year Y, every cell is tested on its annual peak NDVI anomalies over the window first_year->Y with the engine's compute_trend (Mann-Kendall with tie correction; Sen slope gives the direction; missing years dropped; at least 10 valid years; constant series untested). Benjamini-Hochberg is applied to the Mann-Kendall p-values of all tested cells of that window; a cell is significant when p_adjusted < 0.05. Same rule as the trend map (Block B). No correction for autocorrelation.",
+  "alpha": 0.05,
+  "correction": "Benjamini-Hochberg",
+  "min_years": 10,
+  "area_weight": "cos(latitude)",
+  "share_denominator": "area of the cells tested in that window (measured land)",
+  "n_tests": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   13462,
+   13695,
+   13778,
+   13787,
+   13795,
+   13796,
+   13798,
+   13798,
+   13798,
+   13799,
+   13799,
+   13799,
+   13799,
+   13799,
+   13799,
+   13799
+  ]
+ },
+ "shares": [
+  {
+   "year": 2001,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2002,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2003,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2004,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2005,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2006,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2007,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2008,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2009,
+   "tested_cells": 0,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2010,
+   "tested_cells": 13462,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2011,
+   "tested_cells": 13695,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2012,
+   "tested_cells": 13778,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2013,
+   "tested_cells": 13787,
+   "greening_cells": 0,
+   "browning_cells": 0,
+   "greening_pct": 0.0,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2014,
+   "tested_cells": 13795,
+   "greening_cells": 6,
+   "browning_cells": 0,
+   "greening_pct": 0.04,
+   "browning_pct": 0.0
+  },
+  {
+   "year": 2015,
+   "tested_cells": 13796,
+   "greening_cells": 142,
+   "browning_cells": 23,
+   "greening_pct": 0.97,
+   "browning_pct": 0.2
+  },
+  {
+   "year": 2016,
+   "tested_cells": 13798,
+   "greening_cells": 487,
+   "browning_cells": 62,
+   "greening_pct": 3.3,
+   "browning_pct": 0.53
+  },
+  {
+   "year": 2017,
+   "tested_cells": 13798,
+   "greening_cells": 890,
+   "browning_cells": 90,
+   "greening_pct": 6.03,
+   "browning_pct": 0.79
+  },
+  {
+   "year": 2018,
+   "tested_cells": 13798,
+   "greening_cells": 1069,
+   "browning_cells": 108,
+   "greening_pct": 7.13,
+   "browning_pct": 0.95
+  },
+  {
+   "year": 2019,
+   "tested_cells": 13799,
+   "greening_cells": 1426,
+   "browning_cells": 149,
+   "greening_pct": 9.66,
+   "browning_pct": 1.29
+  },
+  {
+   "year": 2020,
+   "tested_cells": 13799,
+   "greening_cells": 1972,
+   "browning_cells": 173,
+   "greening_pct": 13.39,
+   "browning_pct": 1.43
+  },
+  {
+   "year": 2021,
+   "tested_cells": 13799,
+   "greening_cells": 2391,
+   "browning_cells": 217,
+   "greening_pct": 16.29,
+   "browning_pct": 1.77
+  },
+  {
+   "year": 2022,
+   "tested_cells": 13799,
+   "greening_cells": 2458,
+   "browning_cells": 249,
+   "greening_pct": 16.76,
+   "browning_pct": 2.04
+  },
+  {
+   "year": 2023,
+   "tested_cells": 13799,
+   "greening_cells": 2620,
+   "browning_cells": 280,
+   "greening_pct": 18.07,
+   "browning_pct": 2.26
+  },
+  {
+   "year": 2024,
+   "tested_cells": 13799,
+   "greening_cells": 3083,
+   "browning_cells": 303,
+   "greening_pct": 21.38,
+   "browning_pct": 2.46
+  },
+  {
+   "year": 2025,
+   "tested_cells": 13799,
+   "greening_cells": 3429,
+   "browning_cells": 328,
+   "greening_pct": 24.01,
+   "browning_pct": 2.65
+  }
+ ],
+ "hand_checks": [
+  {
+   "lat": 30.5,
+   "lon": 75.5,
+   "year": 2025,
+   "peak_ndvi_slow": 0.72619375,
+   "peak_ndvi_built": 0.7262
+  },
+  {
+   "lat": 14.5,
+   "lon": 2.5,
+   "year": 2025,
+   "peak_ndvi_slow": 0.26088125,
+   "peak_ndvi_built": 0.2609
+  },
+  {
+   "lat": -3.5,
+   "lon": -60.5,
+   "year": 2025,
+   "peak_ndvi_slow": 0.8120166666666666,
+   "peak_ndvi_built": 0.812
+  }
+ ]
+}

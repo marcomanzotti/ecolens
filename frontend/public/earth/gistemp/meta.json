@@ -1,0 +1,550 @@
+{
+ "format_version": 1,
+ "built": "2026-11-15",
+ "source": {
+  "name": "GISTEMP v4 (GHCNv4 + ERSSTv5, 1200 km smoothing), NASA GISS",
+  "url": "https://data.giss.nasa.gov/pub/gistemp/gistemp1200_GHCNv4_ERSSTv5.nc.gz",
+  "file_date": "2026-11-10"
+ },
+ "baseline": "1951-1980",
+ "unit": "K",
+ "years": [
+  1981,
+  1982,
+  1983,
+  1984,
+  1985,
+  1986,
+  1987,
+  1988,
+  1989,
+  1990,
+  1991,
+  1992,
+  1993,
+  1994,
+  1995,
+  1996,
+  1997,
+  1998,
+  1999,
+  2000,
+  2001,
+  2002,
+  2003,
+  2004,
+  2005,
+  2006,
+  2007,
+  2008,
+  2009,
+  2010,
+  2011,
+  2012,
+  2013,
+  2014,
+  2015,
+  2016,
+  2017,
+  2018,
+  2019,
+  2020,
+  2021,
+  2022,
+  2023,
+  2024,
+  2025
+ ],
+ "grid": {
+  "n_lat": 90,
+  "n_lon": 180,
+  "lat_first": -89.0,
+  "lon_first": -179.0,
+  "step_deg": 2.0,
+  "order": "year, lat (south to north), lon (west to east); cell centres"
+ },
+ "files": {
+  "anomaly.bin": {
+   "type": "int16 little-endian",
+   "shape": [
+    45,
+    90,
+    180
+   ],
+   "scale": 0.01,
+   "unit": "K",
+   "missing": 32767,
+   "content": "annual mean anomaly; a year needs at least 10 valid months"
+  },
+  "emerged.bin": {
+   "type": "int8",
+   "shape": [
+    45,
+    90,
+    180
+   ],
+   "content": "significant trend over the window first year -> year: +1 warming, -1 cooling, 0 not significant or untested"
+  },
+  "rate.bin": {
+   "parts": [
+    {
+     "type": "int16 little-endian",
+     "shape": [
+      90,
+      180
+     ],
+     "scale": 0.001,
+     "unit": "K per decade",
+     "missing": 32767,
+     "content": "Sen slope 1981-2025"
+    },
+    {
+     "type": "int8",
+     "shape": [
+      90,
+      180
+     ],
+     "offset_bytes": 32400,
+     "content": "significance at the end of the series (same as emerged.bin 2025)"
+    }
+   ]
+  }
+ },
+ "test": {
+  "rule": "For each end year Y, every cell is tested on its annual mean anomalies over the window first_year->Y with the engine's compute_trend (Mann-Kendall with tie correction; Sen slope gives the direction; missing years dropped; at least 10 valid years; constant series untested). Benjamini-Hochberg is applied to the Mann-Kendall p-values of all tested cells of that window; a cell is significant when p_adjusted < 0.05. Same rule as the trend map (Block B). No correction for autocorrelation.",
+  "alpha": 0.05,
+  "correction": "Benjamini-Hochberg",
+  "min_years": 10,
+  "area_weight": "cos(latitude)",
+  "share_denominator": "area of the cells tested in that window",
+  "n_tests": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   15885,
+   15885,
+   15891,
+   15891,
+   15891,
+   15891,
+   15891,
+   15891,
+   15901,
+   15901,
+   15909,
+   15919,
+   15919,
+   15919,
+   15924,
+   15951,
+   15951,
+   15951,
+   15951,
+   15951,
+   15951,
+   15951,
+   15981,
+   15981,
+   15989,
+   15989,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998,
+   15998
+  ]
+ },
+ "shares": [
+  {
+   "year": 1981,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1982,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1983,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1984,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1985,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1986,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1987,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1988,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1989,
+   "tested_cells": 0,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1990,
+   "tested_cells": 15885,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1991,
+   "tested_cells": 15885,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1992,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1993,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1994,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1995,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1996,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1997,
+   "tested_cells": 15891,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1998,
+   "tested_cells": 15901,
+   "warming_cells": 0,
+   "cooling_cells": 0,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.0
+  },
+  {
+   "year": 1999,
+   "tested_cells": 15901,
+   "warming_cells": 0,
+   "cooling_cells": 17,
+   "warming_pct": 0.0,
+   "cooling_pct": 0.08
+  },
+  {
+   "year": 2000,
+   "tested_cells": 15909,
+   "warming_cells": 8,
+   "cooling_cells": 78,
+   "warming_pct": 0.06,
+   "cooling_pct": 0.4
+  },
+  {
+   "year": 2001,
+   "tested_cells": 15919,
+   "warming_cells": 6,
+   "cooling_cells": 34,
+   "warming_pct": 0.05,
+   "cooling_pct": 0.17
+  },
+  {
+   "year": 2002,
+   "tested_cells": 15919,
+   "warming_cells": 1003,
+   "cooling_cells": 80,
+   "warming_pct": 7.62,
+   "cooling_pct": 0.44
+  },
+  {
+   "year": 2003,
+   "tested_cells": 15919,
+   "warming_cells": 2242,
+   "cooling_cells": 116,
+   "warming_pct": 16.38,
+   "cooling_pct": 0.66
+  },
+  {
+   "year": 2004,
+   "tested_cells": 15924,
+   "warming_cells": 2606,
+   "cooling_cells": 148,
+   "warming_pct": 20.51,
+   "cooling_pct": 0.81
+  },
+  {
+   "year": 2005,
+   "tested_cells": 15951,
+   "warming_cells": 3837,
+   "cooling_cells": 204,
+   "warming_pct": 28.68,
+   "cooling_pct": 1.08
+  },
+  {
+   "year": 2006,
+   "tested_cells": 15951,
+   "warming_cells": 5516,
+   "cooling_cells": 264,
+   "warming_pct": 35.75,
+   "cooling_pct": 1.35
+  },
+  {
+   "year": 2007,
+   "tested_cells": 15951,
+   "warming_cells": 6281,
+   "cooling_cells": 396,
+   "warming_pct": 41.02,
+   "cooling_pct": 2.06
+  },
+  {
+   "year": 2008,
+   "tested_cells": 15951,
+   "warming_cells": 6612,
+   "cooling_cells": 461,
+   "warming_pct": 42.55,
+   "cooling_pct": 2.35
+  },
+  {
+   "year": 2009,
+   "tested_cells": 15951,
+   "warming_cells": 7002,
+   "cooling_cells": 516,
+   "warming_pct": 45.19,
+   "cooling_pct": 2.65
+  },
+  {
+   "year": 2010,
+   "tested_cells": 15951,
+   "warming_cells": 7403,
+   "cooling_cells": 597,
+   "warming_pct": 48.17,
+   "cooling_pct": 3.14
+  },
+  {
+   "year": 2011,
+   "tested_cells": 15951,
+   "warming_cells": 7807,
+   "cooling_cells": 664,
+   "warming_pct": 50.36,
+   "cooling_pct": 3.72
+  },
+  {
+   "year": 2012,
+   "tested_cells": 15981,
+   "warming_cells": 8075,
+   "cooling_cells": 716,
+   "warming_pct": 51.82,
+   "cooling_pct": 4.07
+  },
+  {
+   "year": 2013,
+   "tested_cells": 15981,
+   "warming_cells": 8356,
+   "cooling_cells": 714,
+   "warming_pct": 53.54,
+   "cooling_pct": 4.1
+  },
+  {
+   "year": 2014,
+   "tested_cells": 15989,
+   "warming_cells": 8605,
+   "cooling_cells": 699,
+   "warming_pct": 55.0,
+   "cooling_pct": 3.69
+  },
+  {
+   "year": 2015,
+   "tested_cells": 15989,
+   "warming_cells": 8873,
+   "cooling_cells": 657,
+   "warming_pct": 58.36,
+   "cooling_pct": 3.19
+  },
+  {
+   "year": 2016,
+   "tested_cells": 15998,
+   "warming_cells": 9150,
+   "cooling_cells": 617,
+   "warming_pct": 61.09,
+   "cooling_pct": 3.05
+  },
+  {
+   "year": 2017,
+   "tested_cells": 15998,
+   "warming_cells": 9496,
+   "cooling_cells": 590,
+   "warming_pct": 63.61,
+   "cooling_pct": 2.9
+  },
+  {
+   "year": 2018,
+   "tested_cells": 15998,
+   "warming_cells": 10595,
+   "cooling_cells": 530,
+   "warming_pct": 66.49,
+   "cooling_pct": 2.68
+  },
+  {
+   "year": 2019,
+   "tested_cells": 15998,
+   "warming_cells": 11041,
+   "cooling_cells": 505,
+   "warming_pct": 68.58,
+   "cooling_pct": 2.49
+  },
+  {
+   "year": 2020,
+   "tested_cells": 15998,
+   "warming_cells": 11313,
+   "cooling_cells": 483,
+   "warming_pct": 70.38,
+   "cooling_pct": 2.34
+  },
+  {
+   "year": 2021,
+   "tested_cells": 15998,
+   "warming_cells": 10613,
+   "cooling_cells": 502,
+   "warming_pct": 70.4,
+   "cooling_pct": 2.44
+  },
+  {
+   "year": 2022,
+   "tested_cells": 15998,
+   "warming_cells": 10882,
+   "cooling_cells": 521,
+   "warming_pct": 71.78,
+   "cooling_pct": 2.81
+  },
+  {
+   "year": 2023,
+   "tested_cells": 15998,
+   "warming_cells": 11111,
+   "cooling_cells": 412,
+   "warming_pct": 73.55,
+   "cooling_pct": 2.15
+  },
+  {
+   "year": 2024,
+   "tested_cells": 15998,
+   "warming_cells": 11342,
+   "cooling_cells": 369,
+   "warming_pct": 75.3,
+   "cooling_pct": 1.94
+  },
+  {
+   "year": 2025,
+   "tested_cells": 15998,
+   "warming_cells": 12473,
+   "cooling_cells": 340,
+   "warming_pct": 77.96,
+   "cooling_pct": 1.81
+  }
+ ],
+ "hand_checks": [
+  {
+   "lat": 13.5,
+   "lon": 2.1,
+   "year": 2025,
+   "annual_mean_k": 1.4366666345546644
+  },
+  {
+   "lat": 45.4,
+   "lon": 12.3,
+   "year": 2025,
+   "annual_mean_k": 2.199166617511461
+  },
+  {
+   "lat": -65.0,
+   "lon": -121.0,
+   "year": 2025,
+   "annual_mean_k": 0.3024999932385981
+  }
+ ]
+}

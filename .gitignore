@@ -1,0 +1,25 @@
+# Segreti
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+.next/
+out/
+.vercel/
+
+# Sistema e strumenti
+.DS_Store
+.claude/settings.local.json
+
+# Dati scaricati di grandi dimensioni
+data/raw/

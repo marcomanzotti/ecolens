@@ -1,0 +1,25 @@
+{
+ "success": true,
+ "data": {
+  "understood": true,
+  "interpretation": "You want to know whether rainfall and soil moisture are changing around Niamey, Niger.",
+  "location": {
+   "lat": 13.51,
+   "lon": 2.11,
+   "label": "Niamey, Niger"
+  },
+  "themes": [
+   "water",
+   "soil"
+  ],
+  "variable_ids": [
+   "PRECTOTCORR",
+   "GWETROOT",
+   "GWETTOP",
+   "EVLAND"
+  ],
+  "period": null,
+  "season": null
+ },
+ "error": null
+}

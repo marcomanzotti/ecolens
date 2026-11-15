@@ -1,0 +1,17 @@
+# Everything is excluded, then only what the image needs is let back in.
+*
+!requirements.txt
+!api/
+!trend_detective/
+
+# Never in the image, wherever they are.
+**/__pycache__/
+**/*.pyc
+**/.env
+**/.env.*
+**/.venv/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.coverage
+**/tests/
+**/.DS_Store

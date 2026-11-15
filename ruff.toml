@@ -1,0 +1,12 @@
+line-length = 100
+target-version = "py312"
+extend-exclude = ["frontend", "backend/.venv"]
+
+[lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[lint.per-file-ignores]
+"scripts/build_demos.py" = ["E501"]
+
+[lint.isort]
+known-first-party = ["api", "trend_detective"]

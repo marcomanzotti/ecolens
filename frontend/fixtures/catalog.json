@@ -1,0 +1,553 @@
+{
+ "success": true,
+ "data": {
+  "variables": [
+   {
+    "id": "T2M",
+    "name": "Air temperature",
+    "definition": "How warm the air is about 2 metres above the ground, averaged over day and night.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "T2M_MAX",
+    "name": "Hottest temperature",
+    "definition": "How hot the hottest hour of the day gets, 2 metres above the ground, on average.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "T2M_MIN",
+    "name": "Coldest temperature",
+    "definition": "How cold the coldest hour of the day gets, 2 metres above the ground, on average.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "T2M_RANGE",
+    "name": "Temperature swing",
+    "definition": "The gap between the hottest and the coldest hour of the day, on average.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "TS",
+    "name": "Ground surface temperature",
+    "definition": "How warm the surface of the land or sea itself is, not the air above it.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "T2MDEW",
+    "name": "Dew point",
+    "definition": "The temperature at which the air would become saturated and dew or frost would form. Higher means muggier air.",
+    "unit": "°C",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "FROST_DAYS",
+    "name": "Frost days",
+    "definition": "How many days were cold enough for frost to form (air below 0 °C).",
+    "unit": "days",
+    "theme": "temperature",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "PRECTOTCORR",
+    "name": "Precipitation",
+    "definition": "How much water falls from the sky as rain or snow, on an average day.",
+    "unit": "mm/day",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "EVLAND",
+    "name": "Evaporation from land",
+    "definition": "How much water leaves the land surface and goes back into the air.",
+    "unit": "mm/day",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "RH2M",
+    "name": "Relative humidity",
+    "definition": "How full of water vapour the air is, compared with the most it could hold.",
+    "unit": "%",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "QV2M",
+    "name": "Moisture in the air",
+    "definition": "Grams of water vapour in each kilogram of air near the ground.",
+    "unit": "g/kg",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "TQV",
+    "name": "Water vapour in the air column (model)",
+    "definition": "All the water vapour in the air above one square metre of ground, from a global weather model.",
+    "unit": "kg/m²",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": "column_water_vapour"
+   },
+   {
+    "id": "PW",
+    "name": "Water vapour in the air column (CERES)",
+    "definition": "All the water vapour in the air above one square metre of ground, from the CERES satellite data product.",
+    "unit": "kg/m²",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 2001,
+    "witness_group": "column_water_vapour"
+   },
+   {
+    "id": "CLOUD_AMT",
+    "name": "Cloud cover",
+    "definition": "The share of the sky covered by clouds.",
+    "unit": "%",
+    "theme": "water",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "GEWEX SRB + CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1984,
+    "witness_group": null
+   },
+   {
+    "id": "GWETTOP",
+    "name": "Topsoil wetness",
+    "definition": "How wet the top 5 cm of soil is, from 0 (completely dry) to 1 (soaked).",
+    "unit": "0–1",
+    "theme": "soil",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "GWETROOT",
+    "name": "Root-zone soil wetness",
+    "definition": "How wet the top metre of soil is, where plant roots drink. 0 is dry, 1 is soaked.",
+    "unit": "0–1",
+    "theme": "soil",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "GWETPROF",
+    "name": "Deep soil wetness",
+    "definition": "How wet the whole soil layer is, from the surface down to bedrock. 0 is dry, 1 is soaked.",
+    "unit": "0–1",
+    "theme": "soil",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "SNODP",
+    "name": "Snow depth",
+    "definition": "How deep the snow lying on the ground is.",
+    "unit": "cm",
+    "theme": "snow",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "FRSNO",
+    "name": "Snow cover",
+    "definition": "The share of the land covered by snow, from 0 (none) to 1 (all).",
+    "unit": "0–1",
+    "theme": "snow",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "PRECSNOLAND",
+    "name": "Snowfall",
+    "definition": "How much water falls as snow over land, on an average day.",
+    "unit": "mm/day",
+    "theme": "snow",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "ALLSKY_SFC_SW_DWN",
+    "name": "Sunlight reaching the ground",
+    "definition": "The energy from the Sun that reaches the ground, clouds included.",
+    "unit": "MJ/m²/day",
+    "theme": "sunlight",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "GEWEX SRB + CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1984,
+    "witness_group": null
+   },
+   {
+    "id": "CLRSKY_SFC_SW_DWN",
+    "name": "Sunlight under a clear sky",
+    "definition": "The energy from the Sun that would reach the ground if there were no clouds. It changes when the air gets hazier or cleaner.",
+    "unit": "MJ/m²/day",
+    "theme": "sunlight",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "GEWEX SRB + CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1984,
+    "witness_group": null
+   },
+   {
+    "id": "ALLSKY_SFC_LW_DWN",
+    "name": "Heat radiated down by the sky",
+    "definition": "The invisible heat radiation that the air and clouds send down to the ground.",
+    "unit": "MJ/m²/day",
+    "theme": "sunlight",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "GEWEX SRB + CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1984,
+    "witness_group": null
+   },
+   {
+    "id": "ALLSKY_SFC_UV_INDEX",
+    "name": "UV index",
+    "definition": "How strong the Sun's skin-burning ultraviolet rays are at the ground.",
+    "unit": "index",
+    "theme": "sunlight",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 2001,
+    "witness_group": null
+   },
+   {
+    "id": "ALLSKY_SRF_ALB",
+    "name": "Surface brightness (albedo)",
+    "definition": "The share of sunlight the ground reflects back. Snow and sand are bright, forests and oceans are dark.",
+    "unit": "0–1",
+    "theme": "sunlight",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 2001,
+    "witness_group": null
+   },
+   {
+    "id": "AOD_55",
+    "name": "Haze (aerosol optical depth)",
+    "definition": "How much dust, smoke and pollution particles in the air block sunlight. Higher means hazier air.",
+    "unit": "unitless",
+    "theme": "air",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 2001,
+    "witness_group": null
+   },
+   {
+    "id": "CLOUD_OD",
+    "name": "Cloud thickness",
+    "definition": "How much the clouds block light passing through them. Higher means thicker clouds.",
+    "unit": "unitless",
+    "theme": "air",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "CERES SYN1deg",
+     "kind": "satellite",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 2001,
+    "witness_group": null
+   },
+   {
+    "id": "TO3",
+    "name": "Ozone layer",
+    "definition": "The total amount of ozone in the air above, the gas that shields us from ultraviolet rays.",
+    "unit": "Dobson units",
+    "theme": "air",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "PS",
+    "name": "Air pressure",
+    "definition": "The weight of the air pressing down on the ground.",
+    "unit": "kPa",
+    "theme": "air",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "WS10M",
+    "name": "Wind speed",
+    "definition": "How fast the air moves 10 metres above the ground.",
+    "unit": "m/s",
+    "theme": "wind",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   },
+   {
+    "id": "WS50M",
+    "name": "Wind speed higher up",
+    "definition": "How fast the air moves 50 metres above the ground, the height of a wind turbine.",
+    "unit": "m/s",
+    "theme": "wind",
+    "source": {
+     "provider": "NASA POWER",
+     "product": "MERRA-2",
+     "kind": "reanalysis",
+     "url": "https://power.larc.nasa.gov/"
+    },
+    "first_year": 1981,
+    "witness_group": null
+   }
+  ],
+  "themes": [
+   {
+    "id": "temperature",
+    "label": "Heat",
+    "question": "Is it getting hotter or colder?",
+    "description": "Air and ground temperatures, extremes and frost."
+   },
+   {
+    "id": "water",
+    "label": "Water in the air",
+    "question": "Is it getting wetter or drier?",
+    "description": "Rain, evaporation, humidity and clouds."
+   },
+   {
+    "id": "soil",
+    "label": "Soil",
+    "question": "Is the ground drying out?",
+    "description": "How much water the soil holds."
+   },
+   {
+    "id": "snow",
+    "label": "Snow",
+    "question": "Is the snow disappearing?",
+    "description": "Snowfall, snow depth and snow cover."
+   },
+   {
+    "id": "sunlight",
+    "label": "Sunlight",
+    "question": "Is more or less sunlight getting through?",
+    "description": "Solar energy at the ground, UV and surface brightness."
+   },
+   {
+    "id": "air",
+    "label": "Air",
+    "question": "Is the air changing?",
+    "description": "Haze, ozone, cloud thickness and pressure."
+   },
+   {
+    "id": "wind",
+    "label": "Wind",
+    "question": "Is it getting windier?",
+    "description": "Wind speed near the ground."
+   }
+  ],
+  "seasons": [
+   "annual",
+   "DJF",
+   "MAM",
+   "JJA",
+   "SON"
+  ],
+  "period_presets": [
+   {
+    "id": "full",
+    "label": "Full record (1981–2025)",
+    "period": {
+     "start_year": 1981,
+     "end_year": 2025
+    }
+   },
+   {
+    "id": "satellite",
+    "label": "Satellite era (2001–2025)",
+    "period": {
+     "start_year": 2001,
+     "end_year": 2025
+    }
+   },
+   {
+    "id": "recent",
+    "label": "Last 20 years (2006–2025)",
+    "period": {
+     "start_year": 2006,
+     "end_year": 2025
+    }
+   }
+  ],
+  "min_year": 1981,
+  "max_year": 2025,
+  "alpha": 0.05
+ },
+ "error": null
+}

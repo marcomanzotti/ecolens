@@ -1,0 +1,9 @@
+{
+ "success": false,
+ "data": null,
+ "error": {
+  "code": "upstream_unavailable",
+  "message": "NASA POWER is not answering right now. Please try again in a minute.",
+  "details": null
+ }
+}

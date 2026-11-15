@@ -1,0 +1,3438 @@
+{
+ "success": true,
+ "data": {
+  "variable": {
+   "id": "PRECTOTCORR",
+   "name": "Precipitation",
+   "definition": "How much water falls from the sky as rain or snow, on an average day.",
+   "unit": "mm/day",
+   "theme": "water",
+   "source": {
+    "provider": "NASA POWER",
+    "product": "MERRA-2",
+    "kind": "reanalysis",
+    "url": "https://power.larc.nasa.gov/"
+   },
+   "first_year": 1981,
+   "witness_group": null
+  },
+  "bbox": {
+   "lat_min": 9.0,
+   "lat_max": 19.0,
+   "lon_min": -3.0,
+   "lon_max": 7.0
+  },
+  "period": {
+   "start_year": 1981,
+   "end_year": 2025
+  },
+  "season": "annual",
+  "grid": {
+   "lat_step": 0.5,
+   "lon_step": 0.625,
+   "n_lat": 21,
+   "n_lon": 16
+  },
+  "correction": {
+   "method": "fdr_bh",
+   "label": "Benjamini-Hochberg false discovery rate",
+   "alpha": 0.05,
+   "n_tests": 336
+  },
+  "cells": [
+   {
+    "lat": 9.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": -0.03524305555555565,
+    "direction": "down",
+    "p_value": 0.6386274171612153,
+    "p_adjusted": 0.6966844550849621,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": -0.12499999999999956,
+    "direction": "down",
+    "p_value": 0.10021276363118428,
+    "p_adjusted": 0.13971572024928597,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": -0.13891891891891894,
+    "direction": "down",
+    "p_value": 0.03715716516323912,
+    "p_adjusted": 0.06031307968525771,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": -0.15444444444444438,
+    "direction": "down",
+    "p_value": 0.0188583821902114,
+    "p_adjusted": 0.03317495505712581,
+    "significant": true
+   },
+   {
+    "lat": 9.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": -0.025000000000000022,
+    "direction": "down",
+    "p_value": 0.6455872273141041,
+    "p_adjusted": 0.7019977617396084,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.08110119047619044,
+    "direction": "up",
+    "p_value": 0.06304023630109702,
+    "p_adjusted": 0.09498439191555426,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": -0.00690476190476199,
+    "direction": "down",
+    "p_value": 0.8678962567492265,
+    "p_adjusted": 0.8917833096872786,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.08038461538461542,
+    "direction": "up",
+    "p_value": 0.09622330479668581,
+    "p_adjusted": 0.1358596572620725,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.0037433155080213764,
+    "direction": "up",
+    "p_value": 0.953189191247141,
+    "p_adjusted": 0.9560345321165354,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": -0.015461049284578678,
+    "direction": "down",
+    "p_value": 0.8525234506043038,
+    "p_adjusted": 0.886835539947511,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": -0.039009661835748936,
+    "direction": "down",
+    "p_value": 0.5570621094966048,
+    "p_adjusted": 0.6240082382347525,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": -0.02857142857142849,
+    "direction": "down",
+    "p_value": 0.5837324093759004,
+    "p_adjusted": 0.6494506276500084,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.08708333333333325,
+    "direction": "down",
+    "p_value": 0.09813750746839903,
+    "p_adjusted": 0.137967374516243,
+    "significant": false
+   },
+   {
+    "lat": 9.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.3423563218390806,
+    "direction": "down",
+    "p_value": 4.5034097048550846e-05,
+    "p_adjusted": 0.0002440557517469852,
+    "significant": true
+   },
+   {
+    "lat": 9.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.44676113360323877,
+    "direction": "down",
+    "p_value": 4.24950627702241e-06,
+    "p_adjusted": 6.49015504127059e-05,
+    "significant": true
+   },
+   {
+    "lat": 9.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.39061583577712616,
+    "direction": "down",
+    "p_value": 1.532306960704792e-05,
+    "p_adjusted": 0.00012871378469920253,
+    "significant": true
+   },
+   {
+    "lat": 9.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.01024305555555553,
+    "direction": "up",
+    "p_value": 0.8987768178267466,
+    "p_adjusted": 0.920698203627399,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": -0.08431372549019611,
+    "direction": "down",
+    "p_value": 0.18654605185200138,
+    "p_adjusted": 0.23652631480102818,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": -0.12440476190476185,
+    "direction": "down",
+    "p_value": 0.022637440214136474,
+    "p_adjusted": 0.038415050060352805,
+    "significant": true
+   },
+   {
+    "lat": 9.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": -0.1492424242424243,
+    "direction": "down",
+    "p_value": 0.00843730752263764,
+    "p_adjusted": 0.01677476525210797,
+    "significant": true
+   },
+   {
+    "lat": 9.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": -0.10270562770562777,
+    "direction": "down",
+    "p_value": 0.07177383728449695,
+    "p_adjusted": 0.10670800587429634,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.039379699248120265,
+    "direction": "up",
+    "p_value": 0.389149875962241,
+    "p_adjusted": 0.4540081886226145,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": -0.056349206349206524,
+    "direction": "down",
+    "p_value": 0.33266558741497576,
+    "p_adjusted": 0.39496691650682636,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.0820855614973261,
+    "direction": "up",
+    "p_value": 0.08858464073047886,
+    "p_adjusted": 0.12829499692000387,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": -0.0029138513513513585,
+    "direction": "down",
+    "p_value": 0.9142622942965418,
+    "p_adjusted": 0.9280729029717162,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": -0.018974358974358743,
+    "direction": "down",
+    "p_value": 0.8372218276503673,
+    "p_adjusted": 0.8736227766786442,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": -0.024621212121212106,
+    "direction": "down",
+    "p_value": 0.6177725210828608,
+    "p_adjusted": 0.6761288830092549,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.024999999999999925,
+    "direction": "up",
+    "p_value": 0.652611300161894,
+    "p_adjusted": 0.7028121694051165,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.07947368421052627,
+    "direction": "down",
+    "p_value": 0.14747735936779346,
+    "p_adjusted": 0.1921981865347451,
+    "significant": false
+   },
+   {
+    "lat": 9.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.31899038461538465,
+    "direction": "down",
+    "p_value": 0.00033010127929145787,
+    "p_adjusted": 0.0011675161035992615,
+    "significant": true
+   },
+   {
+    "lat": 9.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.4470175438596491,
+    "direction": "down",
+    "p_value": 3.504665952646043e-05,
+    "p_adjusted": 0.0002102799571587626,
+    "significant": true
+   },
+   {
+    "lat": 9.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.32234927234927224,
+    "direction": "down",
+    "p_value": 0.0065306532381163756,
+    "p_adjusted": 0.01329878477580062,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.17142857142857112,
+    "direction": "up",
+    "p_value": 0.001741579023235527,
+    "p_adjusted": 0.00427131789640246,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.1384615384615384,
+    "direction": "up",
+    "p_value": 0.014438481940712304,
+    "p_adjusted": 0.026802927801543284,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000002,
+    "direction": "up",
+    "p_value": 0.1043216733931439,
+    "p_adjusted": 0.14365607483646045,
+    "significant": false
+   },
+   {
+    "lat": 10.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.0753787878787879,
+    "direction": "up",
+    "p_value": 0.16465060639691456,
+    "p_adjusted": 0.211154976142608,
+    "significant": false
+   },
+   {
+    "lat": 10.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.12828571428571414,
+    "direction": "up",
+    "p_value": 0.010631871749089814,
+    "p_adjusted": 0.0206491844375386,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.1970713073005093,
+    "direction": "up",
+    "p_value": 0.0003034613725134742,
+    "p_adjusted": 0.0010847129911119929,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.25884615384615384,
+    "direction": "up",
+    "p_value": 3.0692626429871466e-05,
+    "p_adjusted": 0.00020221024471444733,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.285,
+    "direction": "up",
+    "p_value": 1.5160796300669747e-05,
+    "p_adjusted": 0.00012871378469920253,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.2512570710245129,
+    "direction": "up",
+    "p_value": 0.0001464972826329722,
+    "p_adjusted": 0.0006230770501858058,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.16742424242424253,
+    "direction": "up",
+    "p_value": 0.001079620989376264,
+    "p_adjusted": 0.0028800514145459334,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.12667140825035558,
+    "direction": "up",
+    "p_value": 0.010951097272824022,
+    "p_adjusted": 0.021146946457867077,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.19242857142857145,
+    "direction": "up",
+    "p_value": 0.0030334617871333285,
+    "p_adjusted": 0.006933626942019037,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.03981900452488693,
+    "direction": "up",
+    "p_value": 0.5571502127096004,
+    "p_adjusted": 0.6240082382347525,
+    "significant": false
+   },
+   {
+    "lat": 10.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.1230996621621621,
+    "direction": "down",
+    "p_value": 0.20341428450665727,
+    "p_adjusted": 0.25508110107613396,
+    "significant": false
+   },
+   {
+    "lat": 10.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.29669913419913424,
+    "direction": "down",
+    "p_value": 0.02148874738074186,
+    "p_adjusted": 0.03683785265270033,
+    "significant": true
+   },
+   {
+    "lat": 10.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.13874999999999982,
+    "direction": "down",
+    "p_value": 0.2647027965086691,
+    "p_adjusted": 0.31992855980903895,
+    "significant": false
+   },
+   {
+    "lat": 10.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.2186147186147186,
+    "direction": "up",
+    "p_value": 5.7656658896847014e-05,
+    "p_adjusted": 0.0002946469006584812,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.24023109243697469,
+    "direction": "up",
+    "p_value": 0.00023444391816712743,
+    "p_adjusted": 0.000885091646114099,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.20000000000000012,
+    "direction": "up",
+    "p_value": 0.0006622803897082007,
+    "p_adjusted": 0.0020993038768109,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.18090909090909088,
+    "direction": "up",
+    "p_value": 0.0007366926390874472,
+    "p_adjusted": 0.0022299885291295696,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.2105555555555555,
+    "direction": "up",
+    "p_value": 7.110064163405923e-05,
+    "p_adjusted": 0.00034622921143541885,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.23333333333333345,
+    "direction": "up",
+    "p_value": 2.0800161444391493e-05,
+    "p_adjusted": 0.00015530787211812314,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.3099508599508599,
+    "direction": "up",
+    "p_value": 3.0465593964585695e-06,
+    "p_adjusted": 4.874495034333711e-05,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.3,
+    "direction": "up",
+    "p_value": 1.4824107197050112e-06,
+    "p_adjusted": 3.557785727292027e-05,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.3038690476190476,
+    "direction": "up",
+    "p_value": 6.4495777670808065e-06,
+    "p_adjusted": 7.739493320496969e-05,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.2500000000000002,
+    "direction": "up",
+    "p_value": 3.1879234606607833e-05,
+    "p_adjusted": 0.00020245511310752135,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.2400000000000001,
+    "direction": "up",
+    "p_value": 0.00013495499436885728,
+    "p_adjusted": 0.0005813445911273852,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.26546583850931676,
+    "direction": "up",
+    "p_value": 1.9890882907994996e-05,
+    "p_adjusted": 0.00015530787211812314,
+    "significant": true
+   },
+   {
+    "lat": 10.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.11132478632478629,
+    "direction": "up",
+    "p_value": 0.09623392389396802,
+    "p_adjusted": 0.1358596572620725,
+    "significant": false
+   },
+   {
+    "lat": 10.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.011805555555555614,
+    "direction": "down",
+    "p_value": 0.953189191247141,
+    "p_adjusted": 0.9560345321165354,
+    "significant": false
+   },
+   {
+    "lat": 10.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.14188596491228067,
+    "direction": "down",
+    "p_value": 0.26055749128074995,
+    "p_adjusted": 0.31720042416786953,
+    "significant": false
+   },
+   {
+    "lat": 10.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.020000000000000462,
+    "direction": "down",
+    "p_value": 0.8219676922441796,
+    "p_adjusted": 0.8603773974892348,
+    "significant": false
+   },
+   {
+    "lat": 11.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.175933075933076,
+    "direction": "up",
+    "p_value": 0.0001156556743714892,
+    "p_adjusted": 0.0005046793063483165,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.21666666666666673,
+    "direction": "up",
+    "p_value": 0.00024376692168775948,
+    "p_adjusted": 0.0009000624800778812,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.15833333333333327,
+    "direction": "up",
+    "p_value": 0.004689373150616505,
+    "p_adjusted": 0.010035855914695194,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.1333333333333334,
+    "direction": "up",
+    "p_value": 0.006159252961882413,
+    "p_adjusted": 0.01261895728775909,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.1571969696969697,
+    "direction": "up",
+    "p_value": 0.0002254554463779611,
+    "p_adjusted": 0.0008707244825631601,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.11143790849673206,
+    "direction": "up",
+    "p_value": 0.0020512542218321093,
+    "p_adjusted": 0.004923010132397062,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.1114379084967321,
+    "direction": "up",
+    "p_value": 0.007554901311165505,
+    "p_adjusted": 0.015200280482344968,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.14327485380116953,
+    "direction": "up",
+    "p_value": 0.0011157234078172048,
+    "p_adjusted": 0.002910338661420458,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.12573529411764708,
+    "direction": "up",
+    "p_value": 0.003768616510168838,
+    "p_adjusted": 0.008330625969846905,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.10370879120879123,
+    "direction": "up",
+    "p_value": 0.022581329145516672,
+    "p_adjusted": 0.038415050060352805,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.13484848484848494,
+    "direction": "up",
+    "p_value": 0.009797280884182104,
+    "p_adjusted": 0.019250797526813957,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.17272727272727278,
+    "direction": "up",
+    "p_value": 0.0007105060949287136,
+    "p_adjusted": 0.0021901839256518144,
+    "significant": true
+   },
+   {
+    "lat": 11.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.0285714285714286,
+    "direction": "up",
+    "p_value": 0.5636219364090895,
+    "p_adjusted": 0.6291593708752627,
+    "significant": false
+   },
+   {
+    "lat": 11.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.059310344827586,
+    "direction": "down",
+    "p_value": 0.6177725210828608,
+    "p_adjusted": 0.6761288830092549,
+    "significant": false
+   },
+   {
+    "lat": 11.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.1546666666666666,
+    "direction": "down",
+    "p_value": 0.16181130127218207,
+    "p_adjusted": 0.20910998933635838,
+    "significant": false
+   },
+   {
+    "lat": 11.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.1220238095238095,
+    "direction": "down",
+    "p_value": 0.20345754490596402,
+    "p_adjusted": 0.25508110107613396,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.11659090909090904,
+    "direction": "up",
+    "p_value": 0.020921335337794045,
+    "p_adjusted": 0.03604907012050666,
+    "significant": true
+   },
+   {
+    "lat": 11.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.1482676224611708,
+    "direction": "up",
+    "p_value": 0.011588195919430052,
+    "p_adjusted": 0.021874347353530884,
+    "significant": true
+   },
+   {
+    "lat": 11.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.07651515151515151,
+    "direction": "up",
+    "p_value": 0.09416109260611315,
+    "p_adjusted": 0.13411971011956852,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.0521164021164021,
+    "direction": "up",
+    "p_value": 0.3182621889716335,
+    "p_adjusted": 0.3792060123917335,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.0627314814814815,
+    "direction": "up",
+    "p_value": 0.0942031297268398,
+    "p_adjusted": 0.13411971011956852,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.021428571428571446,
+    "direction": "up",
+    "p_value": 0.4510754228728043,
+    "p_adjusted": 0.5190456920728158,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.007275132275132282,
+    "direction": "up",
+    "p_value": 0.814321784530828,
+    "p_adjusted": 0.8577182432675807,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.0030017921146953484,
+    "direction": "up",
+    "p_value": 0.9065007542902827,
+    "p_adjusted": 0.9229825861864697,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.004522357723577194,
+    "direction": "up",
+    "p_value": 0.8601126357602312,
+    "p_adjusted": 0.8917833096872786,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": -0.022222222222222244,
+    "direction": "down",
+    "p_value": 0.4749340786999173,
+    "p_adjusted": 0.5409418659090582,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.9453786942841299,
+    "p_adjusted": 0.9538956194578608,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.06249999999999986,
+    "direction": "up",
+    "p_value": 0.09051919290946296,
+    "p_adjusted": 0.13053411509690796,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.09309523809523801,
+    "direction": "down",
+    "p_value": 0.11737306309901543,
+    "p_adjusted": 0.15966538138165662,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.11925925925925907,
+    "direction": "down",
+    "p_value": 0.13439808371309606,
+    "p_adjusted": 0.18208772632096884,
+    "significant": false
+   },
+   {
+    "lat": 11.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.2083478260869565,
+    "direction": "down",
+    "p_value": 0.011899884869941653,
+    "p_adjusted": 0.022337214057544106,
+    "significant": true
+   },
+   {
+    "lat": 11.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.20000000000000018,
+    "direction": "down",
+    "p_value": 0.005624132449741683,
+    "p_adjusted": 0.011664867303167936,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.11751918158567781,
+    "direction": "up",
+    "p_value": 0.014422853576471644,
+    "p_adjusted": 0.026802927801543284,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.17573099415204674,
+    "direction": "up",
+    "p_value": 0.0007082709444264159,
+    "p_adjusted": 0.0021901839256518144,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.10526315789473689,
+    "direction": "up",
+    "p_value": 0.01521845914455666,
+    "p_adjusted": 0.02794208892115321,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.0749999999999997,
+    "direction": "up",
+    "p_value": 0.08152734298275785,
+    "p_adjusted": 0.11910081409655059,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.0745967741935484,
+    "direction": "up",
+    "p_value": 0.037120877729498174,
+    "p_adjusted": 0.06031307968525771,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.03333333333333319,
+    "direction": "up",
+    "p_value": 0.40555798142528693,
+    "p_adjusted": 0.4698878681341255,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": -0.0037820512820512303,
+    "direction": "down",
+    "p_value": 0.9220292889571787,
+    "p_adjusted": 0.9331380755711206,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": -0.01666666666666668,
+    "direction": "down",
+    "p_value": 0.6108566088724705,
+    "p_adjusted": 0.6751573045432568,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": -0.051190476190476744,
+    "direction": "down",
+    "p_value": 0.1737329060442517,
+    "p_adjusted": 0.2219553476458881,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": -0.08786764705882358,
+    "direction": "down",
+    "p_value": 0.029788728157844366,
+    "p_adjusted": 0.0490637875540966,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": -0.07886904761904756,
+    "direction": "down",
+    "p_value": 0.020402974364276145,
+    "p_adjusted": 0.035337110239158684,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": -0.07285012285012288,
+    "direction": "down",
+    "p_value": 0.07024823890476477,
+    "p_adjusted": 0.10490403676444872,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.17134203168685927,
+    "direction": "down",
+    "p_value": 0.002664249430521876,
+    "p_adjusted": 0.006260054605981471,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": -0.1485281385281385,
+    "direction": "down",
+    "p_value": 0.05895484062670776,
+    "p_adjusted": 0.0892289479755577,
+    "significant": false
+   },
+   {
+    "lat": 12.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.19999999999999996,
+    "direction": "down",
+    "p_value": 0.0040186980328435476,
+    "p_adjusted": 0.008711500251841498,
+    "significant": true
+   },
+   {
+    "lat": 12.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.18779239766081868,
+    "direction": "down",
+    "p_value": 0.005455276949353334,
+    "p_adjusted": 0.011384925807346088,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.17500000000000043,
+    "direction": "up",
+    "p_value": 0.00041228355811837703,
+    "p_adjusted": 0.0014281162425543782,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.25555555555555565,
+    "direction": "up",
+    "p_value": 1.2678940093732429e-06,
+    "p_adjusted": 3.557785727292027e-05,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.20000000000000018,
+    "direction": "up",
+    "p_value": 1.3369665388970656e-05,
+    "p_adjusted": 0.00012248150823309653,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.17416666666666653,
+    "direction": "up",
+    "p_value": 4.5034097048550846e-05,
+    "p_adjusted": 0.0002440557517469852,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.17999999999999994,
+    "direction": "up",
+    "p_value": 5.351328424899383e-06,
+    "p_adjusted": 7.19218540306477e-05,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.14361413043478258,
+    "direction": "up",
+    "p_value": 6.257485608977597e-05,
+    "p_adjusted": 0.0003138082335248467,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.11041666666666669,
+    "direction": "up",
+    "p_value": 0.0004937623324386778,
+    "p_adjusted": 0.001675799431307028,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.08208556149732614,
+    "direction": "up",
+    "p_value": 0.011265663363769189,
+    "p_adjusted": 0.02150717551265027,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.07071078431372556,
+    "direction": "up",
+    "p_value": 0.044786290994858015,
+    "p_adjusted": 0.07064879706231124,
+    "significant": false
+   },
+   {
+    "lat": 12.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.0555555555555556,
+    "direction": "up",
+    "p_value": 0.14758075037489357,
+    "p_adjusted": 0.1921981865347451,
+    "significant": false
+   },
+   {
+    "lat": 12.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0773504273504273,
+    "direction": "up",
+    "p_value": 0.04917604861159562,
+    "p_adjusted": 0.07614355914053515,
+    "significant": false
+   },
+   {
+    "lat": 12.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.11519230769230761,
+    "direction": "up",
+    "p_value": 0.004979884149891647,
+    "p_adjusted": 0.010523528769582348,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.12111111111111102,
+    "direction": "up",
+    "p_value": 0.004974341168561757,
+    "p_adjusted": 0.010523528769582348,
+    "significant": true
+   },
+   {
+    "lat": 12.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.10135135135135159,
+    "direction": "up",
+    "p_value": 0.041829801524562296,
+    "p_adjusted": 0.06724791058494226,
+    "significant": false
+   },
+   {
+    "lat": 12.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.047969924812030024,
+    "direction": "up",
+    "p_value": 0.2643977402838884,
+    "p_adjusted": 0.31992855980903895,
+    "significant": false
+   },
+   {
+    "lat": 12.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.03506756756756757,
+    "direction": "up",
+    "p_value": 0.4809701723275305,
+    "p_adjusted": 0.5459661415609804,
+    "significant": false
+   },
+   {
+    "lat": 13.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.19130252100840336,
+    "direction": "up",
+    "p_value": 0.00018506575829938324,
+    "p_adjusted": 0.0007676801825752193,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.27258536585365856,
+    "direction": "up",
+    "p_value": 2.9414194266623844e-07,
+    "p_adjusted": 2.470792318396403e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.21666666666666673,
+    "direction": "up",
+    "p_value": 1.7937560771719037e-06,
+    "p_adjusted": 3.670315274135034e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.2109126984126984,
+    "direction": "up",
+    "p_value": 9.01981668695081e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.2195238095238094,
+    "direction": "up",
+    "p_value": 1.2623953725125635e-07,
+    "p_adjusted": 1.7337733822117028e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.18928571428571428,
+    "direction": "up",
+    "p_value": 1.4744496933888463e-06,
+    "p_adjusted": 3.557785727292027e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.17192118226600994,
+    "direction": "up",
+    "p_value": 6.1396139970351285e-06,
+    "p_adjusted": 7.640408529643716e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.13559907834101378,
+    "direction": "up",
+    "p_value": 9.813179425184156e-05,
+    "p_adjusted": 0.00043963043824825023,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.11952380952380953,
+    "direction": "up",
+    "p_value": 0.0008751995367058266,
+    "p_adjusted": 0.0024920935960437095,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000009,
+    "direction": "up",
+    "p_value": 0.004406788421075765,
+    "p_adjusted": 0.009491544291547803,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.12817460317460314,
+    "direction": "up",
+    "p_value": 0.0005694970095469668,
+    "p_adjusted": 0.0018600474177513171,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.18787878787878784,
+    "direction": "up",
+    "p_value": 1.3852075335885915e-05,
+    "p_adjusted": 0.00012248150823309653,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.26,
+    "direction": "up",
+    "p_value": 1.5480119484033061e-07,
+    "p_adjusted": 1.7337733822117028e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.2500000000000001,
+    "direction": "up",
+    "p_value": 1.8851865809797029e-06,
+    "p_adjusted": 3.670315274135034e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.17847490347490347,
+    "direction": "up",
+    "p_value": 9.064278731105179e-05,
+    "p_adjusted": 0.00041156725049342434,
+    "significant": true
+   },
+   {
+    "lat": 13.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.17445652173913043,
+    "direction": "up",
+    "p_value": 8.387229074944848e-05,
+    "p_adjusted": 0.00038604232454540673,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.12313242784380307,
+    "direction": "up",
+    "p_value": 0.00578206545617377,
+    "p_adjusted": 0.011918858854444091,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.19999999999999996,
+    "direction": "up",
+    "p_value": 1.2738326087478199e-06,
+    "p_adjusted": 3.557785727292027e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.14913793103448272,
+    "direction": "up",
+    "p_value": 8.016354059589765e-05,
+    "p_adjusted": 0.0003740965227808557,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.14705882352941177,
+    "direction": "up",
+    "p_value": 1.2691815703791023e-05,
+    "p_adjusted": 0.00012248150823309653,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.1615384615384616,
+    "direction": "up",
+    "p_value": 8.161348867274763e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.12097069597069593,
+    "direction": "up",
+    "p_value": 7.110064163405923e-05,
+    "p_adjusted": 0.00034622921143541885,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000009,
+    "direction": "up",
+    "p_value": 0.0008444616186477627,
+    "p_adjusted": 0.0024251205458602418,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.08138528138528142,
+    "direction": "up",
+    "p_value": 0.0038850122845191766,
+    "p_adjusted": 0.008531791683649956,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.06666666666666672,
+    "direction": "up",
+    "p_value": 0.026978585036358506,
+    "p_adjusted": 0.04465420971535201,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.05454545454545459,
+    "direction": "up",
+    "p_value": 0.104144725103448,
+    "p_adjusted": 0.14365607483646045,
+    "significant": false
+   },
+   {
+    "lat": 13.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.06899038461538459,
+    "direction": "up",
+    "p_value": 0.023187498172325897,
+    "p_adjusted": 0.03915075068292212,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.09999999999999995,
+    "direction": "up",
+    "p_value": 0.0027430285256468587,
+    "p_adjusted": 0.006400399893176003,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.15000000000000002,
+    "direction": "up",
+    "p_value": 2.072450032294656e-05,
+    "p_adjusted": 0.00015530787211812314,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.16,
+    "direction": "up",
+    "p_value": 5.787706977220166e-05,
+    "p_adjusted": 0.0002946469006584812,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.13142633228840125,
+    "direction": "up",
+    "p_value": 0.0009390923559607578,
+    "p_adjusted": 0.0026515548874186104,
+    "significant": true
+   },
+   {
+    "lat": 13.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.11091269841269843,
+    "direction": "up",
+    "p_value": 0.0011173621646524971,
+    "p_adjusted": 0.002910338661420458,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.07225274725274727,
+    "direction": "up",
+    "p_value": 0.019832972874964664,
+    "p_adjusted": 0.03470770253118816,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.13550420168067223,
+    "direction": "up",
+    "p_value": 3.332156418116961e-05,
+    "p_adjusted": 0.0002073341771272776,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000009,
+    "direction": "up",
+    "p_value": 0.0010800192804547252,
+    "p_adjusted": 0.0028800514145459334,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.09999999999999995,
+    "direction": "up",
+    "p_value": 0.0005118116367710615,
+    "p_adjusted": 0.0017196870995507666,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.11199999999999993,
+    "direction": "up",
+    "p_value": 8.436458058188443e-06,
+    "p_adjusted": 9.448833025171055e-05,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.06830143540669859,
+    "direction": "up",
+    "p_value": 0.0010020279741316947,
+    "p_adjusted": 0.0027222805324776194,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.04375000000000004,
+    "direction": "up",
+    "p_value": 0.03131031484409843,
+    "p_adjusted": 0.051318369695693034,
+    "significant": false
+   },
+   {
+    "lat": 14.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.03199999999999999,
+    "direction": "up",
+    "p_value": 0.1473868726960689,
+    "p_adjusted": 0.1921981865347451,
+    "significant": false
+   },
+   {
+    "lat": 14.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.026731601731601752,
+    "direction": "up",
+    "p_value": 0.3836545603222431,
+    "p_adjusted": 0.44915655842604063,
+    "significant": false
+   },
+   {
+    "lat": 14.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.0223809523809524,
+    "direction": "up",
+    "p_value": 0.4871183191617485,
+    "p_adjusted": 0.551083350970867,
+    "significant": false
+   },
+   {
+    "lat": 14.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.03333333333333336,
+    "direction": "up",
+    "p_value": 0.14194406111658675,
+    "p_adjusted": 0.18776852179202028,
+    "significant": false
+   },
+   {
+    "lat": 14.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.06550480769230771,
+    "direction": "up",
+    "p_value": 0.011553691315913266,
+    "p_adjusted": 0.021874347353530884,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.11428571428571427,
+    "direction": "up",
+    "p_value": 0.0008134680939476626,
+    "p_adjusted": 0.0023562524100552984,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.11464285714285716,
+    "direction": "up",
+    "p_value": 0.0033121205213527795,
+    "p_adjusted": 0.007468942920634456,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.08768939393939391,
+    "direction": "up",
+    "p_value": 0.01684248215390745,
+    "p_adjusted": 0.03058958920925894,
+    "significant": true
+   },
+   {
+    "lat": 14.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.03452380952380951,
+    "direction": "up",
+    "p_value": 0.23611348071894164,
+    "p_adjusted": 0.2906012070386974,
+    "significant": false
+   },
+   {
+    "lat": 14.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.08918128654970758,
+    "direction": "up",
+    "p_value": 0.0012398236406173215,
+    "p_adjusted": 0.0031800056736444276,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.12928571428571428,
+    "direction": "up",
+    "p_value": 1.0117659774094282e-05,
+    "p_adjusted": 0.00010672098568906086,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.08749999999999991,
+    "direction": "up",
+    "p_value": 0.00023229359816335092,
+    "p_adjusted": 0.000885091646114099,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.08280788177339903,
+    "direction": "up",
+    "p_value": 0.000734675852680082,
+    "p_adjusted": 0.0022299885291295696,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.1196774193548385,
+    "direction": "up",
+    "p_value": 2.9118628074501314e-05,
+    "p_adjusted": 0.00019967059251086615,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.08591269841269845,
+    "direction": "up",
+    "p_value": 0.00017846030958898118,
+    "p_adjusted": 0.000749533300273721,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.06282894736842111,
+    "direction": "up",
+    "p_value": 0.0005891622316788128,
+    "p_adjusted": 0.0018906741555181072,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.04594594594594593,
+    "direction": "up",
+    "p_value": 0.007696829747550811,
+    "p_adjusted": 0.015393659495101622,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.05370879120879113,
+    "direction": "up",
+    "p_value": 0.01877118276515589,
+    "p_adjusted": 0.03317495505712581,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.04666666666666663,
+    "direction": "up",
+    "p_value": 0.050223291956166906,
+    "p_adjusted": 0.07705491368617388,
+    "significant": false
+   },
+   {
+    "lat": 14.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.050000000000000044,
+    "direction": "up",
+    "p_value": 0.018258860955953415,
+    "p_adjusted": 0.032552709300444516,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.08187499999999998,
+    "direction": "up",
+    "p_value": 0.00021588460838947607,
+    "p_adjusted": 0.0008434561444053948,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.11249999999999996,
+    "direction": "up",
+    "p_value": 0.00026120223881685847,
+    "p_adjusted": 0.000953956002635483,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.10669642857142861,
+    "direction": "up",
+    "p_value": 0.0009700813290393379,
+    "p_adjusted": 0.0026937795583241116,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.07416666666666642,
+    "direction": "up",
+    "p_value": 0.009759872038838682,
+    "p_adjusted": 0.019250797526813957,
+    "significant": true
+   },
+   {
+    "lat": 14.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.009489872468117038,
+    "direction": "up",
+    "p_value": 0.8142985059402785,
+    "p_adjusted": 0.8577182432675807,
+    "significant": false
+   },
+   {
+    "lat": 15.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.14899999999999997,
+    "direction": "up",
+    "p_value": 2.5126824194850995e-06,
+    "p_adjusted": 4.221306464734967e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.15517241379310348,
+    "direction": "up",
+    "p_value": 1.9662403254294825e-06,
+    "p_adjusted": 3.670315274135034e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.12222222222222229,
+    "direction": "up",
+    "p_value": 1.0163903398958177e-05,
+    "p_adjusted": 0.00010672098568906086,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.10741758241758245,
+    "direction": "up",
+    "p_value": 0.0005701931072273383,
+    "p_adjusted": 0.0018600474177513171,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.13060200668896318,
+    "direction": "up",
+    "p_value": 7.347053533512697e-06,
+    "p_adjusted": 8.512448231931953e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.12499999999999994,
+    "direction": "up",
+    "p_value": 4.644324633554386e-06,
+    "p_adjusted": 6.784752508149016e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000002,
+    "direction": "up",
+    "p_value": 2.4979071839911676e-06,
+    "p_adjusted": 4.221306464734967e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.09375000000000006,
+    "direction": "up",
+    "p_value": 2.051131396613271e-05,
+    "p_adjusted": 0.00015530787211812314,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.09249530956848036,
+    "direction": "up",
+    "p_value": 3.434674062726739e-05,
+    "p_adjusted": 0.00020982736092294262,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.07795138888888892,
+    "direction": "up",
+    "p_value": 0.00019879207158796048,
+    "p_adjusted": 0.0007951682863518419,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.09110671936758893,
+    "direction": "up",
+    "p_value": 2.3431152781539247e-05,
+    "p_adjusted": 0.0001675078156297274,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.15,
+    "direction": "up",
+    "p_value": 5.126026981181417e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.18975694444444444,
+    "direction": "up",
+    "p_value": 5.963109774269626e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.15735930735930737,
+    "direction": "up",
+    "p_value": 1.0650894995898271e-05,
+    "p_adjusted": 0.00010844547632187331,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.08774999999999998,
+    "direction": "up",
+    "p_value": 0.001979204457915091,
+    "p_adjusted": 0.004818932593184569,
+    "significant": true
+   },
+   {
+    "lat": 15.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.06496163682864456,
+    "direction": "up",
+    "p_value": 0.020362854564819496,
+    "p_adjusted": 0.035337110239158684,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.12659932659932666,
+    "direction": "up",
+    "p_value": 0.001416706345881221,
+    "p_adjusted": 0.0035523383001200767,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.15217391304347824,
+    "direction": "up",
+    "p_value": 0.00020765971225495468,
+    "p_adjusted": 0.0008208666272666443,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.14000000000000004,
+    "direction": "up",
+    "p_value": 0.00019172152978429025,
+    "p_adjusted": 0.0007761257109339942,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.13452380952380952,
+    "direction": "up",
+    "p_value": 0.0005908356735994085,
+    "p_adjusted": 0.0018906741555181072,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.1292892156862745,
+    "direction": "up",
+    "p_value": 6.110356003534299e-06,
+    "p_adjusted": 7.640408529643716e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.11999999999999998,
+    "direction": "up",
+    "p_value": 3.193488391279355e-05,
+    "p_adjusted": 0.00020245511310752135,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.10377492877492875,
+    "direction": "up",
+    "p_value": 3.948444633051984e-05,
+    "p_adjusted": 0.0002287374821905977,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000002,
+    "direction": "up",
+    "p_value": 2.690182937407365e-05,
+    "p_adjusted": 0.00018831280561851555,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.09582608695652178,
+    "direction": "up",
+    "p_value": 3.0159062260232892e-05,
+    "p_adjusted": 0.00020221024471444733,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.08449519230769234,
+    "direction": "up",
+    "p_value": 5.517078333801426e-05,
+    "p_adjusted": 0.00028964661252457486,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.09511904761904764,
+    "direction": "up",
+    "p_value": 1.3843315617883675e-05,
+    "p_adjusted": 0.00012248150823309653,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.15527777777777776,
+    "direction": "up",
+    "p_value": 9.83905301612749e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.20000000000000004,
+    "direction": "up",
+    "p_value": 7.216723423086415e-08,
+    "p_adjusted": 1.7337733822117028e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.14999999999999997,
+    "direction": "up",
+    "p_value": 4.861519285595259e-06,
+    "p_adjusted": 6.806126999833362e-05,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.08,
+    "direction": "up",
+    "p_value": 0.001157165129319141,
+    "p_adjusted": 0.002990826795778703,
+    "significant": true
+   },
+   {
+    "lat": 15.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.06923076923076929,
+    "direction": "up",
+    "p_value": 0.006898857266072208,
+    "p_adjusted": 0.013963952056628084,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.09807692307692306,
+    "direction": "up",
+    "p_value": 0.0007859591516815614,
+    "p_adjusted": 0.0023370112828761474,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.09409722222222223,
+    "direction": "up",
+    "p_value": 0.0032134386475009898,
+    "p_adjusted": 0.007295374226759003,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.09442724458204337,
+    "direction": "up",
+    "p_value": 0.002925241025739257,
+    "p_adjusted": 0.006732061538687605,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.11066856330014223,
+    "direction": "up",
+    "p_value": 0.0006797741787619025,
+    "p_adjusted": 0.002134617981906535,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.11921555702043507,
+    "direction": "up",
+    "p_value": 1.5913016142773128e-05,
+    "p_adjusted": 0.0001304091079017505,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.09484126984126984,
+    "direction": "up",
+    "p_value": 4.460689192827556e-05,
+    "p_adjusted": 0.0002440557517469852,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.07211111111111113,
+    "direction": "up",
+    "p_value": 0.0010035263692418864,
+    "p_adjusted": 0.0027222805324776194,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.07247474747474746,
+    "direction": "up",
+    "p_value": 0.0007847400387121054,
+    "p_adjusted": 0.0023370112828761474,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.06666666666666671,
+    "direction": "up",
+    "p_value": 0.001414707834999902,
+    "p_adjusted": 0.0035523383001200767,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.058823529411764705,
+    "direction": "up",
+    "p_value": 0.0025647058121190175,
+    "p_adjusted": 0.006068599668112604,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.06583333333333333,
+    "direction": "up",
+    "p_value": 0.0005287323058503945,
+    "p_adjusted": 0.0017589510372844805,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.10000000000000002,
+    "direction": "up",
+    "p_value": 2.261565804214802e-05,
+    "p_adjusted": 0.0001651926326556899,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.1408333333333334,
+    "direction": "up",
+    "p_value": 6.971019394991718e-07,
+    "p_adjusted": 3.305921813418837e-05,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.11509971509971506,
+    "direction": "up",
+    "p_value": 1.961807631539998e-06,
+    "p_adjusted": 3.670315274135034e-05,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.08421052631578947,
+    "direction": "up",
+    "p_value": 0.0002817151560777253,
+    "p_adjusted": 0.0010178095961517817,
+    "significant": true
+   },
+   {
+    "lat": 16.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.08,
+    "direction": "up",
+    "p_value": 0.0008078296196744769,
+    "p_adjusted": 0.0023562524100552984,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.052396514161220036,
+    "direction": "up",
+    "p_value": 0.04793391273650552,
+    "p_adjusted": 0.07456386425678636,
+    "significant": false
+   },
+   {
+    "lat": 16.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.05000000000000001,
+    "direction": "up",
+    "p_value": 0.044786290994858015,
+    "p_adjusted": 0.07064879706231124,
+    "significant": false
+   },
+   {
+    "lat": 16.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.050000000000000044,
+    "direction": "up",
+    "p_value": 0.03796714774067352,
+    "p_adjusted": 0.06133154635031876,
+    "significant": false
+   },
+   {
+    "lat": 16.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.07066905615292711,
+    "direction": "up",
+    "p_value": 0.005270661228148821,
+    "p_adjusted": 0.011068388579112524,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.08867521367521367,
+    "direction": "up",
+    "p_value": 7.327827078133378e-05,
+    "p_adjusted": 0.00034973899126844053,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.0736842105263158,
+    "direction": "up",
+    "p_value": 0.0008134680939476626,
+    "p_adjusted": 0.0023562524100552984,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.044281045751633955,
+    "direction": "up",
+    "p_value": 0.026837152647649833,
+    "p_adjusted": 0.04465420971535201,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.043888888888888894,
+    "direction": "up",
+    "p_value": 0.02564042128408901,
+    "p_adjusted": 0.04307590775726953,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.03771551724137932,
+    "direction": "up",
+    "p_value": 0.04454059665387003,
+    "p_adjusted": 0.07064879706231124,
+    "significant": false
+   },
+   {
+    "lat": 16.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.03636363636363638,
+    "direction": "up",
+    "p_value": 0.055005240709076225,
+    "p_adjusted": 0.08362787727714757,
+    "significant": false
+   },
+   {
+    "lat": 16.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.04166666666666667,
+    "direction": "up",
+    "p_value": 0.0268712687285101,
+    "p_adjusted": 0.04465420971535201,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.062202380952380926,
+    "direction": "up",
+    "p_value": 0.00100465114889055,
+    "p_adjusted": 0.0027222805324776194,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.09599999999999999,
+    "direction": "up",
+    "p_value": 4.289726819063278e-05,
+    "p_adjusted": 0.0002440557517469852,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.08651515151515152,
+    "direction": "up",
+    "p_value": 5.083491802812233e-05,
+    "p_adjusted": 0.0002711195628166524,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.0916666666666667,
+    "direction": "up",
+    "p_value": 1.3175811577708181e-05,
+    "p_adjusted": 0.00012248150823309653,
+    "significant": true
+   },
+   {
+    "lat": 16.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.08918128654970767,
+    "direction": "up",
+    "p_value": 0.0001904555706267544,
+    "p_adjusted": 0.0007761257109339942,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.04058823529411766,
+    "direction": "up",
+    "p_value": 0.04574603675247993,
+    "p_adjusted": 0.0718255530319311,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.046666666666666655,
+    "direction": "up",
+    "p_value": 0.09227853017882175,
+    "p_adjusted": 0.1325025048721543,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.037171052631578924,
+    "direction": "up",
+    "p_value": 0.1446652731076979,
+    "p_adjusted": 0.19061777162426075,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.05278637770897831,
+    "direction": "up",
+    "p_value": 0.01831089898150004,
+    "p_adjusted": 0.032552709300444516,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.08208556149732621,
+    "direction": "up",
+    "p_value": 0.00011426604960566537,
+    "p_adjusted": 0.0005046793063483165,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.051925925925925945,
+    "direction": "up",
+    "p_value": 0.003991861839079588,
+    "p_adjusted": 0.00870951673981001,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.024621212121212113,
+    "direction": "up",
+    "p_value": 0.18298949840840134,
+    "p_adjusted": 0.23289572524705626,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.026086956521739105,
+    "direction": "up",
+    "p_value": 0.10626378743563371,
+    "p_adjusted": 0.1457331941974405,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.020000000000000018,
+    "direction": "up",
+    "p_value": 0.23222616047458758,
+    "p_adjusted": 0.28686760999801997,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.024999999999999935,
+    "direction": "up",
+    "p_value": 0.13669324523731916,
+    "p_adjusted": 0.18298378645314436,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.02828571428571427,
+    "direction": "up",
+    "p_value": 0.07792221223875809,
+    "p_adjusted": 0.11533860489965955,
+    "significant": false
+   },
+   {
+    "lat": 17.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.04322344322344323,
+    "direction": "up",
+    "p_value": 0.01478567145584107,
+    "p_adjusted": 0.027296624226168128,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.061834733893557405,
+    "direction": "up",
+    "p_value": 0.00341461136330604,
+    "p_adjusted": 0.0076487294538055296,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.06666666666666672,
+    "direction": "up",
+    "p_value": 0.00047432273438038095,
+    "p_adjusted": 0.001626249375018449,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.08818604651162791,
+    "direction": "up",
+    "p_value": 3.620613104695041e-05,
+    "p_adjusted": 0.00021342561459254978,
+    "significant": true
+   },
+   {
+    "lat": 17.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.08750000000000001,
+    "direction": "up",
+    "p_value": 0.000241875359278131,
+    "p_adjusted": 0.0009000624800778812,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.05483870967741934,
+    "direction": "up",
+    "p_value": 0.011218895931391078,
+    "p_adjusted": 0.02150717551265027,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.051601601601601606,
+    "direction": "up",
+    "p_value": 0.010010611663441658,
+    "p_adjusted": 0.019555613482072076,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.05000000000000001,
+    "direction": "up",
+    "p_value": 0.016005272792324804,
+    "p_adjusted": 0.029227019881636597,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.06510869565217392,
+    "direction": "up",
+    "p_value": 0.001669773438654819,
+    "p_adjusted": 0.0041253226131471995,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.09166666666666667,
+    "direction": "up",
+    "p_value": 7.390317970255737e-05,
+    "p_adjusted": 0.00034973899126844053,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.06282894736842105,
+    "direction": "up",
+    "p_value": 0.00040703559733709204,
+    "p_adjusted": 0.001424624590679822,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.024190177638453506,
+    "direction": "up",
+    "p_value": 0.1366807080321337,
+    "p_adjusted": 0.18298378645314436,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.02928921568627451,
+    "direction": "up",
+    "p_value": 0.0884014622396281,
+    "p_adjusted": 0.12829499692000387,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.016954022988505752,
+    "direction": "up",
+    "p_value": 0.25982648389231194,
+    "p_adjusted": 0.31720042416786953,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.01666666666666665,
+    "direction": "up",
+    "p_value": 0.3522156967970434,
+    "p_adjusted": 0.41524376885546166,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0142857142857143,
+    "direction": "up",
+    "p_value": 0.3471160160126,
+    "p_adjusted": 0.4106724696487099,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.02076149425287356,
+    "direction": "up",
+    "p_value": 0.20636887055950087,
+    "p_adjusted": 0.2577692955687446,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.02941176470588236,
+    "direction": "up",
+    "p_value": 0.06838680536939723,
+    "p_adjusted": 0.10258020805409584,
+    "significant": false
+   },
+   {
+    "lat": 17.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.03333333333333333,
+    "direction": "up",
+    "p_value": 0.01827372285982,
+    "p_adjusted": 0.032552709300444516,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.0521904761904762,
+    "direction": "up",
+    "p_value": 0.0036370150245919487,
+    "p_adjusted": 0.008092960584522482,
+    "significant": true
+   },
+   {
+    "lat": 17.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.07819293478260869,
+    "direction": "up",
+    "p_value": 0.0024843029724082102,
+    "p_adjusted": 0.005920041125738714,
+    "significant": true
+   },
+   {
+    "lat": 18.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.020942982456140343,
+    "direction": "up",
+    "p_value": 0.09980079739411156,
+    "p_adjusted": 0.13971572024928597,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.02899159663865547,
+    "direction": "up",
+    "p_value": 0.05003985368781874,
+    "p_adjusted": 0.07705491368617388,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.02499999999999997,
+    "direction": "up",
+    "p_value": 0.16142296469484316,
+    "p_adjusted": 0.20910998933635838,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.028174603174603186,
+    "direction": "up",
+    "p_value": 0.07963199571358948,
+    "p_adjusted": 0.11735241473581606,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.05454545454545454,
+    "direction": "up",
+    "p_value": 0.0011116334950931684,
+    "p_adjusted": 0.002910338661420458,
+    "significant": true
+   },
+   {
+    "lat": 18.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.04285714285714288,
+    "direction": "up",
+    "p_value": 0.0015967006629792493,
+    "p_adjusted": 0.0039740105389705765,
+    "significant": true
+   },
+   {
+    "lat": 18.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.019999999999999987,
+    "direction": "up",
+    "p_value": 0.14182943083291374,
+    "p_adjusted": 0.18776852179202028,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.025000000000000005,
+    "direction": "up",
+    "p_value": 0.08136191013663503,
+    "p_adjusted": 0.11910081409655059,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.02,
+    "direction": "up",
+    "p_value": 0.10401199255886642,
+    "p_adjusted": 0.14365607483646045,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.009838709677419365,
+    "direction": "up",
+    "p_value": 0.2989288177819644,
+    "p_adjusted": 0.35871458133835726,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.8216877970246341,
+    "p_adjusted": 0.8603773974892348,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": 0.0031250000000000028,
+    "direction": "up",
+    "p_value": 0.7388786499482994,
+    "p_adjusted": 0.790647217779072,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": 0.004880952380952385,
+    "direction": "up",
+    "p_value": 0.5959598951997205,
+    "p_adjusted": 0.660866418439294,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.007275132275132282,
+    "direction": "up",
+    "p_value": 0.3774560327863898,
+    "p_adjusted": 0.44344484970708725,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.8677288704668502,
+    "p_adjusted": 0.8917833096872786,
+    "significant": false
+   },
+   {
+    "lat": 18.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.015707236842105277,
+    "direction": "up",
+    "p_value": 0.2812493986737565,
+    "p_adjusted": 0.3387089532415132,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.010000000000000009,
+    "direction": "up",
+    "p_value": 0.46267605095654374,
+    "p_adjusted": 0.530577314407504,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.020606060606060614,
+    "direction": "up",
+    "p_value": 0.10812341274651752,
+    "p_adjusted": 0.14768075887329224,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.01904761904761905,
+    "direction": "up",
+    "p_value": 0.14182943083291374,
+    "p_adjusted": 0.18776852179202028,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.022902097902097896,
+    "direction": "up",
+    "p_value": 0.04256200042288689,
+    "p_adjusted": 0.06809920067661902,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.04999999999999998,
+    "direction": "up",
+    "p_value": 0.0009653544750055001,
+    "p_adjusted": 0.0026937795583241116,
+    "significant": true
+   },
+   {
+    "lat": 18.5,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.04027027027027029,
+    "direction": "up",
+    "p_value": 0.0012712400780806247,
+    "p_adjusted": 0.0032358838351143173,
+    "significant": true
+   },
+   {
+    "lat": 18.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.016666666666666656,
+    "direction": "up",
+    "p_value": 0.1357897642503063,
+    "p_adjusted": 0.18298378645314436,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.02639318885448917,
+    "direction": "up",
+    "p_value": 0.017305943963847863,
+    "p_adjusted": 0.031262350386305815,
+    "significant": true
+   },
+   {
+    "lat": 18.5,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.02087114337568058,
+    "direction": "up",
+    "p_value": 0.05242923514093049,
+    "p_adjusted": 0.08007374094251202,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.01148351648351649,
+    "direction": "up",
+    "p_value": 0.21319833026123244,
+    "p_adjusted": 0.26531347765842256,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 1.0,
+    "p_adjusted": 1.0,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": -0.0032866379310344763,
+    "direction": "down",
+    "p_value": 0.6518317250757415,
+    "p_adjusted": 0.7028121694051165,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.004880952380952372,
+    "direction": "down",
+    "p_value": 0.5561148541127301,
+    "p_adjusted": 0.6240082382347525,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.8674597239551064,
+    "p_adjusted": 0.8917833096872786,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.0034523809523809555,
+    "direction": "down",
+    "p_value": 0.616668359274763,
+    "p_adjusted": 0.6761288830092549,
+    "significant": false
+   },
+   {
+    "lat": 18.5,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.9064174253219732,
+    "p_adjusted": 0.9229825861864697,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": -2.5,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.8140593945513568,
+    "p_adjusted": 0.8577182432675807,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": -1.875,
+    "n": 45,
+    "slope_per_decade": 0.004446640316205532,
+    "direction": "up",
+    "p_value": 0.7538706609782273,
+    "p_adjusted": 0.8041287050434425,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": -1.25,
+    "n": 45,
+    "slope_per_decade": 0.0070197044334975285,
+    "direction": "up",
+    "p_value": 0.3169458662786255,
+    "p_adjusted": 0.37898153405558066,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": -0.625,
+    "n": 45,
+    "slope_per_decade": 0.01538461538461538,
+    "direction": "up",
+    "p_value": 0.1924739392587075,
+    "p_adjusted": 0.2431249759057358,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": -0.0,
+    "n": 45,
+    "slope_per_decade": 0.034346642468239555,
+    "direction": "up",
+    "p_value": 0.002031642600216973,
+    "p_adjusted": 0.004911020961675561,
+    "significant": true
+   },
+   {
+    "lat": 19.0,
+    "lon": 0.625,
+    "n": 45,
+    "slope_per_decade": 0.028571428571428574,
+    "direction": "up",
+    "p_value": 0.002802874242004684,
+    "p_adjusted": 0.006494936174576371,
+    "significant": true
+   },
+   {
+    "lat": 19.0,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.011483516483516486,
+    "direction": "up",
+    "p_value": 0.2281309190727651,
+    "p_adjusted": 0.28284866718984897,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 1.875,
+    "n": 45,
+    "slope_per_decade": 0.02076149425287356,
+    "direction": "up",
+    "p_value": 0.046695759239266,
+    "p_adjusted": 0.0729756981599692,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 2.5,
+    "n": 45,
+    "slope_per_decade": 0.012249999999999994,
+    "direction": "up",
+    "p_value": 0.16361149241146972,
+    "p_adjusted": 0.21062628908143227,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 3.125,
+    "n": 45,
+    "slope_per_decade": 0.006666666666666668,
+    "direction": "up",
+    "p_value": 0.25094694164717124,
+    "p_adjusted": 0.3077305561804728,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 3.75,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.6516020542769669,
+    "p_adjusted": 0.7028121694051165,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 4.375,
+    "n": 45,
+    "slope_per_decade": -0.005334281650071124,
+    "direction": "down",
+    "p_value": 0.40317614814419395,
+    "p_adjusted": 0.4687445874617618,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 5.0,
+    "n": 45,
+    "slope_per_decade": -0.004939024390243907,
+    "direction": "down",
+    "p_value": 0.4676731904896085,
+    "p_adjusted": 0.5344836462738383,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 5.625,
+    "n": 45,
+    "slope_per_decade": 0.0,
+    "direction": "flat",
+    "p_value": 0.7757078534013944,
+    "p_adjusted": 0.8248032871609763,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.004880952380952382,
+    "direction": "down",
+    "p_value": 0.4381005741068617,
+    "p_adjusted": 0.5058480855666857,
+    "significant": false
+   },
+   {
+    "lat": 19.0,
+    "lon": 6.875,
+    "n": 45,
+    "slope_per_decade": -0.003181818181818178,
+    "direction": "down",
+    "p_value": 0.7242384490185848,
+    "p_adjusted": 0.7774572487867236,
+    "significant": false
+   }
+  ],
+  "summary": {
+   "n_cells": 336,
+   "n_valid": 336,
+   "n_up_significant": 187,
+   "n_down_significant": 17,
+   "max_abs_slope": 0.4470175438596491,
+   "text": "Of 336 cells tested, 187 cells are rising significantly and 17 cells are falling significantly."
+  },
+  "opposite_twin": {
+   "up": {
+    "lat": 10.5,
+    "lon": 1.25,
+    "n": 45,
+    "slope_per_decade": 0.3099508599508599,
+    "direction": "up",
+    "p_value": 3.0465593964585695e-06,
+    "p_adjusted": 4.874495034333711e-05,
+    "significant": true
+   },
+   "down": {
+    "lat": 9.5,
+    "lon": 6.25,
+    "n": 45,
+    "slope_per_decade": -0.4470175438596491,
+    "direction": "down",
+    "p_value": 3.504665952646043e-05,
+    "p_adjusted": 0.0002102799571587626,
+    "significant": true
+   },
+   "distance_km": 558.7,
+   "text": "Same variable, same years, opposite direction: +0.310 mm/day per decade at (10.5, 1.25) against -0.447 mm/day per decade at (9.5, 6.25), 558.7 km apart."
+  }
+ },
+ "error": null
+}

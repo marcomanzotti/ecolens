@@ -1,0 +1,254 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Overpass", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-heading: "Fira Sans", "Overpass", system-ui, sans-serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Space Apps brand palette (docs/BRAND.md) */
+  --color-deep: var(--brand-deep-blue);
+  --color-electric: var(--brand-electric-blue);
+  --color-neon-blue: var(--brand-neon-blue);
+  --color-yonder: var(--brand-blue-yonder);
+  --color-rocket: var(--brand-rocket-red);
+  --color-neon: var(--brand-neon-yellow);
+
+  /* Roles */
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-rising: var(--trend-rising);
+  --color-falling: var(--trend-falling);
+  --color-neutral: var(--trend-neutral);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Brand palette: the only place where the hex values live. */
+  --brand-deep-blue: #07173f;
+  --brand-electric-blue: #0042a6;
+  --brand-neon-blue: #0960e1;
+  --brand-blue-yonder: #2e96f5;
+  --brand-rocket-red: #e43700;
+  --brand-martian-red: #8e1100;
+  --brand-neon-yellow: #eafe07;
+  --brand-white: #ffffff;
+
+  /* shadcn roles. Text sits only on Deep Blue, Electric Blue or white. */
+  --background: var(--brand-deep-blue);
+  --foreground: var(--brand-white);
+  --card: var(--brand-deep-blue);
+  --card-foreground: var(--brand-white);
+  --popover: var(--brand-deep-blue);
+  --popover-foreground: var(--brand-white);
+  --primary: var(--brand-white);
+  --primary-foreground: var(--brand-deep-blue);
+  --secondary: var(--brand-electric-blue);
+  --secondary-foreground: var(--brand-white);
+  --muted: var(--brand-deep-blue);
+  /* White tinted with Blue Yonder (not a neutral grey): about 13:1 on Deep Blue,
+     7:1 on Electric Blue. */
+  --muted-foreground: color-mix(in srgb, var(--brand-white) 76%, var(--brand-blue-yonder));
+  --accent: var(--brand-electric-blue);
+  --accent-foreground: var(--brand-white);
+  --destructive: var(--brand-rocket-red);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--brand-neon-yellow);
+  --radius: 0.375rem;
+
+  --line: color-mix(in srgb, var(--brand-white) 16%, transparent);
+  --line-strong: color-mix(in srgb, var(--brand-white) 38%, transparent);
+
+  /* Diverging trend scale: checked with the dataviz validator on Deep Blue
+     (colour-blind separation dE 29.6, both poles >= 3:1 against the surface).
+     Never used alone: every mark also carries an arrow or a label. */
+  --trend-rising: var(--brand-rocket-red);
+  --trend-falling: var(--brand-blue-yonder);
+  --trend-neutral: color-mix(in srgb, var(--brand-white) 22%, var(--brand-deep-blue));
+
+  /* Chart roles */
+  --chart-series: var(--brand-white);
+  --chart-fit: var(--brand-neon-yellow);
+  --chart-band: var(--brand-blue-yonder);
+  --chart-second: var(--brand-blue-yonder);
+  --chart-grid: var(--line);
+  --chart-axis: var(--muted-foreground);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-press: 140ms;
+  --duration-reveal: 520ms;
+
+  /* Surfaces: Deep Blue raised a little towards Electric Blue for panels. */
+  --surface-raised: color-mix(in srgb, var(--brand-electric-blue) 18%, var(--brand-deep-blue));
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  button,
+  a,
+  label,
+  summary,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+  button,
+  summary,
+  [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  html {
+    scrollbar-color: var(--line-strong) var(--brand-deep-blue);
+    accent-color: var(--brand-neon-yellow);
+    caret-color: var(--brand-neon-yellow);
+  }
+  ::selection {
+    background: var(--brand-electric-blue);
+    color: var(--brand-white);
+  }
+  input,
+  select,
+  textarea {
+    font-size: 1rem; /* stops iOS from zooming the page on focus */
+  }
+  summary {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Brand gradient: Electric Blue (top left) to Deep Blue (bottom right). */
+  .brand-gradient {
+    background: linear-gradient(135deg, var(--brand-electric-blue), var(--brand-deep-blue));
+  }
+  /* Coordinate-grid pattern at low opacity, as the brand guide suggests. */
+  .coordinate-grid {
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    mask-image: linear-gradient(180deg, black, transparent 85%);
+    opacity: 0.25;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Raised panel: a hairline and a soft lift, never a coloured fill behind text
+     other than the brand blues. */
+  .panel {
+    background: var(--surface-raised);
+    border: 1px solid var(--line);
+    box-shadow:
+      0 1px 0 color-mix(in srgb, var(--brand-white) 6%, transparent) inset,
+      0 24px 48px -24px rgb(0 0 0 / 0.55);
+  }
+  /* The one orchestrated entrance: content rises into place once, on load. */
+  .reveal {
+    animation: reveal var(--duration-reveal) var(--ease-out) both;
+    animation-delay: calc(var(--reveal-step, 0) * 70ms);
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .skeleton {
+    background: color-mix(in srgb, var(--brand-white) 9%, transparent);
+    border-radius: var(--radius-sm);
+    animation: skeleton-pulse 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(3px);
+  }
+}
+
+@keyframes meter-fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

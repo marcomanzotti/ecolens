@@ -1,0 +1,9 @@
+{
+ "success": true,
+ "data": {
+  "status": "ok",
+  "version": "0.1.0",
+  "assistant_available": false
+ },
+ "error": null
+}

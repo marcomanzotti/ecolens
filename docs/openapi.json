@@ -1,0 +1,3401 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Trend Detective API",
+  "description": "Finds and tests long-term trends in NASA Earth science variables.",
+  "version": "0.1.0"
+ },
+ "paths": {
+  "/health": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "Health",
+    "operationId": "health_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_Health_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/catalog": {
+   "get": {
+    "tags": [
+     "reference"
+    ],
+    "summary": "Catalog",
+    "operationId": "catalog_catalog_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_Catalog_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/places": {
+   "get": {
+    "tags": [
+     "reference"
+    ],
+    "summary": "Places",
+    "operationId": "places_places_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_PlacesResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/case": {
+   "post": {
+    "tags": [
+     "investigation"
+    ],
+    "summary": "Case",
+    "operationId": "case_case_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CaseRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_CaseResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/lineup": {
+   "post": {
+    "tags": [
+     "investigation"
+    ],
+    "summary": "Lineup",
+    "operationId": "lineup_lineup_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LineupRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_LineupResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/witnesses": {
+   "post": {
+    "tags": [
+     "investigation"
+    ],
+    "summary": "Witnesses",
+    "operationId": "witnesses_witnesses_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/WitnessesRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_WitnessesResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/trendmap": {
+   "post": {
+    "tags": [
+     "investigation"
+    ],
+    "summary": "Trendmap",
+    "operationId": "trendmap_trendmap_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TrendMapRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_TrendMapResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/ask": {
+   "post": {
+    "tags": [
+     "assistant"
+    ],
+    "summary": "Ask",
+    "operationId": "ask_ask_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AskRequest"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_AskResult_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/demo": {
+   "get": {
+    "tags": [
+     "demo"
+    ],
+    "summary": "Demo List",
+    "operationId": "demo_list_demo_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_DemoList_"
+        }
+       }
+      }
+     },
+     "404": {
+      "description": "Not Found",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Unprocessable Entity",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "429": {
+      "description": "Too Many Requests",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "500": {
+      "description": "Internal Server Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "502": {
+      "description": "Bad Gateway",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "503": {
+      "description": "Service Unavailable",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     },
+     "504": {
+      "description": "Gateway Timeout",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/demo/{demo_id}": {
+   "get": {
+    "tags": [
+     "demo"
+    ],
+    "summary": "Demo",
+    "operationId": "demo_demo__demo_id__get",
+    "parameters": [
+     {
+      "name": "demo_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "title": "Demo Id"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/Envelope_DemoCase_"
+        }
+       }
+      }
+     },
+     "404": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Not Found"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Unprocessable Entity"
+     },
+     "429": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Too Many Requests"
+     },
+     "500": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Internal Server Error"
+     },
+     "502": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Bad Gateway"
+     },
+     "503": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Service Unavailable"
+     },
+     "504": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/ErrorEnvelope"
+        }
+       }
+      },
+      "description": "Gateway Timeout"
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "ApiError": {
+    "properties": {
+     "code": {
+      "type": "string",
+      "enum": [
+       "validation_error",
+       "not_found",
+       "no_data",
+       "rate_limited",
+       "upstream_unavailable",
+       "upstream_timeout",
+       "assistant_unavailable",
+       "internal_error"
+      ],
+      "title": "Code"
+     },
+     "message": {
+      "type": "string",
+      "title": "Message",
+      "description": "Safe to show to the user, in English"
+     },
+     "details": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Details"
+     }
+    },
+    "type": "object",
+    "required": [
+     "code",
+     "message"
+    ],
+    "title": "ApiError"
+   },
+   "AskRequest": {
+    "properties": {
+     "question": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Question"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "question"
+    ],
+    "title": "AskRequest"
+   },
+   "AskResult": {
+    "properties": {
+     "understood": {
+      "type": "boolean",
+      "title": "Understood",
+      "description": "False when no place or topic could be extracted"
+     },
+     "interpretation": {
+      "type": "string",
+      "title": "Interpretation",
+      "description": "One sentence restating the question as an investigation"
+     },
+     "location": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Location"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "From the geocoder, never from the LLM"
+     },
+     "themes": {
+      "items": {
+       "type": "string",
+       "enum": [
+        "temperature",
+        "water",
+        "soil",
+        "snow",
+        "sunlight",
+        "air",
+        "wind"
+       ]
+      },
+      "type": "array",
+      "title": "Themes"
+     },
+     "variable_ids": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Variable Ids",
+      "description": "Subset of the catalog, never invented ids"
+     },
+     "period": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "season": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "annual",
+         "DJF",
+         "MAM",
+         "JJA",
+         "SON"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Season"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "understood",
+     "interpretation",
+     "location",
+     "themes",
+     "variable_ids",
+     "period",
+     "season"
+    ],
+    "title": "AskResult",
+    "description": "Free-text question parsed by the AI assistant. Contains no numbers and no verdicts."
+   },
+   "BBox": {
+    "properties": {
+     "lat_min": {
+      "type": "number",
+      "maximum": 90.0,
+      "minimum": -90.0,
+      "title": "Lat Min"
+     },
+     "lat_max": {
+      "type": "number",
+      "maximum": 90.0,
+      "minimum": -90.0,
+      "title": "Lat Max"
+     },
+     "lon_min": {
+      "type": "number",
+      "maximum": 180.0,
+      "minimum": -180.0,
+      "title": "Lon Min"
+     },
+     "lon_max": {
+      "type": "number",
+      "maximum": 180.0,
+      "minimum": -180.0,
+      "title": "Lon Max"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "lat_min",
+     "lat_max",
+     "lon_min",
+     "lon_max"
+    ],
+    "title": "BBox"
+   },
+   "CaseRequest": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "variable_id": {
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 1,
+      "title": "Variable Id"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period",
+      "default": {
+       "start_year": 1981,
+       "end_year": 2025
+      }
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season",
+      "default": "annual"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location",
+     "variable_id"
+    ],
+    "title": "CaseRequest"
+   },
+   "CaseResult": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "variable": {
+      "$ref": "#/components/schemas/Variable"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period"
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season"
+     },
+     "series": {
+      "items": {
+       "$ref": "#/components/schemas/SeriesPoint"
+      },
+      "type": "array",
+      "title": "Series"
+     },
+     "fit": {
+      "items": {
+       "$ref": "#/components/schemas/FitPoint"
+      },
+      "type": "array",
+      "title": "Fit"
+     },
+     "trend": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/TrendStats"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "description": "null when evidence is 'insufficient'"
+     },
+     "emergence": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Emergence"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "verdict": {
+      "$ref": "#/components/schemas/Verdict"
+     },
+     "limitations": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Limitations"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location",
+     "variable",
+     "period",
+     "season",
+     "series",
+     "fit",
+     "trend",
+     "emergence",
+     "verdict",
+     "limitations"
+    ],
+    "title": "CaseResult"
+   },
+   "Catalog": {
+    "properties": {
+     "variables": {
+      "items": {
+       "$ref": "#/components/schemas/Variable"
+      },
+      "type": "array",
+      "title": "Variables"
+     },
+     "themes": {
+      "items": {
+       "$ref": "#/components/schemas/Theme"
+      },
+      "type": "array",
+      "title": "Themes"
+     },
+     "seasons": {
+      "items": {
+       "type": "string",
+       "enum": [
+        "annual",
+        "DJF",
+        "MAM",
+        "JJA",
+        "SON"
+       ]
+      },
+      "type": "array",
+      "title": "Seasons"
+     },
+     "period_presets": {
+      "items": {
+       "$ref": "#/components/schemas/PeriodPreset"
+      },
+      "type": "array",
+      "title": "Period Presets"
+     },
+     "min_year": {
+      "type": "integer",
+      "title": "Min Year",
+      "default": 1981
+     },
+     "max_year": {
+      "type": "integer",
+      "title": "Max Year",
+      "default": 2025
+     },
+     "alpha": {
+      "type": "number",
+      "title": "Alpha",
+      "default": 0.05
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "variables",
+     "themes",
+     "seasons",
+     "period_presets"
+    ],
+    "title": "Catalog"
+   },
+   "Correction": {
+    "properties": {
+     "method": {
+      "type": "string",
+      "const": "fdr_bh",
+      "title": "Method",
+      "default": "fdr_bh"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label",
+      "default": "Benjamini-Hochberg false discovery rate"
+     },
+     "alpha": {
+      "type": "number",
+      "title": "Alpha",
+      "default": 0.05
+     },
+     "n_tests": {
+      "type": "integer",
+      "title": "N Tests"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "n_tests"
+    ],
+    "title": "Correction"
+   },
+   "DataSource": {
+    "properties": {
+     "provider": {
+      "type": "string",
+      "title": "Provider",
+      "description": "Service the data is fetched from, e.g. 'NASA POWER'"
+     },
+     "product": {
+      "type": "string",
+      "title": "Product",
+      "description": "Originating product, e.g. 'MERRA-2', 'CERES SYN1deg'"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "reanalysis",
+       "satellite",
+       "derived"
+      ],
+      "title": "Kind"
+     },
+     "url": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Url"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "provider",
+     "product",
+     "kind"
+    ],
+    "title": "DataSource",
+    "description": "Where a variable comes from. `product` is the originating NASA product."
+   },
+   "DemoCase": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "blurb": {
+      "type": "string",
+      "title": "Blurb"
+     },
+     "narrative": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Narrative",
+      "description": "Short steps of the investigation, in order"
+     },
+     "case": {
+      "$ref": "#/components/schemas/CaseResult"
+     },
+     "lineup": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LineupResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "witnesses": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/WitnessesResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "trendmap": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/TrendMapResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "title",
+     "blurb",
+     "narrative",
+     "case",
+     "lineup",
+     "witnesses",
+     "trendmap"
+    ],
+    "title": "DemoCase",
+    "description": "A saved investigation the user can replay without waiting for live data."
+   },
+   "DemoList": {
+    "properties": {
+     "demos": {
+      "items": {
+       "$ref": "#/components/schemas/DemoSummary"
+      },
+      "type": "array",
+      "title": "Demos"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "demos"
+    ],
+    "title": "DemoList"
+   },
+   "DemoSummary": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "blurb": {
+      "type": "string",
+      "title": "Blurb"
+     },
+     "place_name": {
+      "type": "string",
+      "title": "Place Name"
+     },
+     "variable_id": {
+      "type": "string",
+      "title": "Variable Id"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "title",
+     "blurb",
+     "place_name",
+     "variable_id"
+    ],
+    "title": "DemoSummary"
+   },
+   "Emergence": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "emerged",
+       "not_yet",
+       "insufficient"
+      ],
+      "title": "Status"
+     },
+     "emerged_year": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Emerged Year",
+      "description": "First end-year from which the trend stays significant to the end of the record"
+     },
+     "years_needed": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Years Needed",
+      "description": "Weatherhead et al. (1998) record length needed to detect the current slope"
+     },
+     "additional_years": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Additional Years",
+      "description": "years_needed minus years available, rounded up; 0 when already emerged"
+     },
+     "noise_std": {
+      "type": "number",
+      "title": "Noise Std",
+      "description": "Standard deviation of the detrended residuals"
+     },
+     "autocorrelation": {
+      "type": "number",
+      "title": "Autocorrelation",
+      "description": "Lag-1 autocorrelation of the residuals"
+     },
+     "running": {
+      "items": {
+       "$ref": "#/components/schemas/RunningPoint"
+      },
+      "type": "array",
+      "title": "Running"
+     },
+     "explanation": {
+      "type": "string",
+      "title": "Explanation"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "status",
+     "emerged_year",
+     "years_needed",
+     "additional_years",
+     "noise_std",
+     "autocorrelation",
+     "running",
+     "explanation"
+    ],
+    "title": "Emergence",
+    "description": "Block C. When did the trend become significant, or how long until it could?"
+   },
+   "Envelope_AskResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/AskResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[AskResult]"
+   },
+   "Envelope_CaseResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/CaseResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[CaseResult]"
+   },
+   "Envelope_Catalog_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Catalog"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[Catalog]"
+   },
+   "Envelope_DemoCase_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/DemoCase"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[DemoCase]"
+   },
+   "Envelope_DemoList_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/DemoList"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[DemoList]"
+   },
+   "Envelope_Health_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/Health"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[Health]"
+   },
+   "Envelope_LineupResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/LineupResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[LineupResult]"
+   },
+   "Envelope_PlacesResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/PlacesResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[PlacesResult]"
+   },
+   "Envelope_TrendMapResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/TrendMapResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[TrendMapResult]"
+   },
+   "Envelope_WitnessesResult_": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "title": "Success"
+     },
+     "data": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/WitnessesResult"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "error": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/ApiError"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "type": "object",
+    "required": [
+     "success"
+    ],
+    "title": "Envelope[WitnessesResult]"
+   },
+   "ErrorEnvelope": {
+    "properties": {
+     "success": {
+      "type": "boolean",
+      "const": false,
+      "title": "Success",
+      "default": false
+     },
+     "data": {
+      "type": "null",
+      "title": "Data"
+     },
+     "error": {
+      "$ref": "#/components/schemas/ApiError"
+     }
+    },
+    "type": "object",
+    "required": [
+     "error"
+    ],
+    "title": "ErrorEnvelope"
+   },
+   "FitPoint": {
+    "properties": {
+     "year": {
+      "type": "integer",
+      "title": "Year"
+     },
+     "value": {
+      "type": "number",
+      "title": "Value"
+     },
+     "ci_low": {
+      "type": "number",
+      "title": "Ci Low"
+     },
+     "ci_high": {
+      "type": "number",
+      "title": "Ci High"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "year",
+     "value",
+     "ci_low",
+     "ci_high"
+    ],
+    "title": "FitPoint",
+    "description": "OLS trend line with its 95% confidence band for the mean."
+   },
+   "GridSpec": {
+    "properties": {
+     "lat_step": {
+      "type": "number",
+      "title": "Lat Step"
+     },
+     "lon_step": {
+      "type": "number",
+      "title": "Lon Step"
+     },
+     "n_lat": {
+      "type": "integer",
+      "title": "N Lat"
+     },
+     "n_lon": {
+      "type": "integer",
+      "title": "N Lon"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "lat_step",
+     "lon_step",
+     "n_lat",
+     "n_lon"
+    ],
+    "title": "GridSpec"
+   },
+   "Health": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "const": "ok",
+      "title": "Status",
+      "default": "ok"
+     },
+     "version": {
+      "type": "string",
+      "title": "Version"
+     },
+     "assistant_available": {
+      "type": "boolean",
+      "title": "Assistant Available",
+      "description": "False when no Gemini key is configured"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "version",
+     "assistant_available"
+    ],
+    "title": "Health"
+   },
+   "LineupItem": {
+    "properties": {
+     "rank": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Rank",
+      "description": "1 = strongest trend; null when status is 'no_data'"
+     },
+     "variable": {
+      "$ref": "#/components/schemas/Variable"
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "ok",
+       "no_data"
+      ],
+      "title": "Status"
+     },
+     "n": {
+      "type": "integer",
+      "title": "N"
+     },
+     "direction": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "up",
+         "down",
+         "flat"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Direction"
+     },
+     "slope_per_decade": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Slope Per Decade",
+      "description": "Sen's slope, in the variable's unit"
+     },
+     "standardized_slope": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Standardized Slope",
+      "description": "Sen's slope divided by the series standard deviation (sigma per decade)"
+     },
+     "tau": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Tau"
+     },
+     "p_value": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "P Value",
+      "description": "Mann-Kendall p-value, uncorrected"
+     },
+     "p_adjusted": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "P Adjusted",
+      "description": "p-value after multiple-testing correction"
+     },
+     "significant": {
+      "type": "boolean",
+      "title": "Significant",
+      "description": "p_adjusted < alpha"
+     },
+     "sparkline": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "number"
+        },
+        {
+         "type": "null"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Sparkline",
+      "description": "Annual values, one per year of the period"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "rank",
+     "variable",
+     "status",
+     "n",
+     "direction",
+     "slope_per_decade",
+     "standardized_slope",
+     "tau",
+     "p_value",
+     "p_adjusted",
+     "significant",
+     "sparkline"
+    ],
+    "title": "LineupItem"
+   },
+   "LineupRequest": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "themes": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string",
+         "enum": [
+          "temperature",
+          "water",
+          "soil",
+          "snow",
+          "sunlight",
+          "air",
+          "wind"
+         ]
+        },
+        "type": "array"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Themes",
+      "description": "Restrict to these themes; omit for the whole catalog"
+     },
+     "variable_ids": {
+      "anyOf": [
+       {
+        "items": {
+         "type": "string"
+        },
+        "type": "array",
+        "maxItems": 40
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Variable Ids",
+      "description": "Restrict to these variables; wins over `themes`"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period",
+      "default": {
+       "start_year": 1981,
+       "end_year": 2025
+      }
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season",
+      "default": "annual"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location"
+    ],
+    "title": "LineupRequest"
+   },
+   "LineupResult": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period"
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season"
+     },
+     "correction": {
+      "$ref": "#/components/schemas/Correction"
+     },
+     "items": {
+      "items": {
+       "$ref": "#/components/schemas/LineupItem"
+      },
+      "type": "array",
+      "title": "Items"
+     },
+     "n_significant": {
+      "type": "integer",
+      "title": "N Significant"
+     },
+     "summary": {
+      "type": "string",
+      "title": "Summary"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location",
+     "period",
+     "season",
+     "correction",
+     "items",
+     "n_significant",
+     "summary"
+    ],
+    "title": "LineupResult"
+   },
+   "Location": {
+    "properties": {
+     "lat": {
+      "type": "number",
+      "maximum": 90.0,
+      "minimum": -90.0,
+      "title": "Lat"
+     },
+     "lon": {
+      "type": "number",
+      "maximum": 180.0,
+      "minimum": -180.0,
+      "title": "Lon"
+     },
+     "label": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 120
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Label"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "lat",
+     "lon"
+    ],
+    "title": "Location"
+   },
+   "MannKendallResult": {
+    "properties": {
+     "s": {
+      "type": "number",
+      "title": "S"
+     },
+     "z": {
+      "type": "number",
+      "title": "Z"
+     },
+     "tau": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": -1.0,
+      "title": "Tau"
+     },
+     "p_value": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "P Value"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "s",
+     "z",
+     "tau",
+     "p_value"
+    ],
+    "title": "MannKendallResult"
+   },
+   "OlsResult": {
+    "properties": {
+     "slope_per_decade": {
+      "type": "number",
+      "title": "Slope Per Decade"
+     },
+     "stderr_per_decade": {
+      "type": "number",
+      "title": "Stderr Per Decade"
+     },
+     "ci95_low": {
+      "type": "number",
+      "title": "Ci95 Low",
+      "description": "Lower bound of the 95% CI of the slope, per decade"
+     },
+     "ci95_high": {
+      "type": "number",
+      "title": "Ci95 High"
+     },
+     "t_statistic": {
+      "type": "number",
+      "title": "T Statistic"
+     },
+     "p_value": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "P Value"
+     },
+     "r_squared": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "R Squared"
+     },
+     "intercept": {
+      "type": "number",
+      "title": "Intercept",
+      "description": "Fitted value at the first year of the period"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "slope_per_decade",
+     "stderr_per_decade",
+     "ci95_low",
+     "ci95_high",
+     "t_statistic",
+     "p_value",
+     "r_squared",
+     "intercept"
+    ],
+    "title": "OlsResult"
+   },
+   "OppositeTwin": {
+    "properties": {
+     "up": {
+      "$ref": "#/components/schemas/TrendMapCell"
+     },
+     "down": {
+      "$ref": "#/components/schemas/TrendMapCell"
+     },
+     "distance_km": {
+      "type": "number",
+      "title": "Distance Km"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "up",
+     "down",
+     "distance_km",
+     "text"
+    ],
+    "title": "OppositeTwin",
+    "description": "Two significant cells of the same map trending in opposite directions."
+   },
+   "Period": {
+    "properties": {
+     "start_year": {
+      "type": "integer",
+      "maximum": 2025.0,
+      "minimum": 1981.0,
+      "title": "Start Year",
+      "default": 1981
+     },
+     "end_year": {
+      "type": "integer",
+      "maximum": 2025.0,
+      "minimum": 1981.0,
+      "title": "End Year",
+      "default": 2025
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "title": "Period"
+   },
+   "PeriodPreset": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "label",
+     "period"
+    ],
+    "title": "PeriodPreset"
+   },
+   "Place": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name"
+     },
+     "country": {
+      "type": "string",
+      "title": "Country"
+     },
+     "lat": {
+      "type": "number",
+      "title": "Lat"
+     },
+     "lon": {
+      "type": "number",
+      "title": "Lon"
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "desert",
+       "rainforest",
+       "city",
+       "coast",
+       "mountain",
+       "polar",
+       "farmland",
+       "grassland",
+       "island",
+       "wetland"
+      ],
+      "title": "Kind"
+     },
+     "blurb": {
+      "type": "string",
+      "title": "Blurb",
+      "description": "One sentence on why this place is worth investigating"
+     },
+     "suggested_themes": {
+      "items": {
+       "type": "string",
+       "enum": [
+        "temperature",
+        "water",
+        "soil",
+        "snow",
+        "sunlight",
+        "air",
+        "wind"
+       ]
+      },
+      "type": "array",
+      "title": "Suggested Themes"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "country",
+     "lat",
+     "lon",
+     "kind",
+     "blurb",
+     "suggested_themes"
+    ],
+    "title": "Place"
+   },
+   "PlacesResult": {
+    "properties": {
+     "places": {
+      "items": {
+       "$ref": "#/components/schemas/Place"
+      },
+      "type": "array",
+      "title": "Places"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "places"
+    ],
+    "title": "PlacesResult"
+   },
+   "RunningPoint": {
+    "properties": {
+     "end_year": {
+      "type": "integer",
+      "title": "End Year"
+     },
+     "slope_per_decade": {
+      "type": "number",
+      "title": "Slope Per Decade"
+     },
+     "p_value": {
+      "type": "number",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "P Value",
+      "description": "Mann-Kendall p-value"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "end_year",
+     "slope_per_decade",
+     "p_value"
+    ],
+    "title": "RunningPoint",
+    "description": "Trend from the first year up to `end_year` (expanding window)."
+   },
+   "SenResult": {
+    "properties": {
+     "slope_per_decade": {
+      "type": "number",
+      "title": "Slope Per Decade"
+     },
+     "ci95_low": {
+      "type": "number",
+      "title": "Ci95 Low"
+     },
+     "ci95_high": {
+      "type": "number",
+      "title": "Ci95 High"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "slope_per_decade",
+     "ci95_low",
+     "ci95_high"
+    ],
+    "title": "SenResult"
+   },
+   "SeriesPoint": {
+    "properties": {
+     "year": {
+      "type": "integer",
+      "title": "Year"
+     },
+     "value": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Value",
+      "description": "Annual or seasonal mean; null when missing"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "year",
+     "value"
+    ],
+    "title": "SeriesPoint"
+   },
+   "Theme": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "enum": [
+       "temperature",
+       "water",
+       "soil",
+       "snow",
+       "sunlight",
+       "air",
+       "wind"
+      ],
+      "title": "Id"
+     },
+     "label": {
+      "type": "string",
+      "title": "Label"
+     },
+     "question": {
+      "type": "string",
+      "title": "Question",
+      "description": "Guided-question wording, e.g. 'Is it getting hotter?'"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "label",
+     "question",
+     "description"
+    ],
+    "title": "Theme"
+   },
+   "TrendMapCell": {
+    "properties": {
+     "lat": {
+      "type": "number",
+      "title": "Lat"
+     },
+     "lon": {
+      "type": "number",
+      "title": "Lon"
+     },
+     "n": {
+      "type": "integer",
+      "title": "N"
+     },
+     "slope_per_decade": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Slope Per Decade",
+      "description": "Sen's slope; null when the cell has no data"
+     },
+     "direction": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "up",
+         "down",
+         "flat"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Direction"
+     },
+     "p_value": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "P Value"
+     },
+     "p_adjusted": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "P Adjusted"
+     },
+     "significant": {
+      "type": "boolean",
+      "title": "Significant"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "lat",
+     "lon",
+     "n",
+     "slope_per_decade",
+     "direction",
+     "p_value",
+     "p_adjusted",
+     "significant"
+    ],
+    "title": "TrendMapCell"
+   },
+   "TrendMapRequest": {
+    "properties": {
+     "variable_id": {
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 1,
+      "title": "Variable Id"
+     },
+     "bbox": {
+      "$ref": "#/components/schemas/BBox"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period",
+      "default": {
+       "start_year": 1981,
+       "end_year": 2025
+      }
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season",
+      "default": "annual"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "variable_id",
+     "bbox"
+    ],
+    "title": "TrendMapRequest"
+   },
+   "TrendMapResult": {
+    "properties": {
+     "variable": {
+      "$ref": "#/components/schemas/Variable"
+     },
+     "bbox": {
+      "$ref": "#/components/schemas/BBox"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period"
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season"
+     },
+     "grid": {
+      "$ref": "#/components/schemas/GridSpec"
+     },
+     "correction": {
+      "$ref": "#/components/schemas/Correction"
+     },
+     "cells": {
+      "items": {
+       "$ref": "#/components/schemas/TrendMapCell"
+      },
+      "type": "array",
+      "title": "Cells"
+     },
+     "summary": {
+      "$ref": "#/components/schemas/TrendMapSummary"
+     },
+     "opposite_twin": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/OppositeTwin"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "variable",
+     "bbox",
+     "period",
+     "season",
+     "grid",
+     "correction",
+     "cells",
+     "summary",
+     "opposite_twin"
+    ],
+    "title": "TrendMapResult",
+    "description": "Block B. Slope per grid cell over a box of up to 10 x 10 degrees."
+   },
+   "TrendMapSummary": {
+    "properties": {
+     "n_cells": {
+      "type": "integer",
+      "title": "N Cells"
+     },
+     "n_valid": {
+      "type": "integer",
+      "title": "N Valid"
+     },
+     "n_up_significant": {
+      "type": "integer",
+      "title": "N Up Significant"
+     },
+     "n_down_significant": {
+      "type": "integer",
+      "title": "N Down Significant"
+     },
+     "max_abs_slope": {
+      "type": "number",
+      "title": "Max Abs Slope",
+      "description": "Use as the symmetric limit of the colour scale"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "n_cells",
+     "n_valid",
+     "n_up_significant",
+     "n_down_significant",
+     "max_abs_slope",
+     "text"
+    ],
+    "title": "TrendMapSummary"
+   },
+   "TrendStats": {
+    "properties": {
+     "n": {
+      "type": "integer",
+      "title": "N",
+      "description": "Number of valid years used"
+     },
+     "n_missing": {
+      "type": "integer",
+      "title": "N Missing"
+     },
+     "unit": {
+      "type": "string",
+      "title": "Unit"
+     },
+     "alpha": {
+      "type": "number",
+      "title": "Alpha",
+      "default": 0.05
+     },
+     "direction": {
+      "type": "string",
+      "enum": [
+       "up",
+       "down",
+       "flat"
+      ],
+      "title": "Direction"
+     },
+     "evidence": {
+      "type": "string",
+      "enum": [
+       "strong",
+       "mixed",
+       "none",
+       "insufficient"
+      ],
+      "title": "Evidence"
+     },
+     "significant": {
+      "type": "boolean",
+      "title": "Significant",
+      "description": "True only when evidence is 'strong'"
+     },
+     "methods_agree": {
+      "type": "boolean",
+      "title": "Methods Agree",
+      "description": "OLS and Mann-Kendall reach the same conclusion"
+     },
+     "total_change": {
+      "type": "number",
+      "title": "Total Change",
+      "description": "OLS slope times the length of the period, in `unit`"
+     },
+     "percent_change": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Percent Change",
+      "description": "total_change relative to the period mean; null when the mean is near zero"
+     },
+     "mean": {
+      "type": "number",
+      "title": "Mean"
+     },
+     "std": {
+      "type": "number",
+      "title": "Std"
+     },
+     "lag1_autocorrelation": {
+      "type": "number",
+      "title": "Lag1 Autocorrelation"
+     },
+     "ols": {
+      "$ref": "#/components/schemas/OlsResult"
+     },
+     "mann_kendall": {
+      "$ref": "#/components/schemas/MannKendallResult"
+     },
+     "sen": {
+      "$ref": "#/components/schemas/SenResult"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "n",
+     "n_missing",
+     "unit",
+     "direction",
+     "evidence",
+     "significant",
+     "methods_agree",
+     "total_change",
+     "percent_change",
+     "mean",
+     "std",
+     "lag1_autocorrelation",
+     "ols",
+     "mann_kendall",
+     "sen"
+    ],
+    "title": "TrendStats"
+   },
+   "Variable": {
+    "properties": {
+     "id": {
+      "type": "string",
+      "title": "Id",
+      "description": "NASA POWER parameter id, e.g. 'T2M'"
+     },
+     "name": {
+      "type": "string",
+      "title": "Name",
+      "description": "Short human name, e.g. 'Air temperature'"
+     },
+     "definition": {
+      "type": "string",
+      "title": "Definition",
+      "description": "Plain-language definition for non-experts"
+     },
+     "unit": {
+      "type": "string",
+      "title": "Unit",
+      "description": "Display unit, e.g. '\u00b0C', 'mm/day'"
+     },
+     "theme": {
+      "type": "string",
+      "enum": [
+       "temperature",
+       "water",
+       "soil",
+       "snow",
+       "sunlight",
+       "air",
+       "wind"
+      ],
+      "title": "Theme"
+     },
+     "source": {
+      "$ref": "#/components/schemas/DataSource"
+     },
+     "first_year": {
+      "type": "integer",
+      "title": "First Year",
+      "description": "First year with data for this variable"
+     },
+     "witness_group": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Witness Group",
+      "description": "Variables sharing a group measure the same quantity from independent sources"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "definition",
+     "unit",
+     "theme",
+     "source",
+     "first_year"
+    ],
+    "title": "Variable"
+   },
+   "Verdict": {
+    "properties": {
+     "evidence": {
+      "type": "string",
+      "enum": [
+       "strong",
+       "mixed",
+       "none",
+       "insufficient"
+      ],
+      "title": "Evidence"
+     },
+     "headline": {
+      "type": "string",
+      "title": "Headline",
+      "description": "One short sentence, e.g. 'Case closed: it is getting warmer.'"
+     },
+     "what": {
+      "type": "string",
+      "title": "What"
+     },
+     "where": {
+      "type": "string",
+      "title": "Where"
+     },
+     "how_much": {
+      "type": "string",
+      "title": "How Much"
+     },
+     "how_sure": {
+      "type": "string",
+      "title": "How Sure"
+     },
+     "caveats": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Caveats"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "evidence",
+     "headline",
+     "what",
+     "where",
+     "how_much",
+     "how_sure",
+     "caveats"
+    ],
+    "title": "Verdict",
+    "description": "Plain-language verdict built by deterministic rules from TrendStats. Never by an LLM."
+   },
+   "Witness": {
+    "properties": {
+     "variable": {
+      "$ref": "#/components/schemas/Variable"
+     },
+     "series": {
+      "items": {
+       "$ref": "#/components/schemas/SeriesPoint"
+      },
+      "type": "array",
+      "title": "Series"
+     },
+     "fit": {
+      "items": {
+       "$ref": "#/components/schemas/FitPoint"
+      },
+      "type": "array",
+      "title": "Fit"
+     },
+     "trend": {
+      "anyOf": [
+       {
+        "$ref": "#/components/schemas/TrendStats"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "variable",
+     "series",
+     "fit",
+     "trend"
+    ],
+    "title": "Witness"
+   },
+   "WitnessAgreement": {
+    "properties": {
+     "level": {
+      "type": "string",
+      "enum": [
+       "agree",
+       "partly",
+       "disagree",
+       "insufficient"
+      ],
+      "title": "Level"
+     },
+     "same_direction": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Same Direction"
+     },
+     "all_significant": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "All Significant"
+     },
+     "correlation": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Correlation",
+      "description": "Pearson r between the witnesses over the common period"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "level",
+     "same_direction",
+     "all_significant",
+     "correlation",
+     "text"
+    ],
+    "title": "WitnessAgreement"
+   },
+   "WitnessesRequest": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "variable_id": {
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 1,
+      "title": "Variable Id",
+      "description": "Any variable that has a witness_group; its whole group is compared"
+     },
+     "period": {
+      "$ref": "#/components/schemas/Period",
+      "default": {
+       "start_year": 1981,
+       "end_year": 2025
+      }
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season",
+      "default": "annual"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location",
+     "variable_id"
+    ],
+    "title": "WitnessesRequest"
+   },
+   "WitnessesResult": {
+    "properties": {
+     "location": {
+      "$ref": "#/components/schemas/Location"
+     },
+     "quantity": {
+      "type": "string",
+      "title": "Quantity",
+      "description": "e.g. 'Water vapour in the air column'"
+     },
+     "season": {
+      "type": "string",
+      "enum": [
+       "annual",
+       "DJF",
+       "MAM",
+       "JJA",
+       "SON"
+      ],
+      "title": "Season"
+     },
+     "common_period": {
+      "$ref": "#/components/schemas/Period"
+     },
+     "witnesses": {
+      "items": {
+       "$ref": "#/components/schemas/Witness"
+      },
+      "type": "array",
+      "title": "Witnesses"
+     },
+     "agreement": {
+      "$ref": "#/components/schemas/WitnessAgreement"
+     },
+     "limitations": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Limitations"
+     }
+    },
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+     "location",
+     "quantity",
+     "season",
+     "common_period",
+     "witnesses",
+     "agreement",
+     "limitations"
+    ],
+    "title": "WitnessesResult",
+    "description": "Block D. The same quantity seen by independent sources over their common period."
+   }
+  }
+ }
+}
